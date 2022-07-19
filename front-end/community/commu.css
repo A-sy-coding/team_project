@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'Baloo';
+    src: url('BalooBhai.ttf') format('truetype');
+}
+
+*{
+    margin : 0;
+    padding : 0;
+}
+
+ul,li {
+    list-style : none;
+}
+
+a {
+    text-decoration: none;
+    color : inherit;
+}
+
+header{
+    font-family : 'Baloo';
+    width :100%;
+    height : 60px;
+    background-color: rgba(108, 60, 244, 0.85);
+    position: fixed;
+    top : 0;
+    left : 0;
+}
+
+h1{
+    line-height:60px;
+    font-size: 40px;
+    float : left;
+}
+ 
+h1 a{
+    text-decoration: none;
+    color : white;
+}
+
+.menu{
+    font-family : ovo;
+    float : right;
+}
+
+.menu li{
+    list-style: none;
+    float : left;
+}
+/*로그인 회원가입*/
+.menu a{
+    text-decoration: none;
+    padding-top: 56.25%;
+    font-size: 12pt;
+    line-height: 61px;
+    color : white;
+    padding : 0 5px;
+    display : block;
+}
+
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+
+/*page*/
+.board_wrap{
+    width : 65%;
+    margin : 110px auto;
+}
+
+.info{
+    margin-bottom: 30px;
+}
+
+.info div:first-child{
+    margin-bottom: 5px;
+}
+
+.info .name{
+    font-size: 30px;
+}
+
+.info .search{
+    font-size: 15px;
+    float:right;
+    padding-right: 20px;
+}
+
+.board{
+    width :100%;
+    border-top: 2px solid #000;
+}
+
+.board >div{
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+}
+
+.board >div.top{
+    border-bottom : 1px solid #999;
+}
+
+.board >div:last-child{
+    border-bottom : 1px solid #000;
+}
+
+.board >div >div{
+    display: inline-block;
+    padding : 10px 0;
+    text-align:center;
+    font-size: 12px;
+}
+
+.board >div.top >div{
+    font-size: 14px ;
+    font-weight: 600;
+}
+
+.board >div.notic >div{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.board .notic .num{
+    color : rgb(210, 3, 3);
+}
+
+.board .top{
+    border-bottom: 1px solid #ddd;
+}
+
+.board .num{
+    width: 10%;
+}
+
+.board .title{
+    width: 60%;
+}
+
+.board .writer{
+    width: 10%;
+}
+
+.board .date{
+    width: 10%;
+}
+
+.board .count{
+    width: 10%;
+}
+
+.button{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.button a{
+    min-width: 80px;
+    padding: 8px 20px;
+    font-size: 15px;
+    border : 1px solid #000;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+.button a:hover{
+    background-color: black;
+    color: #FFF;
+}
+
+.button_page{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.button_page a{
+    display:  inline-block;
+    font-size: 15px;
+    border: 1px solid #000;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    line-height: 100%;
+    padding-top: 6px;
+    border-left:0;
+    letter-spacing: -1px;
+}
+
+.button_page a:first-child{
+    border-left : 1px solid #000;
+}
+
+.button_page .num{
+    padding-top: 7px;
+    background-color: rgba(108, 60, 244, 0.85);
+    color:#fff
+}
+
