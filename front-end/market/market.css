@@ -1,0 +1,162 @@
+@font-face{
+    font-family: 'Baloo';
+    src: url("BalooBhai.ttf") format("truetype");
+}
+
+header {
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color:rgba(108, 60, 244, 0.85);
+    color: white;
+    position: fixed;
+    z-index: 9999;
+    top : 0; 
+    left : 0;
+  }
+
+/*healf*/
+h1{
+    line-height:5px;
+    font-size: 40px;
+    float : left;
+}
+ 
+h1 a{
+    text-decoration: none;
+    color : white;
+}
+
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+.all{
+    background-color:rgb(255, 255, 255);
+}
+
+.box{
+    margin : 50%;
+    padding : 30px;
+    border : 1px solid black;
+    border-radius : 5px;
+}
+
+
+.menubar{
+  background-color:rgb(255, 255, 255);
+  width : 1100px;
+  height : 45px;
+  border:1px;
+  border-style: solid none;
+  font-family : 'Baloo';
+  margin: 130px auto;
+  display:flex;  
+} 
+
+.category{
+    background-color:rgb(255, 255, 255);
+    width : 135px;
+    height : 35px;
+    margin-left:25px;
+    font-size:20px;
+    text-align: center;
+    padding-top:9px;
+}
+
+.menubar .category a:hover{
+    color:  rgba(108, 60, 244, 0.85);
+}
+
+.button{
+    background-color:rgb(255, 255, 255);
+    width : 35px;
+    height : 35px;
+    margin-left: 30px;
+    padding-top:10px;
+}
+
+.search{
+    background-color:#ffffff;
+    width : 230px;
+    height : 30px;
+    font-size:13px;
+    line-height: 30px;
+    padding-left: 10px;
+    text-align: left;
+    border: 1px solid #999;
+    margin : auto 0;
+    border-radius: 10px;
+}
+
+
+.main{
+    background-color:rgb(124, 196, 82);
+    width : 1100px;
+    height : 435px;
+    font-family : 'Baloo';
+    margin : -100px auto;
+    display:flex;  
+  } 
+
+.event{
+    background-color:rgb(242, 147, 31);
+    width : 1100px;
+    height : 115px;
+    font-family : 'Baloo';
+    margin : 110px auto;
+    display:flex;  
+  } 
+
+.item{
+    background-color:rgb(255, 255, 255);
+    width : 1100px;
+    height : 800px;
+    margin:-80px 17.5%;
+    display: inline-flex;
+}
+
+.oldnew{
+    background-color:rgb(255, 255, 255);
+    width : 540px;
+    height : 780px;
+    display:inline-flex;
+    padding-top: 10px;
+    flex-direction:column;
+}
+
+.line{
+    background-color:rgb(0, 0, 0);
+    width : 2px;
+    height : 700px;
+    margin: 5px auto;
+}
+
+.textbox{
+    background-color:rgb(255, 255, 255);
+    width : 90%;
+    height : 90px;
+    margin : 10px auto;
+    font-family : 'Baloo';
+    font-size:30px;
+    display:inline-block;
+}
+
+.detail{
+    background-color:rgb(255, 255, 255);
+    width : 90%;
+    height : 83%;
+    display:flex;
+    margin : 10px 6px;
+    align-content:flex-start;
+    flex-wrap:wrap;
+}
+
+.last{
+    background-color:rgb(255, 255, 255);
+    width : 45%;
+    height : 40%;
+    margin : auto;
+    display:flex;
+}

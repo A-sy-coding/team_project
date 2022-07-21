@@ -3,21 +3,40 @@
     src: url('BalooBhai.ttf') format('truetype');
 }
 
+*{
+    margin : 0;
+    padding : 0;
+}
+
+ul,li {
+    list-style : none;
+}
+
+a {
+    text-decoration: none;
+    color : inherit;
+}
+
 header {
     font-family : 'Baloo';
     height : 60px;
     width: 100%;
     background-color: rgba(108, 60, 244, 0.85);
     color: white;
-    position: fixed;
-    z-index: 9999;
+    position: relative;
     top : 0;
     left : 0;
 }
 
+
 /*healf*/
+h3{
+    font-size:20px;
+    margin: 10 auto;
+}
+
 h1{
-    line-height:5px;
+    line-height:60px;
     font-size: 40px;
     float : left;
 }
@@ -30,123 +49,126 @@ h1 a{
 .menu{
     float : right;
 }
+
 .wrapper{
-    width :80%;
+    width :70%;
     margin : 0 auto;
 }
-.healf{position: absolute;
+
+/*form*/
+.wrap{
+    max-width: 768px;
+    min-width: 460px;
+    margin:0 auto;
+}
+
+.healf{
     width: 18.3333vw;
     height: 5.5556vw;
-    left: 46.3194vw;
-    top: 14.4167vw;
-    
+    margin: 30 40%;
+    text-align:center;
     font-family: 'Baloo Bhai';
     font-style: normal;
     font-weight: 400;
     font-size: 4.1667vw;
     line-height: 6.6667vw;
-    color: rgba(108, 60, 244, 0.85);
+    color:rgba(108, 60, 244, 0.85);
 }
 
-.email{position: absolute;
-    padding-left:3.1250vw;
-    padding-right:3.1250vw;
-    width: 30.2257vw;
-    height: 4.2701vw;
-    left: 36.5972vw;
-    top: 21.5694vw;
+.email{
+    padding:0 8%;
+    margin: auto;
+    width: 70%;
+    height: 6%;
     font-size: 1.3889vw;
     font-family:NanumSquareRoundB;
     background: rgba(255, 255, 255, 0.35);
-    border: 2px solid #000000;}
+    border: 2px solid #000000;
+}
 
-.password{box-sizing: border-box;
-    position: absolute;
-    padding-left:3.1250vw;
-    padding-right:3.1250vw;
-    width: 30.2257vw;
-    height: 4.2701vw;
-    left: 36.5972vw;
-    top: 26.6938vw;
+.password{
+    box-sizing: border-box;
+    margin:auto;
+    padding:0 8%;
+    width: 70%;
+    height: 6%;
+
     font-size: 1.3889vw;
     background: rgba(255, 255, 255, 0.35);
-    border: 2px solid #000000;}
+    border: 2px solid #000000;
+}
 
-.login{box-sizing: border-box;
-    position: absolute;
-    width: 30.2778vw;
-    height: 5.2083vw;
-    left: 36.5972vw;
-    top: 32.0556vw;
+.login{
+    box-sizing: border-box;
+    margin:10 auto;
+    width: 70%;
+    height: 6%;
+
     text-align: center;
     text-decoration: none;
     font-size: 1.5278vw;
     cursor:pointer;
     color:black;
     background: #E5E0F2;
-    border: 2px solid #000000;}
+    border: 2px solid #000000;
+}
 
 .emailimage{
-    position: absolute;
-    left: 37.4306vw;
-    top: 22.2681vw;
-    width: 2.0833vw;
-    height: 2.4306vw;
-}
-.pwimage{
-    position: absolute;
-    width: 2.7014vw;
-    height: 3.0278vw;
-    left: 37.2542vw;
-    top: 27.3146vw;
-}
-.naverimage{
-    position: absolute;
-    width: 31.5278vw;
-    height: 4.8611vw;
-    left: 36.1111vw;
-    top: 45.8194vw;
-}
-.kakaoimage{
-    position: absolute;
-    width: 31.5278vw;
-    height: 4.5139vw;
-    left: 36.1111vw;
-    top: 40.3333vw;
+    left:17%;
+    top:25%;
+    position:absolute;
+    z-index:99;
+    width: 5%;
+    height: 50%;
 }
 
-.question{position: absolute;
-    width: 14.2361vw;
-    height: 2.5000vw;
-    left: 41.4583vw;
-    top: 50.5139vw;
-    margin-bottom: 10px;
-    
+.pwimage{
+    left:17%;
+    top:25%;
+    position:absolute;
+    z-index:99;
+    width: 5%;
+    height: 50%;
+}
+
+.kakaoimage{
+    margin:10 auto;
+    width: 70%;
+    height: 90%;
+
+}
+
+.naverimage{
+    margin:10 auto;
+    width: 70%;
+    height: 90%;
+
+}
+
+/*회원 가입 유도*/
+
+.question{
+    margin:9 0 10 30;
+    width: 50%;
+    height: 20%;
+    text-align:right;
     font-style: normal;
     font-weight: 400;
     font-size: 1.0417vw;
     line-height: 2.2222vw;
 
-    color: #000000;}
+    color: #000000;
+}
 
-.register{position: absolute;
-    width: 7.2222vw;
-    height: 3.0556vw;
-    left: 56.8056vw;
-    top: 51.0694vw;
-    margin-bottom: 2.5vw;
-    text-align: center;
+.register{
+    margin:10 ;
+    padding: 3px;
     text-decoration: none;
-    font-size: 1.2500vw;
+    font-size: 1.0000vw;
     cursor:pointer;
     color:white;
-    background: #000000;}    
+    border-radius: 10px;
+    background: #000;
+    cursor: pointer;
+}
 
-.white{
-    position: absolute;
-    width: 100.0000vw;
-    height: 10.0000vw;
-    left: 0.0000vw;
-    top: 61.1111vw;
-    
-    background: #FFFFFF;}
