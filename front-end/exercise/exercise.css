@@ -38,6 +38,16 @@ h1 a{
     border-radius : 5px;
 }
 
+ul,li {
+  list-style : none;
+}
+
+a {
+  text-decoration: none;
+  color : inherit;
+}
+
+
 /*네비게이션바*/
 
 ul {
@@ -46,7 +56,7 @@ ul {
     margin-left: 9%;
     width: 100px;
     background: rgb(225, 221, 247);
-    height: 34%;
+    height: 32%;
     overflow: auto;
     position: fixed;
     margin-top : 1.7%;

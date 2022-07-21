@@ -3,6 +3,11 @@
     src: url('BalooBhai.ttf') format('truetype');
 }
 
+*{
+    margin : 0;
+    padding : 0;
+}
+
 header {
     font-family : 'Baloo';
     height : 60px;
@@ -10,8 +15,8 @@ header {
     background-color: rgba(108, 60, 244, 0.85);
     color: white;
     position: relative;
-    z-index: 9999;
-    margin-bottom: 10;
+    top : 0;
+    left : 0;
 }
 
 /*healf*/
@@ -21,7 +26,7 @@ h3{
 }
 
 h1{
-    line-height:5px;
+    line-height:60px;
     font-size: 40px;
     float : left;
 }
@@ -35,28 +40,30 @@ h1 a{
     float : right;
 }
 .wrapper{
-    height : 60px;
-    width :80%;
+    width :70%;
     margin : 0 auto;
 }
+
+/*main*/
+
 .wrap{
-    max-width: 768px;
-    min-width: 460px;
+    max-width: 100%;
+    min-width: 90%;
     margin:0 auto;
 }
 .psbox{
-    max-width: 768px;
-    min-width: 460px;
+    max-width: 70%;
+    min-width: 50%;
     margin:0 auto;
 }
 .int{
-    height:40px;
+    height:5%;
     width:75%;
     text-align:left;
 }
 #content{
-    width: 460px;
-    margin: 0 auto;}
+    width: 80%;
+    margin: 40 auto;}
 .birthwrap{
     display:flex;
     height:51px;
@@ -67,3 +74,7 @@ h1 a{
     width:100%;
     margin:1%;
 }
+#callnumber.int{
+    height:100%;
+    width:90%;
+    text-align:left;}

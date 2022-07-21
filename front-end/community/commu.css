@@ -70,25 +70,35 @@ h1 a{
     margin : 110px auto;
 }
 
-.info{
-    margin-bottom: 30px;
-}
-
-.info div:first-child{
-    margin-bottom: 5px;
-}
-
 .info .name{
     font-size: 30px;
 }
 
-.info .search{
-    font-size: 15px;
-    float:right;
-    padding-right: 20px;
+.search_bar{
+    display: flex;
+    float: right;
 }
 
-.board{
+.search_bar .button{
+    margin-top: 10px;
+    width : 35px;
+    height : 35px;
+}
+
+.search_bar .search{
+    width : 230px;
+    height : 30px;
+    font-size:13px;
+    line-height: 30px;
+    padding-left: 10px;
+    text-align: left;
+    border: 1px solid #999;
+    margin : auto 0;
+    border-radius: 10px;
+}
+
+.board{ 
+    clear:both;
     width :100%;
     border-top: 2px solid #000;
 }
