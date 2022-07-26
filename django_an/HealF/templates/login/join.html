@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>로그인</title>
+        <link rel = "stylesheet" href ="join.css">
+        <script src="join.js"></script>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    
+    </head>
+    <body>
+        <form action="process.jsp" method="post">
+        <div style="background-color:rgb(223, 223, 223); height:140%" id="wrap">
+            <header>
+                <div class = "wrapper">
+                    <h1>
+                    <a href="../main/main.html">HealF </a>
+                    </h1>
+                </div>
+            </header>
+            <div style="background-color:white; width:45%;height:80%; margin:7% auto; padding:auto; border:solid 0.5px;border-radius: 10px;">
+                <div id="content">
+                    <div>
+                        <h3>
+                            <label for="id">아이디</label>
+                        </h3>
+                        <span>
+                            <input class="int" type="text" id="id" placeholder="아이디">       
+                        </span>
+                        <span>
+                            <a href="javascript:myfunction()">
+                                <button style="background-color:rgb(102, 104, 249);color:white;border:0px;border-radius: 2px;">아이디 확인</button>   
+                            </a>
+                        </span>
+                        <div style="display:none">비밀번호 안전에 관한 내용</div>
+                        <h3>
+                            <label for="password">비밀번호</label>
+                        </h3>
+                        <span>
+                            <input class="int" type="password" id="pw1" placeholder="비밀번호">
+                        </span>
+                        <div style="display:none">비밀번호 안전에 관한 내용</div>
+                        <h3>
+                            <label for="password">비밀번호 확인</label>
+                        </h3>
+                        <span>
+                            <input  class="int" type="password" id="pw2" placeholder="비밀번호 확인">
+                        </span>
+                    </div>
+                    <div>
+                        <h3>
+                            <label for="id">이름</label>
+                        </h3>
+                        <span>
+                            <input class="int" type="text" id="name" placeholder="이름">        
+                        </span>
+                        <h3>
+                            <label for="id">생년월일</label>
+                        </h3>
+                        <div class="birthwrap">
+                            <span class="birthyy" style="width:80%">
+                                <input class="birthyy" type="text" id="birthyy" placeholder="년도">
+                                <p style="text-align:center;margin:auto 0" >년</p>
+                                <input class="birthyy" type="text" id="birthmm" placeholder="월"> 
+                                <p style="text-align:center;margin:auto 0">월</p>
+                                <input class="birthyy" type="text" id="birthdd" placeholder="일"> 
+                                <p style="text-align:center;margin:auto 0">일</p>
+                            </span>       
+                        </div>
+                        <h3>
+                            <label for="id">성별</label>
+                        </h3>
+                        <div style="height:4%">
+                            <select name="sex" style="height:100%;width:30%">
+                                <option value="" selected>성별</option>
+                                <option value="M">남자</option>
+                                <option value="F">여자</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <h3>
+                                    <label for="id">핸드폰번호</label>
+                                </h3>
+                            </div>
+                            <div style="display:flex">
+                                <span style="width:60%">
+                                    <input class="int" type="text" id="sex" placeholder="-를 제외하고 입력해주세요.">
+                    
+                                </span>
+                                <a href="javascript:myfunction()">
+                                    <button style="margin-top:10;background-color:rgb(102, 104, 249);color:white;border:0px;border-radius: 2px;">인증번호 전송</button>   
+                                </a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <h3>
+                                    <label for="id">인증번호</label>
+                                </h3>
+                            </div>
+                            <div style="display:flex">
+                                <span style="width:60%">
+                                    <input class="int" type="text" id="sex" placeholder="인증번호">
+                    
+                                </span>
+                                <a href="javascript:myfunction()">
+                                    <button style="margin-top:10;background-color:rgb(102, 104, 249);color:white;border:0px;border-radius: 2px;">인증번호 확인</button>   
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div class="psbox" style="text-align:center; margin-top: 50px;height:auto">
+                    <a href="healf.html"><button style="background-color:rgb(102, 104, 249); color:white; margin:0 2%; width:17%;font-size:100%;border:0px;border-radius: 2px;">이전</button></a>
+                    <a><button style="background-color:rgb(102, 104, 249); color:white; width:17%;font-size:100%;border:0px;border-radius: 2px;">다음</button></a>
+                </div>
+            </div>
+        </div>
+        </form>
+
+    </body>
+</html>
