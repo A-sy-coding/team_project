@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="mypage.css">
+    <title>mypage</title>
+</head>
+
+
+<body>
+    <header>
+        <div class="wrapper">
+            <h1>
+                <a href="../main/main.html">HealF </a>
+            </h1>
+        </div>
+    </header>
+    <div class="info">
+        <div class="top_title">
+            mypage
+        </div>
+        <div id="date" class="date">
+        </div>
+    </div>
+
+
+        <div class="page_wrap">
+            <ul class="cards">
+                <li>
+                    <a href="" class="card">
+                        <img src="./프로필.jfif" class="card__image" alt="" />
+                        <div class="card__overlay">
+                            <div class="card__header">
+                                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                                    <path />
+                                </svg>
+                                
+                                <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
+                                <div class="card__header-text">
+                                    <h3 class="card__title">오리꽥님</h3>
+                                    <span class="card__status">ohyunha1576</span>
+                                </div>
+
+                                
+                                <div class = "card__thumb_manner_text">
+                                    <img class="card__thumb_manner" src="./happy.png" alt="" />
+                                    <h3>99도</h3>
+                                </div>
+
+                                
+                            
+                            </div>
+                            <p class="card__description"> 나의 운동 정보 ><br>
+                                나의 활동 분석 ><br></p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+    
+            <!--
+            <div class="profile_wrap">
+                <p>정보 수정하기</p>
+                <div class="profile">
+                    <div class="me">
+                        내 프로필<br>
+                        <img src="./프로필.jfif">
+                    </div>
+                    <div class="else">
+                        <span>오리꽥 님</span><br>
+                        ohyunha1576<br>
+                        나의 운동 정보 ><br>
+                        나의 활동 분석 ><br>
+                    </div>
+                </div>
+            </div>
+            !-->
+
+
+            <div class="page_wrap">
+                <ul class="cards">
+                    <li>
+                        <a href="" class="card">
+                            <img src="./mainPic.jpg" class="card__image" alt="" />
+                            <div class="card__overlay">
+                                <div class="card__header">
+                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                                        <path />
+                                    </svg>
+                                    <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
+                                    <div class="card__header-text">
+                                        <h3 class="card__title">내 운동+</h3>
+                                    </div>
+                                </div>
+                                <p class="card__description"> 팔굽혀 펴기 3일전<br>
+                                    윗몸 일으키기 4일전<br></p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+            <!--
+            <div class="health_wrap">
+                <div class="page_wrap">
+
+
+                    <div class="title">내 운동+</div>
+                    <div class="info">
+                        <div class="recent">최근 참여</div>
+                        <ul>
+                            <li>팔굽혀펴기 <span>3일전</span></li>
+                            <li>윗몸일으키기 <span>15일전</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+        -->
+
+        <table>
+            <thead>
+            <tr>
+                <th style="text-align: center;">닉네임</th>
+                <th style="text-align: center;">운동종류</th>
+                <th style="text-align: center;">순위</th>
+                <th sty>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="text-align: center;">오리꽥님</td>
+                <td style="text-align: center;">스쿼트</td>
+                <td style="text-align: center;">1 등</td>
+                
+            </tr>
+            <tr>
+                <td style="text-align: center;">오리꽥님</td>
+                <td style="text-align: center;">푸쉬업</td>
+                <td style="text-align: center;">3등</td>
+           
+            </tr>
+          
+            </tbody>
+        </table>
+        
+
+                <div class="market_wrap" style="width: 77%; margin-top: 13%; box-shadow: 0 4px 7px rgba(0,0,0,.25); background-color: white;">
+
+                    <!-- <div class="title">내 거래 물건 +</div> -->
+                    <div class="title">
+                        <h3 style="font-size:20px; color: white"; >내 거래 물건 +</h3>
+                    </div>
+
+                    <div class="info">
+                        <button class="판매내역"><span>판매내역</span></button>
+                        <button class="구매내역" style="margin-left: 5%;"><span>구매내역</span></button>
+                    </div>
+                
+                    <div class="info_card">
+                        <a href="../product/detail.html">
+                            <img src = 'https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png'>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            let day = new Date();
+            document.getElementById('date').innerHTML = "TODAY " + day.getFullYear() + "/" + parseInt(day.getMonth() + 1) + "/" + day.getDate();
+        </script>
+</body>
+
+</html>
