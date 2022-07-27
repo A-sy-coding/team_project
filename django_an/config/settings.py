@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'HealF',   # HealF application 추가
+    'openpose',  # openpose application 추가
 ]
 
 MIDDLEWARE = [
