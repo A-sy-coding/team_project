@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
@@ -6,7 +7,7 @@
         <meta charset="utf-8"/>
         <title> 헬스 친구 HealF | 운동하기</title>
 
-        <link rel = "stylesheet" href ="challenge_exercise.css">
+        <link rel = "stylesheet" href ="{% static 'challenge/challenge_exercise.css' %}">
         <script type="text/javascript" src="../js/exercise.js"></script>
     </head>
 
@@ -15,7 +16,7 @@
     <header>
         <div class = "wrapper">
         <h1>
-            <a href="../main/main.html">HealF</a>
+            <a href="{% url 'HealF:main' %}">HealF</a>
         </h1>
     </div>
     </header>
@@ -31,9 +32,9 @@
         <div class="all1">
         <div class="exercise">
                     
-            <img src="./squat.jpg">
+            <img src="/static/challenge/squat.jpg">
             <!-- <div class="start"> start! </div> -->
-            <div class="start"><a href="./challenge_exercise_squat.html" style="color:white">start!</a></div>
+            <div class="start"><a href="{% url 'HealF:challenge_exercise_squat' %}" style="color:white">start!</a></div>
         </div>
         </div>
         

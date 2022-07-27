@@ -20,8 +20,8 @@
           <a href="{% url 'HealF:main' %}">HealF</a>  
         </h1>
         <ul class = "menu">
-          <li><a href="../login/healf.html">로그인</a></li>
-          <li><a href="../login/">회원가입</a></li>
+          <li><a href="{% url 'HealF:login' %}">로그인</a></li>
+          <li><a href="{% url 'HealF:sign-up' %}">회원가입</a></li>
         </ul>
       </div>
     </header>
@@ -40,19 +40,19 @@
     </div>
     <!--바로가기-->
     <div class = "link">
-      <a href="..\exercise\exercise.html">
+      <a href="{% url 'HealF:exercise' %}">
         <img src="/static/main/사진/운동하기.png"><p>운동하기</p>
       </a>
-      <a href="../challenge/challenge.html">
+      <a href="{% url 'HealF:challenge' %}">
         <img src="/static/main/사진/챌린지.png"><p>챌린지</p>
       </a>
-      <a href="../community/commu.html">
+      <a href="{% url 'HealF:community' %}">
         <img src="/static/main/사진/커뮤니티.png"><p>커뮤니티</p>
       </a>
-      <a href="../categorie/categorie.html">
+      <a href="{% url 'HealF:market' %}">
         <img src="/static/main/사진/마켓.png"><p>마켓</p>
       </a>
-      <a href="../mypage/mypage.html">
+      <a href="{% url 'HealF:mypage' %}">
         <img src="/static/main/사진/나의 정보.png"><p>나의 정보</p>
       </a>
     </div>

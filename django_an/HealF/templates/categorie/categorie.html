@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="categorie.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'categorie/categorie.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
@@ -16,9 +17,9 @@
 <body>
     <nav class="navbar nav-global fixed-top navbar-expand-sm">
         <div class="container">
-            <a class="navbar-brand" href="../main/main.html">
+            <a class="navbar-brand" href="{% url 'HealF:main' %}">
                 <h1>
-                    <a href="../main/main.html">HealF</a>
+                    <a href="{% url 'HealF:main' %}">HealF</a>
                   </h1>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -40,7 +41,7 @@
 
         <ul class="list-products row">
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="../product/detail.html">
+                <!-- <a href="../product/detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -55,7 +56,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179996643-82f4e600-b626-4b14-b2ab-e45f40d1121e.png') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -71,7 +72,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179997132-5e70e558-8e4c-43b2-952c-4d76c778d44a.png') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -87,7 +88,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179997900-6c292b0f-536e-49ca-b53b-f074af72bb7f.png') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -103,7 +104,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179998744-ce7fa30d-b47c-48cd-9da7-f2a03fdd2854.png') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -119,7 +120,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179999511-2174c745-6f5b-4ba2-ad53-26776b320fea.png') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -135,7 +136,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179810644-0758af79-2951-4125-813c-797df8ce13c7.jpg') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -151,7 +152,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179811057-ed48265b-3a48-4c03-b624-e103d8f9df2e.jpg') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -167,7 +168,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179811360-fa0db350-0335-4c55-8fd1-054626e7ce6e.jpg') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -183,7 +184,7 @@
                 </a>
             </li>
             <li class="list-products-item col-12 col-md-4 col-lg-3">
-                <a href="detail.html">
+                <!-- <a href="detail.html"> -->
                     <div class="card">
                         <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179811745-240710b3-9bf3-4a1c-8c59-48670fe76385.jpg') no-repeat center; background-size: cover; height: 240px"></div>
                         <div class="card-body">
@@ -203,7 +204,7 @@
 
     <footer>
         <div class="container">
-            <a href="main/main.html">2022 HealF</a>
+            <a href="{% url 'HealF:main' %}">2022 HealF</a>
             <h6>Copyright © HealF Inc. All rights reserved.</h6>
         </div>
     </footer>

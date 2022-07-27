@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Baloo';
+    src: url('BalooBhai.ttf') format('truetype');
+}
+
+*{
+    margin : 0;
+    padding : 0;
+}
+
+header {
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color: rgba(108, 60, 244, 0.85);
+    color: white;
+    position: relative;
+    top : 0;
+    left : 0;
+}
+
+/*healf*/
+h3{
+    font-size:20px;
+    margin: 10 auto;
+}
+
+h1{
+    line-height:60px;
+    font-size: 40px;
+    float : left;
+}
+
+h1 a{
+    text-decoration: none;
+    color : white;
+}
+
+.menu{
+    float : right;
+}
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+/*main*/
+
+.wrap{
+    max-width: 100%;
+    min-width: 90%;
+    margin:0 auto;
+}
+.psbox{
+    max-width: 70%;
+    min-width: 50%;
+    margin:0 auto;
+}
+.int{
+    height:5%;
+    width:75%;
+    text-align:left;
+}
+#content{
+    width: 80%;
+    margin: 40 auto;}
+.birthwrap{
+    display:flex;
+    height:51px;
+    width:100%;
+}
+.birthyy{
+    display:flex;
+    width:100%;
+    margin:1%;
+}
+#callnumber.int{
+    height:100%;
+    width:90%;
+    text-align:left;}

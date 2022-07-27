@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
@@ -6,7 +7,7 @@
         <meta charset="utf-8"/>
         <title> 헬스 친구 HealF | 운동하기</title>
 
-        <link rel = "stylesheet" href ="challenge_diet.css">
+        <link rel = "stylesheet" href ="{% static 'challenge/challenge_diet.css' %}">
         <script type="text/javascript" src="../js/exercise.js"></script>
     </head>
 
@@ -15,7 +16,7 @@
     <header>
         <div class = "wrapper">
         <h1>
-            <a href="../main/main.html">HealF</a>
+            <a href="{% url 'HealF:main' %}">HealF</a>
         </h1>
     </div>
     </header>

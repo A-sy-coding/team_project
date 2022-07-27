@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
@@ -6,7 +7,7 @@
         <meta charset="utf-8"/>
         <title> 헬스 친구 HealF | 운동하기</title>
 
-        <link rel = "stylesheet" href ="exercise.css">
+        <link rel = "stylesheet" href ="{% static 'exercise/exercise.css' %}">
         <script type="text/javascript" src="../js/exercise.js"></script>
     </head>
 
@@ -15,7 +16,7 @@
     <header>
         <div class = "wrapper">
         <h1>
-            <a href="../main/main.html">HealF</a>
+            <a href="{% url 'HealF:main' %}">HealF</a>
         </h1>
     </div>
     </header>
@@ -36,20 +37,21 @@
             <img src="https://user-images.githubusercontent.com/54762273/180044637-18ece184-627a-4916-a7dd-e53ffb28e634.png">
             <!-- <div class="start"> start! </div> -->
             <div class="start"><a href="./start.html" style="color:white">start!</a></div>
-        </div>
+         </div>
         </div>
 
         <div class="all2">
         <div class="action"><a href="https://www.youtube.com/watch?v=QyAH8O5X6g0" target="_blank">
-            <img src="./도대체 스쿼트는 어떻게 하는 건가요.png" width="180" height="110"/></a>
+            <!-- youtube 썸네일 사진 연동하기 -->
+            <img src="https://img.youtube.com/vi/QyAH8O5X6g0/0.jpg" width="180" height="110"/></a>
             <p style="font-size:13px; margin-left:8px; margin-top:8px"> 도대체 스쿼트는 어떻게 하는 건가요?</p>
         </div>
         <div class="action"><a href="https://www.youtube.com/watch?v=9WhpAVOSyl8" target="_blank">
-            <img src="./완벽한 기술로 거대한 스쿼트를 얻는 방법.png" width="180" height="110"/></a>
+            <img src="https://img.youtube.com/vi/9WhpAVOSyl8/0.jpg" width="180" height="110"/></a>
             <p style="font-size:13px; margin-left:3px; margin-top:-4px"> 하루 딱6분! 다리라인 살리는 운동</p> 
         </div>
         <div class="action"><a href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank">
-            <img src="./하루 딱6분! 다리라인 살리는 운동.png" width="180" height="110"/></a>
+            <img src="https://img.youtube.com/vi/bEv6CCg2BC8/0.jpg" width="180" height="110"/></a>
             <p style="font-size:13px; margin-left:3px; margin-top:-4px"> 완벽한 기술로 거대한 스쿼트를 얻는 방법</p>
         </div>
         </div>

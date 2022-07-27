@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
@@ -5,13 +6,13 @@
         <meta charset="utf-8"/>
         <title> 헬스 친구 HealF | 마켓</title>
         <!-- css-->
-        <link rel = "stylesheet" href ="market.css">
+        <link rel = "stylesheet" href ="{% static 'market/market.css' %}">
     </head>
     <body>
         <header>
             <div class = "wrapper">
             <h1>
-                <a href="../main/main.html">HealF</a>
+                <a href="{% url 'HealF:main' %}">HealF</a>
             </h1>
         </div>
         </header>
@@ -19,13 +20,14 @@
         <div class="all">
 
             <div class="menubar">
-                <div class="category"><a href="#" style="text-decoration:none">운동기구</a></div>
+                <!-- <div class="category"><a href="#" style="text-decoration:none">운동기구</a></div> -->
+                <div class="category"><a href="{% url 'HealF:market_product' %}" style="text-decoration:none">운동기구</a></div>
                 <div class="category"><a href="#" style="text-decoration:none">운동화</a></div>
                 <div class="category"><a href="#" style="text-decoration:none">운동복</a></div>
                 <div class="category"><a href="#" style="text-decoration:none">보조식품</a></div>
                 <div class="category"><a href="#" style="text-decoration:none">기타</a></div>
                 <div class="button"> 
-                    <img src="검색.png" style="display:block; margin-top: -4px; width:32px; height:32px;"> 
+                    <img src="/static/market/검색.png" style="display:block; margin-top: -4px; width:32px; height:32px;"> 
                 </div>
                 <div class="search">
                     원하는 제품을 검색하세요!
@@ -35,13 +37,13 @@
             
             <div class="main">
                 <a href="#">
-                <img src="마켓.png" style="width:1100px; height:435px;">
+                <img src="/static/market/마켓.png" style="width:1100px; height:435px;">
                 </a>
             </div>
             
             <div class="event">
                 <a href="#">
-                <img src="광고.png" style="width:1100px; height:115px;">
+                <img src="/static/market/광고.png" style="width:1100px; height:115px;">
                 </a>
             </div>
         
@@ -54,10 +56,10 @@
                     <p style="font-size:20px; margin-top:-5px"> 현재 인기있는 중고매물이에요.</p>
                 </div>
                 <div class="detail">
-                    <div class="last"><img src="중고1.png"></div>
-                    <div class="last"><img src="중고2.png"></div>
-                    <div class="last"><img src="중고3.png"></div>
-                    <div class="last"><img src="중고4.png"></div>
+                    <div class="last"><img src="/static/market/중고1.png"></div>
+                    <div class="last"><img src="/static/market/중고2.png"></div>
+                    <div class="last"><img src="/static/market/중고3.png"></div>
+                    <div class="last"><img src="/static/market/중고4.png"></div>
                 </div>
             </div>
 
@@ -69,10 +71,10 @@
                     <p style="font-size:20px; margin-top:-5px"> 현재 할인 중인 새 제품을 추천해드려요.</p>
                 </div>
                     <div class="detail">
-                    <div class="last"><img src="새2.png"></div>
-                    <div class="last"><img src="새1.png"></div>
-                    <div class="last"><img src="새4.png"></div>
-                    <div class="last"><img src="새3.png"></div>
+                    <div class="last"><img src="/static/market/새2.png"></div>
+                    <div class="last"><img src="/static/market/새1.png"></div>
+                    <div class="last"><img src="/static/market/새4.png"></div>
+                    <div class="last"><img src="/static/market/새3.png"></div>
                 </div>
             </div>
         

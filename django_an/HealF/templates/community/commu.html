@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
         <meta charset="UTF-8">    
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="commu.css">
+        <link rel="stylesheet" href="{% static 'community/commu.css' %}">
 
         <title>Community</title>
     </head>
@@ -12,7 +14,7 @@
         <header>
             <div class = "wrapper">
                 <h1>
-                    <a href="../main/main.html">HealF </a>
+                    <a href="{% url 'HealF:main' %}">HealF </a>
                 </h1>
                 <ul class = "menu">
                     <li><a href="">로그인</a></li>
