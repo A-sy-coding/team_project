@@ -18,14 +18,15 @@
                 </div>
             </header>
             <div style="background-color:white; width:35%;height:900px; margin:5% auto; padding:auto; border:solid 0.5px;border-radius: 10px;">
-                <form action="process.jsp" method="post">
-                    <div id="content" >
+                <form action="{% url 'users:signup' %}" method="post">
+                    {% csrf_token %}
+                    <div id="content">
                         <div>
                             <h3>
-                                <label for="id">아이디</label>
+                                <label for="id">이메일</label>
                             </h3>
                             <span>
-                                <input class="int" type="text" id="id" placeholder="아이디">       
+                                <input class="int" type="text" id="id" placeholder="이메일" name="email">       
                             </span>
                             <span>
                                 <a href="javascript:myfunction()">
@@ -34,17 +35,17 @@
                             </span>
                             <div style="display:none">비밀번호 안전에 관한 내용</div>
                             <h3>
-                                <label for="password">비밀번호</label>
+                                <label for="password1">비밀번호</label>
                             </h3>
                             <span>
-                                <input class="int" type="password" id="pw1" placeholder="비밀번호">
+                                <input class="int" type="password" id="pw1" placeholder="비밀번호" name="password1">
                             </span>
                             <div style="display:none">비밀번호 안전에 관한 내용</div>
                             <h3>
-                                <label for="password">비밀번호 확인</label>
+                                <label for="password2">비밀번호 확인</label>
                             </h3>
                             <span>
-                                <input  class="int" type="password" id="pw2" placeholder="비밀번호 확인">
+                                <input  class="int" type="password" id="pw2" placeholder="비밀번호 확인" name="password2">
                             </span>
                         </div>
                         <div>
@@ -52,7 +53,7 @@
                                 <label for="id">이름</label>
                             </h3>
                             <span>
-                                <input class="int" type="text" id="name" placeholder="이름">        
+                                <input class="int" type="text" id="username" placeholder="이름" name="username">        
                             </span>
                             <h3>
                                 <label for="id">생년월일</label>
@@ -108,7 +109,7 @@
                                         <input class="int" type="text" id="callnumber" placeholder="인증번호">
                         
                                     </span>
-                                    <a href="javascript:myfunction()">
+                                    <a>
                                         <button style="margin-top:10;background-color:rgba(108, 60, 244, 0.85);color:white;border:0px;border-radius: 2px;">인증번호 확인</button>   
                                     </a>
                                 </div>
@@ -116,11 +117,10 @@
                         </div>
                     
                     </div>
+                    <div class="psbox" style="text-align:center; margin-top: 10%;height:auto">
+                        <input type='submit' style="background-color:rgba(108, 60, 244, 0.85); color:white; width:17%;font-size:100%;border:0px;border-radius: 2px;" value="다음">
+                    </div>
                 </form>
-                <div class="psbox" style="text-align:center; margin-top: 10%;height:auto">
-                    <a href="./login.html"><button style="background-color:rgba(108, 60, 244, 0.85); color:white; margin:0 2%; width:17%;font-size:100%;border:0px;border-radius: 2px;">이전</button></a>
-                    <a><button style="background-color:rgba(108, 60, 244, 0.85); color:white; width:17%;font-size:100%;border:0px;border-radius: 2px;">다음</button></a>
-                </div>
             </div>
         </div>
         
