@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'HealF',   # HealF application 추가
     'openpose',  # openpose application 추가
+    # 'sslserver',  # webcam이 제대로 작동하지 않는것을 방지
 ]
 
 MIDDLEWARE = [
