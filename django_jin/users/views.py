@@ -1,17 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
-<<<<<<< Updated upstream
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-def login(request):
-=======
 from django.contrib.auth.models import User
 from .models import Profile
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import auth
 def login_view(request):
->>>>>>> Stashed changes
     if request.method == "GET":
         return render(request, 'users/login.html')
     elif request.method == "POST":
@@ -25,11 +19,6 @@ def login_view(request):
                 return redirect('healf:main')
         else:
             # Return an 'invalid login' error message.
-<<<<<<< Updated upstream
-            return render(request, 'healf/main.html')
-def signup(request):
-        return render(request,'users/signup.html')
-=======
             return render(request, 'users/logfail.html')
         
 
@@ -47,5 +36,4 @@ def signup(request):
 
 def clear(request):
     return render(request, 'users/clear.html')
->>>>>>> Stashed changes
 # Create your views here.

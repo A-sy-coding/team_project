@@ -43,7 +43,7 @@
                 <a href="../main/main.html">HealF</a>
             </div>
             <div style="width:60%;height:80%;margin:0 auto;text-align:center">
-                <form method="post">
+                <form action="{% url 'users:login' %}" method="post">
                     {% csrf_token %}
                     <div style=" width:60%;margin:5 auto;position:relative">
                           
@@ -53,11 +53,8 @@
                     </div>
                     <div style=" width:60%; margin:5 auto;position:relative"> 
                         <input type="password" class="password" style=" border:solid 0.5px;border-radius: 10px;"
-<<<<<<< Updated upstream
-                        name="password" id="password" placeholder="비밀번호" required="" class="required" value="" data-msg-required="이메일 주소를 입력해 주세요." aria-invalid="true">
-=======
-                        name="user_pw" id="user_pw" placeholder="비밀번호" required="" class="required" value="" data-msg-required="비밀번호를 입력해 주세요." aria-invalid="true">
->>>>>>> Stashed changes
+                          name="user_pw" id="user_pw" placeholder="비밀번호" required="" class="required" value="" data-msg-required="비밀번호를 입력해 주세요." aria-invalid="true">
+
                         <img class="pwimage" src="{% static '비밀번호.png' %}"/>
                     </div> 
 
