@@ -19,8 +19,12 @@
           <a href="main.html">HealF </a>
         </h1>
         <ul class = "menu">
-          <li><a href="../login/login.html">로그인</a></li>
-          <li><a href="../login/signup.html">회원가입</a></li>
+          {% if user.is_authenticated %}
+            <li>{{user.name}}님 접속을 환영합니다.</li>
+          {% else %}
+            <li><a href="../login/login.html">로그인</a></li>
+            <li><a href="../login/signup.html">회원가입</a></li>
+          {% endif %}
         </ul>
       </div>
     </header>
@@ -49,7 +53,7 @@
       <a href="../market/market.html">
         <img src="{% static '사진/마켓.png' %}"><p>마켓</p>
       </a>
-      <a href="../mypage/mypage.html">
+      <a href="{%url 'healf:mypage' %}">
         <img src="{% static '사진/나의정보.png' %}"><p>나의 정보</p>
       </a>
     </div>
