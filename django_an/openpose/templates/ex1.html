@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="start-camera">Start Camera</button>
+    <video id="video" width="320" height="240" autoplay></video>
+    <select disabled></select>
+    <canvas id="canvas" width="320" height="240"></canvas>
+
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        let camera_button = document.querySelector("#start-camera");
+        let video = document.querySelector("#video");
+        let canvas = document.querySelector("#canvas");
+        
+        // frame 저장 리스트 생성 및 캔버스를 그릴 ctx 정의
+        let frames = [];
+        const select = document.querySelector("select");
+        let ctx = canvas.getContext("2d");
+
+        // camera_button 누르면 webcam 실행 및 프레임 캡처
+        camera_button.onclick = async(evt) => {
+            if (HTMLVideoElement.prototype.requestVideoFrameCallback) {
+                let stopped = false;
+
+                // getVideoElement 함수를 사용하여 video와 stream 변수 반환
+                video, stream = await getVideoElement();
+
+                // frame단위로 이미지 변환 함수
+                const drawingLoop = async(timestamp,  frame) => {
+                    const bitmap = await createImageBitmap(video);
+                    const index = frames.length;
+                    frames.push(bitmap);
+                    
+                    select.append(new Option("Frame #" + (index + 1), index));
+                    
+                    // base64 인코딩
+                    var base64 = canvas.toDataURL("image/*");
+                    // strImage = base64.replace(/^data:image\/[a-z]+;base64,/, "");
+                    // console.log(strImage);
+
+                    // 화면을 갱신하지 않고 정보 전송
+                    $.ajax({
+                        type: "POST",
+                        url: "canvas_image",
+                        data:{
+                        "imageBase64": base64
+                        }
+                    })
+
+                    if (!video.ended && !stopped) {
+                        video.requestVideoFrameCallback(drawingLoop);
+                    } else {
+                        select.disabled = false;
+                    }
+                };
+                // the last call to rVFC may happen before .ended is set but never resolve
+                video.onended = (evt) => select.disabled = false;
+                video.requestVideoFrameCallback(drawingLoop);
+                
+                // camera_button을 한번 더 클릭하면 stop으로 변경되고, 한번 더 누르면 webcam 종료
+                camera_button.onclick = (evt) => stopped = true;
+                camera_button.textContent = "stop";
+                camera_button.onclick = (evt) => {
+                    if(stopped = true){
+                        stopStream(stream);
+                    }
+                };
+            } else {
+                console.error("your browser doesn't support this API yet");
+            }
+            };
+        
+        // select 변수가 변화하면 해당 함수 실행 
+        select.onchange = (evt) => {
+            const frame = frames[select.value];
+            canvas.width = frame.width;
+            canvas.height = frame.height;
+            ctx.drawImage(frame, 0, 0);
+            };
+        
+        // webcam 열기
+        async function getVideoElement() {
+            // const video = document.createElement("video");
+            let stream = await navigator.mediaDevices.getUserMedia({ video:true});
+            video.srcObject = stream;
+            document.body.append(video);
+            await video.play();
+            return video, stream;
+            }        
+        
+        // 웹캠을 정지하는 함수 구현
+        function stopStream(stream) {
+        console.log('webcam stop');
+        stream.getVideoTracks().forEach(function (track) {
+            track.stop();
+        });
+    }
+
+    </script>
+  </body>
+</html>

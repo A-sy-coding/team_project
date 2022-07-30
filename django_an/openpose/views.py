@@ -73,15 +73,17 @@ import base64
 import socketio
 from django.http import JsonResponse
 
-
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 
 def HtmlWebcamView(request):
 
     # return render(request, 'webcam.html')
-    return render(request, 'ex.html')
+    # return render(request, 'ex.html')
+    return render(request, 'ex1.html')
     
-    
+@method_decorator(csrf_exempt)
 def canvas_image(request):
     if (request.method == 'POST'):
         try:
@@ -98,7 +100,7 @@ def canvas_image(request):
             # with open(filename, 'wb') as f:
             #     f.write(imgdata)
         except:
-            print('Error')
+            pass
     return text
     # return JsonResponse({'Json':frame})
 
