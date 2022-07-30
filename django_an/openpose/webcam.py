@@ -60,7 +60,6 @@ def get_pafs_heatmaps(model, preprocess_img, img):  # net, x, img
 
     return pafs, heatmaps
     
-
     
 def pose_test(img, pafs, heatmaps):
     # 원본 이미지

@@ -7,4 +7,9 @@ app_name = 'openpose'
 urlpatterns = [
     # /openpose/
     path('', views.OpenPoseView , name = 'model'),
+    
+    # /openpose/webcam  --> html 파일을 사용하여 webcam 실행하기
+    path('webcam/', views.HtmlWebcamView, name = 'webcam'),
+    path('webcam/canvas_image', views.canvas_image),
+    
 ]

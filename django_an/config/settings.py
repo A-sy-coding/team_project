@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'HealF',   # HealF application 추가
     'openpose',  # openpose application 추가
     # 'sslserver',  # webcam이 제대로 작동하지 않는것을 방지
+    'socketio',  # python-socketio 패키지 설치
 ]
 
 MIDDLEWARE = [

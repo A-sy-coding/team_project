@@ -8,7 +8,7 @@
         <title> 헬스 친구 HealF | 운동하기</title>
 
         <link rel = "stylesheet" href ="{% static 'challenge/challenge_exercise_squat.css' %}">
-        <script type="text/javascript" src="../js/exercise.js"></script>
+        <!-- <script type="text/javascript" src="../js/exercise.js"></script> -->
     </head>
 
     <body>
@@ -32,11 +32,23 @@
         <div class="all1">
         <div class="exercise">
             
-            <video muted autoplay loop>
+            <!-- <video muted autoplay loop>
                 <source src="https://user-images.githubusercontent.com/54762273/180055932-1739af61-dcc5-477f-bf62-7d1bf548a897.mp4" type="video/mp4">
-                <strong>Your browser does not support the video tag.</strong>
-            </video>
             
+                
+                <strong>Your browser does not support the video tag.</strong>
+            </video> -->
+            <!-- <source src="http://localhost:8888/openpose"> -->
+
+            <!-- 실시간 영상 연결 -->
+            <h1>Squat challenge...</h1>
+            <table>
+                <tr>
+                    <td wodth="150%">
+                        <img src="http://127.0.0.1:8888/openpose", style="width:1000px;" />
+                    </td>
+                </tr>
+            </table>
             
         </div>
         </div>

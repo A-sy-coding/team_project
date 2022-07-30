@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="'UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intitial-scale=1.0">
+    <title>Display Webcam Stream</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <style>
+        h1{
+            font-family:sans-serif;
+            color: #333;
+        }
+        body{
+            margin: 50px;
+        }
+        #container{
+            margin: 0px auto;
+            width: 500px;
+            height: 375px;
+            border: 10px #333 solid;
+        }
+        #videoElement{
+            width: 500px;
+            height: 375px;  
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dispaly Webcam Stream</h1>
+    <div id="container">
+        <canvas id="canvasOutput"></canvas>
+        <video autoplay="true" id="videoElement">
+
+
+        </video>
+    </div>
+
+    <script>
+
+        let video = document.querySelector("#videoElement");
+        console.log("video 시작");
+
+        // const cnv = document.createElement('canvas'), 
+        // ctx = cnv.getContext('2d');
+        
+        // ctx.drawimage(video, 0, 0);
+
+        // let data = cnv.toDataUrl();
+
+        console.log("데이터 정의...");
+        // const cnv = document.createElement('canvas'),
+        // ctx = cnv.getContext('2d');
+        
+        
+        // api 주소가 존재하는 확인한다.
+        if (navigator.mediaDevices.getUserMedia){
+            // user media를 가져오도록 한다.
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream){
+                    video.srcObject = stream;
+                    
+                    console.log("video 시작중.....");
+                    var cnv = document.getElementById('canvasOutput');
+                    var ctx = cnv.getContext('2d');
+                    ctx.drawImage(video,0,0);      
+                    
+                    console.log("데이터 url...");
+                    // let data = cnv.toDataUrl('image/png');
+                    
+                    // 화면을 갱신하지 않고 정보 전송
+                    $.ajax({
+                        type: "POST",
+                        url: "canvas_image",
+                        data:{
+                        imageBase64: dataURL
+                        }
+                    })
+
+                })
+                .catch (function (error){
+                    console.log("Something went wrong!");
+                })
+        } else {
+            console.log("getUserMedia not supported!");
+        }
+
+        var data = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        window.location.href=data;
+        console.log("데이터...");
+        console.log(data);
+
+        x=0.1;
+        function every (x) {
+            let last = new Date().getTime();
+
+            (function loop () {
+                const now = new Date().getTime(),
+                    delta = now - last;
+
+
+                if (delta >= x) {
+                    //capture video
+                    last = now;
+                }
+
+                window.requestAnimationFrame(loop);
+            })();
+        }
+    </script>
+    <!-- <script>
+        let video = document.getElementById("videoInput"); // video is the id of video tag
+        let src = new cv.Mat(height, width, cv.CV_8UC4);
+        let dst = new cv.Mat(height, width, cv.CV_8UC1);
+        let cap = new cv.VideoCapture(videoSource);
+        const FPS = 30;
+        function processVideo() {
+            let begin = Date.now();
+            cap.read(src);
+            cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+            cv.imshow("canvasOutput", dst);
+            // schedule next one.
+            let delay = 1000/FPS - (Date.now() - begin);
+            setTimeout(processVideo, delay);
+        }
+        // schedule first one.
+        setTimeout(processVideo, 0);
+    </script> -->
+</body>
+</html>
