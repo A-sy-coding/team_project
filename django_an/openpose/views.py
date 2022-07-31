@@ -6,27 +6,6 @@ from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
 
 
-# import base64
-# def OpenPoseView(request):
-#     if (request.method == 'POST'):
-#         try:
-#             frame_ = request.POST.get('image')
-#             frame_ = str(frame_)
-#             data = frame_.replace('data:image/jpeg;base64,', '')    
-#             data = data.replace(' ', '+')
-#             imgdata = base64.b64decode(data)
-#             filename = 'some_image.jpg'
-            
-#             with open(filename, 'wb') as f:
-#                 f.write(imgdata)
-#         except:
-#             print('Error')
-    
-#     return JsonResponse({'Json':data})
-
-# open-pose 실행 클래스
-# class CapturePose()
-
 # 영상 클래스
 class VideoCamera(object):
     def __init__(self):
@@ -75,21 +54,82 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import numpy as np
-from PIL import Image
+
+# 필요한 model 패키지
+import torch
+from openpose.utils import OpenPoseNet
+from openpose.webcam import img_preprocess, get_pafs_heatmaps, pose_test, findAngle, delete_duplicate, squat_condition
+
+def setting_model():
+    '''
+    학습시킨 모델(pth)파일을 가져와 OpenPoseNet 신경망에 넣기
+    '''
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    weights = '../../../pose_model_scratch.pth'
+
+    # 모델 정의 
+    net = OpenPoseNet()
+
+    if device == 'cuda:0':
+        net_weights = torch.load(weights)
+    else:
+        net_weights = torch.load(weights, map_location=device)
+
+    keys = list(net_weights.keys())
+    weights_load = {}
+
+    # 로드한 내용을 이 책에서 구축한 모델의
+    # 파라미터명 net.state_dict().keys()로 복사
+    for i in range(len(keys)):
+        weights_load[list(net.state_dict().keys())[i]] = net_weights[list(keys)[i]]
+
+    # 복사한 내용을 모델에 할당
+    state = net.state_dict()
+    state.update(weights_load)
+    net.load_state_dict(state)
+
+    return net
+
+def setting_squat(img, net):
+    '''
+    squat 카운트 세는 세팅 설정 
+    params:
+        img(np.naddray) -> 이미지를 배열로 변경시킨 값을 가진다.
+        net(OpenPoseNet) -> 학습시킨 가중치를 적용시킨 OpenPoseNet 모델이다.
+    '''
+    # 이미지 전처리
+    preprocess_img = img_preprocess(img)
+    # pafs, heatmaps 구하기
+    pafs, heatmaps = get_pafs_heatmaps(net, preprocess_img, img)
+    # pose test 해보기 --> 관절 위치 
+    out, joint_lmList = pose_test(img, pafs, heatmaps)
+
+    # joint_lmList 전처리 --> 중복된 값 없게 설정
+    joint_dict = delete_duplicate(joint_lmList)
+
+    return joint_dict, out
+        
+        
+
 
 def HtmlWebcamView(request):
 
     # return render(request, 'webcam.html')
     # return render(request, 'ex.html')
     return render(request, 'ex2.html')
-    
+
+count = 0
+direction = 0
+form = 0
+feedback = "Fix Form"
+net = setting_model() # 학습시킨 openpose 모델 --> 한번만 실행하도록 밖에다 빼서 실행
+
 @csrf_exempt
 def canvas_image(request):
     if (request.method == 'POST'):
         try:
             index = request.POST.get('index')
             frame = request.POST.get('imageBase64')
-
 
             header, data = frame.split(';base64,') # header은 이미지 타입, data에는 base64로 인코딩된 이미지
             data_format, ext = header.split('/') # ext는 파일 확장자(png)
@@ -98,29 +138,14 @@ def canvas_image(request):
             data_np = np.fromstring(image_data, dtype='uint8')
             img = cv2.imdecode(data_np, 1)
             
-            print(f'-------{index}번째 image 저장 --------')
-            cv2.imwrite('ex_img/ex_{}.jpg'.format(index),img)
+            joint_dict, out = setting_squat(img, net) # joint_dict 반환( 중복제거된 관절 정보들 )
 
+            # 스쿼트 시작 ( 스쿼트 시작 기준성립하면 count를 세도록 한다. )
+            count, feedback, direction, form, out = squat_condition(joint_dict, form, direction, out)
             
-            #############################
-            # frame = str(frame)
-            # frame = frame.replace(' ', '+')
+            print(count)
+            # squat(net)            
 
-            # imgdata = base64.b64decode(data)
-            # print('---------------- request success')
-            # print(type(frame))
-
-            # # frame = frame.decode('utf8')  # decode를 해주어야지 payload도 전송 가능!!
-            # # print(frame)
-            
-            # # image_dec = base64.b64decode(frame)
-            # # data_np = np.fromstring(image_dec, dtype='uint8')
-            # data_np = np.fromstring(frame, dtype='uint8')
-            # decimg = cv2.imdecode(data_np, 1)
-            # print('--------------- decode img')
-            # # print(decimg)
-            # cv2.imwrite('ex_img/ex_{}.jpg'.format(index),decimg)
-            
         except:
             pass
     return JsonResponse(frame, safe=False)

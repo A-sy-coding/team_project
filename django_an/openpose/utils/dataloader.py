@@ -332,30 +332,6 @@
 #         meta_data, img, mask_miss = self.transform(
 #             self.phase, meat_data, img, mask_miss)
 
-#         # 4. 정답 어노테이션 데이터 취득
-#         mask_miss_numpy = mask_miss.numpy().transpose((1, 2, 0))
-#         heat_mask, heatmaps, paf_mask, pafs = get_ground_truth(
-#             meta_data, mask_miss_numpy)
-
-#         # 5. 마스크 데이터는 RGB가 (1,1,1) 또는 (0,0,0)이므로, 차원을 낮춘다
-#         heat_mask = heat_mask[:, :, :, 0]
-#         paf_mask = paf_mask[:, :, :, 0]
-
-#         # 6. 채널이 맨 끝에 있으므로, 순서를 변경
-#         # 예: paf_mask: torch.Size([46, 46, 38])
-#         # → torch.Size([38, 46, 46])
-#         paf_mask = paf_mask.permute(2, 0, 1)
-#         heat_mask = heat_mask.permute(2, 0, 1)
-#         pafs = pafs.permute(2, 0, 1)
-#         heatmaps = heatmaps.permute(2, 0, 1)
-
-#         return img, heatmaps, heat_mask, pafs, paf_mask
-
-# 4장 자세 추정의 데이터 확장
-# 구현에 일부 참고함
-# https://github.com/tensorboy/pytorch_Realtime_Multi-Person_Pose_Estimation/
-# Released under the MIT license
-
 import os
 import os.path as osp
 import json
@@ -366,7 +342,7 @@ from scipy import misc, ndimage
 import torch
 import torch.utils.data as data
 
-from utils import Compose, get_anno, add_neck, aug_scale, aug_rotate, aug_croppad, aug_flip, remove_illegal_joint, Normalize_Tensor, no_Normalize_Tensor
+from openpose.utils import Compose, get_anno, add_neck, aug_scale, aug_rotate, aug_croppad, aug_flip, remove_illegal_joint, Normalize_Tensor, no_Normalize_Tensor
 
 
 def putGaussianMaps(center, accumulate_confid_map, params_transform):

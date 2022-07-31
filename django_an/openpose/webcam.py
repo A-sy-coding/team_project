@@ -1,9 +1,10 @@
 import cv2
-from utils.openpose_net import OpenPoseNet
-from utils.decode_pose import decode_pose
+from openpose.utils import OpenPoseNet
+from openpose.utils import decode_pose
 import numpy as np
 import torch
 import math
+
 def img_preprocess(img):
     # oriImg = cv2.imread(img)  # B,G,R의 순서
 
@@ -115,6 +116,98 @@ def findAngle(img,joint_dict, p1, p2, p3, draw=True):
                         cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255), 2)
         return angle
 
+# 중복 관절들을 제거하도록 하는 함수
+def delete_duplicate(joint_lmList):
+    '''
+    joint_lmList -> 중복된 관절 값들이 존제 -> 각 관절의 index와 해당 관절의 x,y 좌표를 가지고 있다.
+    '''
+    # joint_lmList 전처리 --> 중복된 값 없게 설정
+    unique_joint = []  # 중복되지 않는 값들을 다시 정의
+    joint_lmList_to_list = [list(i) for i in joint_lmList]
+    for joint in joint_lmList_to_list:
+        if joint in unique_joint:
+            continue
+        else:
+            unique_joint.append(joint)
+
+    joint_dict = {} # 중복되지 않는 값들을 다시 정의 --> dict형태로 --> 관절 위치를 key값으로 설정
+    for joint in unique_joint:
+        if int(joint[-1]) in joint_dict:
+            joint_dict[int(joint[-1])].append(joint[0:2])
+        else:
+            joint_dict[int(joint[-1])] = [joint[0:2]]
+    
+    return joint_dict
+
+def squat_condition(joint_dict, form, direction, out):
+    '''
+    params:
+        joint_dict(dictionary) -> 중복 제거한 관절들 정보 -> 관절 위치 index와 관절들의 x,y좌표값
+        form(int) -> 기본 defualt는 0이고, squat자세 시작 각도가 성립하면 form=1로 변경
+        direction(int) -> 방향 전환 변수
+    '''
+    # left leg --> left hip(11), left knee(12), left ankle(13)
+    # right leg --> right hip(8), right knee(9), right angle(10)
+    need_pose = [8,9,10,11,12,13] # squat를 detect하기 위해 필요한 pose 위치
+
+    flag = 1
+    for pose in need_pose:  # joint_dict.keys()에 필요한 pose 위치가 없으면 수행 x
+        if pose not in joint_dict.keys():
+            flag=0
+            break
+
+    # 고유한 관절들이 한개이상 존재하고, 스쿼트를 하는데 있어 필요한 모든 관절들이 존재하였을 때 카운트 진행
+    if len(joint_dict) != 0 and flag == 1:
+        left_knee_angle = findAngle(out,joint_dict, 11, 12, 13)
+        right_knee_angle = findAngle(out,joint_dict, 8, 9, 10)
+
+        # squat 성공 퍼센트 -> 90도에서 160도 사이를 0~100퍼센트로 나타낸다. (90도보다 작으면 90으로, 160도 보다 크면 160으로 정규화)
+        per_left = np.interp(left_knee_angle, (90, 160), (0, 100))
+        per_right = np.interp(right_knee_angle, (90, 160), (0, 100))
+        # print('percnet left :',per_left)
+        # print('percent right :',per_right)
+
+        # squat 진행정도를 보여주는 bar
+        bar_left = np.interp(left_knee_angle, (0,160), (380,50))
+        bar_right = np.interp(right_knee_angle, (0,160), (380,50))
+
+        # squat 시작 자세 check (왼쪽과 오른쪽 무릎의 각도가 160도보다 커야된다.)
+        if left_knee_angle > 160 and right_knee_angle > 160:
+            form = 1
+
+        # squat 전체 모션을 check
+        if form == 1:
+            if per_left == 0 and per_right ==0 :
+                if left_knee_angle < 90 and right_knee_angle < 90:
+                    feadback = 'Up'
+                    if direction == 0:
+                        count += 0.5
+                        direction = 1 # 방향 전환
+                else:
+                    feedback = 'Fix Form'
+            
+            if per_left == 100 and per_right == 100:
+                if left_knee_angle > 160 and right_knee_angle > 160:
+                    feedback = 'Down'
+                    if direction == 1:
+                        count += 0.5
+                        direction = 0
+                else:
+                    feedback = 'Fix Form'
+        # draw bar
+        if form == 1:
+            cv2.rectangle(out, (580, 50), (600, 380), (0, 255, 0), 3)
+            cv2.rectangle(out, (580, int(bar)), (600, 380), (0, 255, 0), cv2.FILLED)
+            cv2.putText(out, f'{int(per)}%', (565, 430), cv2.FONT_HERSHEY_PLAIN, 2,(255, 0, 0), 2)
+        
+        # push up count
+        cv2.rectangle(out, (0,380), (100, 480), (0, 255, 0), cv2.FILLED)
+        cv2.putText(out, str(int(count)), (25, 455), cv2.FONT_HERSHEY_PLAIN, 5, (255,0,0), 5)
+
+        # feedback print
+        cv2.rectangle(out, (500,0), (640, 40), (255,255,255), cv2.FILLED)
+        cv2.putText(out, feedback, (500, 40), cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
+    return count, feedback, direction, form, out
 
 
 def push_up(net):
@@ -244,9 +337,9 @@ def squat(net):
     form = 0
     feedback = "Fix Form"
     
-    print('-------------- original Form 상태 -----------------')
-    print(form)
-    print('-' * 30)
+    # print('-------------- original Form 상태 -----------------')
+    # print(form)
+    # print('-' * 30)
 
     # webcam
     video_capture = cv2.VideoCapture(0)
@@ -375,29 +468,5 @@ def squat(net):
     cv2.destroyAllWindows()
 
 
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-weights = '../pose_model_scratch.pth'
 
-# 모델 정의 
-net = OpenPoseNet()
-
-if device == 'cuda:0':
-    net_weights = torch.load(weights)
-else:
-    net_weights = torch.load(weights, map_location=device)
-
-keys = list(net_weights.keys())
-weights_load = {}
-
-# 로드한 내용을 이 책에서 구축한 모델의
-# 파라미터명 net.state_dict().keys()로 복사
-for i in range(len(keys)):
-    weights_load[list(net.state_dict().keys())[i]] = net_weights[list(keys)[i]]
-
-# 복사한 내용을 모델에 할당
-state = net.state_dict()
-state.update(weights_load)
-net.load_state_dict(state)
-
-squat(net)
 # push_up(net)
