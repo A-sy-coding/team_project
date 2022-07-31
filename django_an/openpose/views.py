@@ -70,37 +70,58 @@ def OpenPoseView(request):
 # html로 webcam 가져오는 방법 구현
 ###################################
 import base64
-import socketio
 from django.http import JsonResponse
 
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-
+import numpy as np
+from PIL import Image
 
 def HtmlWebcamView(request):
 
     # return render(request, 'webcam.html')
     # return render(request, 'ex.html')
-    return render(request, 'ex1.html')
+    return render(request, 'ex2.html')
     
-@method_decorator(csrf_exempt)
+@csrf_exempt
 def canvas_image(request):
     if (request.method == 'POST'):
         try:
+            index = request.POST.get('index')
             frame = request.POST.get('imageBase64')
-            print(frame)
 
-            text = 'abcdddddd'
-            # frame_ = str(frame_)
-            # data = frame_.replace('data:image/jpeg;base64,', '')    
-            # data = data.replace(' ', '+')
-            # imgdata = base64.b64decode(data)
-            # filename = 'some_image.jpg'
+
+            header, data = frame.split(';base64,') # header은 이미지 타입, data에는 base64로 인코딩된 이미지
+            data_format, ext = header.split('/') # ext는 파일 확장자(png)
+
+            image_data = base64.b64decode(str(data))  # base64 이미지 디코드
+            data_np = np.fromstring(image_data, dtype='uint8')
+            img = cv2.imdecode(data_np, 1)
             
-            # with open(filename, 'wb') as f:
-            #     f.write(imgdata)
+            print(f'-------{index}번째 image 저장 --------')
+            cv2.imwrite('ex_img/ex_{}.jpg'.format(index),img)
+
+            
+            #############################
+            # frame = str(frame)
+            # frame = frame.replace(' ', '+')
+
+            # imgdata = base64.b64decode(data)
+            # print('---------------- request success')
+            # print(type(frame))
+
+            # # frame = frame.decode('utf8')  # decode를 해주어야지 payload도 전송 가능!!
+            # # print(frame)
+            
+            # # image_dec = base64.b64decode(frame)
+            # # data_np = np.fromstring(image_dec, dtype='uint8')
+            # data_np = np.fromstring(frame, dtype='uint8')
+            # decimg = cv2.imdecode(data_np, 1)
+            # print('--------------- decode img')
+            # # print(decimg)
+            # cv2.imwrite('ex_img/ex_{}.jpg'.format(index),decimg)
+            
         except:
             pass
-    return text
-    # return JsonResponse({'Json':frame})
+    return JsonResponse(frame, safe=False)
 

@@ -38,17 +38,22 @@
                     select.append(new Option("Frame #" + (index + 1), index));
                     
                     // base64 인코딩
-                    var base64 = canvas.toDataURL("image/*");
-                    // strImage = base64.replace(/^data:image\/[a-z]+;base64,/, "");
+                    var base64 = canvas.toDataURL("image/png");
+                    // console.log(base64);
+                    strImage = base64.replace(/^data:image\/[a-z]+;base64,/, "");
                     // console.log(strImage);
 
                     // 화면을 갱신하지 않고 정보 전송
                     $.ajax({
                         type: "POST",
-                        url: "canvas_image",
+                        // url: "canvas_image",
+                        url: "{% url 'openpose:canvas' %}",
                         data:{
-                        "imageBase64": base64
-                        }
+                        "imageBase64": base64,
+                        "index": index,
+                        },
+                        dataType: 'json',
+
                     })
 
                     if (!video.ended && !stopped) {
@@ -80,6 +85,7 @@
             canvas.width = frame.width;
             canvas.height = frame.height;
             ctx.drawImage(frame, 0, 0);
+            ctx.restore();
             };
         
         // webcam 열기
