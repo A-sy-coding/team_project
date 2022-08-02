@@ -65,7 +65,7 @@ def setting_model():
     학습시킨 모델(pth)파일을 가져와 OpenPoseNet 신경망에 넣기
     '''
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    weights = '../../../pose_model_scratch.pth'
+    weights = '../../pose_model_scratch.pth'
 
     # 모델 정의 
     net = OpenPoseNet()
@@ -118,14 +118,17 @@ def HtmlWebcamView(request):
     # return render(request, 'ex.html')
     return render(request, 'ex2.html')
 
-count = 0
-direction = 0
-form = 0
-feedback = "Fix Form"
-net = setting_model() # 학습시킨 openpose 모델 --> 한번만 실행하도록 밖에다 빼서 실행
+
 
 @csrf_exempt
 def canvas_image(request):
+
+    count = 0
+    direction = 0
+    form = 0
+    feedback = "Fix Form"
+    net = setting_model() # 학습시킨 openpose 모델 --> 한번만 실행하도록 밖에다 빼서 실행
+    
     if (request.method == 'POST'):
         try:
             index = request.POST.get('index')
@@ -141,9 +144,11 @@ def canvas_image(request):
             joint_dict, out = setting_squat(img, net) # joint_dict 반환( 중복제거된 관절 정보들 )
 
             # 스쿼트 시작 ( 스쿼트 시작 기준성립하면 count를 세도록 한다. )
-            count, feedback, direction, form, out = squat_condition(joint_dict, form, direction, out)
-            
-            print(count)
+            print(f'--------- 현재 {index} 번째 index')
+            count, form, direction, feedback, out = squat_condition(joint_dict, count, form, direction, feedback, out)
+            print(joint_dict)
+            print(count, form, feedback)
+            cv2.imwrite('img_{}_sample.png'.format(index), out)
             # squat(net)            
 
         except:

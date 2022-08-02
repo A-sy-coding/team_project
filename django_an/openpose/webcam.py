@@ -139,7 +139,7 @@ def delete_duplicate(joint_lmList):
     
     return joint_dict
 
-def squat_condition(joint_dict, form, direction, out):
+def squat_condition(joint_dict, count, form, direction, feedback, out):
     '''
     params:
         joint_dict(dictionary) -> 중복 제거한 관절들 정보 -> 관절 위치 index와 관절들의 x,y좌표값
@@ -207,7 +207,7 @@ def squat_condition(joint_dict, form, direction, out):
         # feedback print
         cv2.rectangle(out, (500,0), (640, 40), (255,255,255), cv2.FILLED)
         cv2.putText(out, feedback, (500, 40), cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
-    return count, feedback, direction, form, out
+    return count, form, direction, feedback, out
 
 
 def push_up(net):

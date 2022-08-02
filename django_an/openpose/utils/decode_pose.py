@@ -435,27 +435,27 @@ def decode_pose(img_orig, heatmaps, pafs):
     joint_list_per_joint_type = NMS(param,
                                     heatmaps, img_orig.shape[0] / float(heatmaps.shape[0]))
     
-    print('----------- NMS return ---------') 
+    # print('----------- NMS return ---------') 
     # 열은 {x,y} position, the score (probability) and a unique id (counter)를 나타낸다.
     # 각 행은 부위들을 나타낸다.
     # print(joint_list_per_joint_type[4])
     # print(joint_list_per_joint_type[4][-1][0:2]) # x,y 좌표
     # print([i for i in joint_list_per_joint_type]) # unique id
-    print(len(joint_list_per_joint_type))
-    print('-------------------------------')
+    # print(len(joint_list_per_joint_type))
+    # print('-------------------------------')
 
     # joint_list is an unravel'd version of joint_list_per_joint, where we add
     # a 5th column to indicate the joint_type (0=nose, 1=neck...)
     joint_list = np.array([tuple(peak) + (joint_type,) for joint_type,
                            joint_peaks in enumerate(joint_list_per_joint_type) for peak in joint_peaks])
     
-    print('---------joint_list---------')
+    # print('---------joint_list---------')
     # a 5th column to indicate the joint_type (0=nose, 1=neck...)
     # print(joint_list[4])
     # print(len(joint_list[4]))    
     # print([i[4] for i in joint_list])
-    print(len([i[4] for i in joint_list])) # joint_type
-    print('-------------------------------')
+    # print(len([i[4] for i in joint_list])) # joint_type
+    # print('-------------------------------')
 
 
     # Step 2: find which joints go together to form limbs (which wrists go
@@ -468,15 +468,15 @@ def decode_pose(img_orig, heatmaps, pafs):
     # Step 3: associate limbs that belong to the same person
     person_to_joint_assoc = group_limbs_of_same_person(
         connected_limbs, joint_list)
-    print('------------joint_assoc------------')
+    # print('------------joint_assoc------------')
     # First NUM_JOINTS columns contain the index (in joint_list) of the joints associated with that person (or -1 if their i-th joint wasn't found)
     # 2nd-to-last column: Overall score of the joints+limbs that belong to this person
     # Last column: Total count of joints found for this person
     # print(person_to_joint_assoc[0])
-    print(len(person_to_joint_assoc))
+    # print(len(person_to_joint_assoc))
     # print([i[0] for i in person_to_joint_assoc]) # first column
-    print([i[-1] for i in person_to_joint_assoc]) # last column
-    print('-----------------------------------')
+    # print([i[-1] for i in person_to_joint_assoc]) # last column
+    # print('-----------------------------------')
 
     # (Step 4): plot results
     to_plot, canvas, joint_coords = plot_pose(img_orig, joint_list, person_to_joint_assoc)
