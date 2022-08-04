@@ -52,8 +52,8 @@ import base64
 from django.http import JsonResponse
 
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
 import numpy as np
+import os
 
 # 필요한 model 패키지
 import torch
@@ -115,10 +115,27 @@ def setting_squat(img, net):
 def HtmlWebcamView(request):
 
     # return render(request, 'webcam.html')
-    # return render(request, 'ex.html')
-    return render(request, 'ex2.html')
+    return render(request, 'ex.html')
+
+@csrf_exempt
+def record_video(request):
+    if (request.method == 'POST'):
+        # video_data = request.POST.get('video')
+        video_data = request.FILES['video'].read()
+        print(video_data)
+        print(type(video_data)) # bytes 타입
+
+        # mp4로 저장
+        File_output = "webcam.avi"
+        if os.path.isfile(File_output):
+            os.remove(File_output)
+
+        # writing binary
+        with open(File_output, "wb") as out_file:
+            out_file.write(video_data)
 
 
+    return render(request, 'ex.html')
 
 @csrf_exempt
 def canvas_image(request):
