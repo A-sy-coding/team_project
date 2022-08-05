@@ -1,126 +1,25 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Webcam Recording</title>
-  </head>
-  <body>
-    <button id="start-camera">Start Camera</button>
-    <video id="video" controls width="320" height="240" autoplay>
-      <source src="" type="" >
-    </video>
-    <button id="stop-camera">Stop camera</button>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.6.2/RecordRTC.min.js"></script> -->
-    <!-- <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script> -->
-    <!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
-    <!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record</title>
+</head>
+
+<body>
+    <video muted id="video" autoplay></video>
+    <button id="button">Start recording</button>
+    <button id="send_button">Send recording</button>
+    <div id="result_count"></div>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="{% static 'js/record.js' %}"></script>
-    <!-- <script>
-        let camera_button = document.querySelector("#start-camera");
-        let video = document.querySelector("#video");
-        let start_record = document.querySelector("#start-record");
-        
-        // 카메라 녹화 변수 설정
-        let camera_stream = null;
-        let media_recorder = null;
-        let blobs_recorded = [];
-
-        //  record 변수
-        var recorder;
-        
-        // ajax 함수
-        // function data_ajax(){
-        //     var base64 = canvas.toDataURL();
-
-        //     $.ajax({
-        //                 type: "POST",
-        //                 // url: "canvas_image",
-        //                 url: "{% url 'openpose:canvas' %}",
-        //                 data:{
-        //                 "imageBase64": base64,
-        //                 "index" : index,
-        //                 },
-        //                 dataType: 'json',
-        //             })
-        // };
-
-        // start camera function
-        function captureCamera(callback) {
-            navigator.mediaDevices.getUserMedia({ video: true }).then(function(camera) {
-                callback(camera);
-            }).catch(function(error) {
-                alert('Unable camera. Please check console logs.');
-                console.error(error);
-            });
-        }
-        
-        // record stop function
-        function stopRecordingCallback() {
-          video.srcObject = null;
-
-          var blob = recorder.getBlob();
-          // video.src = URL.createObjectURL(blob);
-          console.log(createObjectURL(blob));
-
-          recorder.camera.stop();
-        }
-
-        function startVideo(){
-          navigator.mediaDevices.getUserMedia( { video: true} )
-          .then( (stream) => {
-                    video.srcObject = stream
-                    video.play()
-        })}
-
-        // camera button을 클릭하면 webcam 실행
-        camera_button.addEventListener('click', function() {
-          startVideo();
-          
-          // record 시작
-          var recorder = RecordRTC(video,{
-            type: 'video'
-          });
-          recorder.startRecording();
-
-          // 5초 후에 recording이 종료되도록 설정
-          var time = 5*1000;
-          setTimeout(function() {
-            // recorder blob 얻기
-            var blob = recorder.getBlob();
-            console.log(blob);
-
-            video.src = URL.createObjectURL(blob);
-            recorder.stream.stop();
-
-            video.srcObject.getTracks().forEach(function(track) {
-            track.stop();
-            video.pause();
-            });
-          }, time);
-        });
-
-        // start_record 버튼을 클릭하면 record 실행
-        start_record.addEventListener('click', function() {
-            recorder = RecordRTC(camera_stream, {
-              type: 'video'
-            });
-            
-            // record 실행
-            recorder.startRecording();
-            // 자동으로 recording이 stop되도록 설정 -> 5초 후에 종료
-            var seconds = 5 * 1000;
-            
-            // setTimeout을 이용해 일정 시간이 지난 후에 원하는 함수를 실행할 수 있게 된다.
-            setTimeout(function() {
-              // record 종료 함수 호출
-              recorder.stopRecording(stopRcording_function);
-            });
-
-        });
-
-    </script> -->
-  </body>
+    
+    <div id="result">
+        <h1>Squat Count!</h1>>
+        <h2></h2>
+    </div>
+    
+</body>
 </html>

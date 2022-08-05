@@ -27,7 +27,6 @@ urlpatterns = [
     # --------------- challenge page --------------
     path('challenge/exercise/', views.Challenge_exerciseView.as_view(), name = 'challenge_exercise'),
     path('challenge/diet/', views.Challenge_dietView.as_view(), name = 'challenge_diet'),
-    path('challenge/exercise/squat/', views.ChallengeSquatView.as_view(), name = 'challenge_exercise_squat'),
 
     # --------------- market page --------------
     path('market/product/', views.MkarketproductView.as_view(), name = 'market_product'),

@@ -83,13 +83,6 @@ class Challenge_dietView(TemplateView):
         ctx = {}                             
         return self.render_to_response(ctx)
 
-class ChallengeSquatView(TemplateView):
-    template_name = 'challenge/challenge_exercise_squat.html' # challenge 화면의 운동하기 화면의 스쿼드 화면
-
-    def get(self, request, *args, **kwargs):
-        ctx = {}                             
-        return self.render_to_response(ctx)
-
 
 # ------------------ market page ------------------------
 

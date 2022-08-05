@@ -5,7 +5,8 @@
 
     <head>
         <meta charset="utf-8"/>
-        <title> 헬스 친구 HealF | 운동하기</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Squat Challenge </title>
 
         <link rel = "stylesheet" href ="{% static 'challenge/challenge_exercise_squat.css' %}">
         <!-- <script type="text/javascript" src="../js/exercise.js"></script> -->
@@ -29,29 +30,56 @@
         
     <div class="all">
 
-        <div class="all1">
-        <div class="exercise">
+        <!-- 버튼 가운데 정렬 div안의 버튼들을 가운데로 정렬 -->
+        <div class="exercise" style="display: flex; justify-content: center;">
             
-            <!-- <video muted autoplay loop>
-                <source src="https://user-images.githubusercontent.com/54762273/180055932-1739af61-dcc5-477f-bf62-7d1bf548a897.mp4" type="video/mp4">
-            
-                
-                <strong>Your browser does not support the video tag.</strong>
-            </video> -->
-            <!-- <source src="http://localhost:8888/openpose"> -->
+            <style>
+                #button{
+                    margin-right:-4px;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+                #send_button{
+                    margin-left: 1px;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+                #button_group button{
+                    border: 5px solid rgba(108, 60, 244, 0.85);;
+                    background-color: rgba(108, 60, 244, 0.85);
+                    color: white;
+                    font-weight: bold;
+                    padding: 10px;                
+                }
+                div#button_group {
+                    margin-top: auto;
+                    z-index: 3;
+                }
+                #button_group button:hover{
+                    color:white;
+                    background-color: skyblue;
+                }
+            </style>
 
-            <!-- 실시간 영상 연결 -->
-            <h1>Squat challenge...</h1>
-            <table>
-                <tr>
-                    <td wodth="150%">
-                        <img src="http://127.0.0.1:8888/openpose", style="width:1000px;" />
-                    </td>
-                </tr>
-            </table>
+            <div class = "video">
+                <video muted id="video" autoplay></video>
+            </div>
             
+
+            <div id="button_group" >
+                <button id="button">Start recording</button>
+                <button id="send_button">Send recording</button>
+            </div>
+
+            
+            <script src="https://code.jquery.com/jquery-latest.js"></script>
+            <script src="{% static 'js/record.js' %}"></script>
         </div>
-        </div>
+        
 
         
     </div>

@@ -15,13 +15,13 @@ header {
     left : 0;
   }
 /*healf*/
-h1{
+.wrapper h1{
     line-height:5px;
     font-size: 40px;
     float : left;
 }
  
-h1 a{
+  h1 a{
     text-decoration: none;
     color : white;
 }
@@ -83,19 +83,6 @@ ul {
   padding-top:24px;
 }
 
-.all1{
-    background-color : rgb(255, 255, 255);
-    width : 900px;
-    height : 600px;
-    display : inline-flex;
-   }
-
-
-a{
-  text-decoration: none;
-}
-
-
 
 .exercise{
   background-color:rgb(233, 237, 255);
@@ -110,42 +97,56 @@ a{
 
   position: relative;
   overflow: hidden;
+  
 }
 
-.exercise img{
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* 투명도 설정 */
-    opacity:0.5;
-    filter: alpha(opacity=70);
-    /* 이미지 뒤로 보내기 순서 */
-    z-index:2;
+.video{
+  width : 100%;
+  height : auto;
 }
 
-/* 마우스를 올렸을 때 진하게 보일 수 있게 설정 */
-.exercise img:hover {
-    opacity: 1.0;
-    filter: alpha(opacity=100); /* IE8 및 그 이하 버전용 */
-    }
-    
+#button{
+  margin-right:-4px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#send_button{
+  margin-left: 1px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#button_group button{
+  border: 5px solid rgba(108, 60, 244, 0.85);;
+  background-color: rgba(108, 60, 244, 0.85);
+  color: white;
+  font-weight: bold;
+  padding: 10px; 
+  position: relative;
+  left: 35%;               
+}
+div#button_group {
+  margin-top: auto;
+  margin-right: 280px;
+}
+#button_group button:hover{
+  color:white;
+  background-color: skyblue;
+}
 
-.start{
-  font-family:Arial;
-  box-shadow:inset 0px 0px 15px -2px #9fb4f2;
-  background-color: #7543ff;
-  width : 150px;
-  height : 50px;
-  color : rgb(255, 255, 255);
-  font-size:34px;
-  line-height: 50px;
-	border-radius:11px;
-  margin-top:48%;
-  margin-left:44%;
-  z-index:3;
+.result h1{
+  font-size: 20px;
+  position: relative;
+  left: 60px;
+}
+
+.result h2{
+  font-size: 20px;
+  position:relative;
+  left:60px;
 }
 
 .action{

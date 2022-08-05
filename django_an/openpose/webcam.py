@@ -180,33 +180,36 @@ def squat_condition(joint_dict, count, form, direction, feedback, out):
             if per_left == 0 and per_right ==0 :
                 if left_knee_angle < 90 and right_knee_angle < 90:
                     feadback = 'Up'
+                    print('up')
                     if direction == 0:
                         count += 0.5
                         direction = 1 # 방향 전환
                 else:
                     feedback = 'Fix Form'
-            
+                    print('Fix Form')
             if per_left == 100 and per_right == 100:
                 if left_knee_angle > 160 and right_knee_angle > 160:
                     feedback = 'Down'
+                    print('Down')
                     if direction == 1:
                         count += 0.5
                         direction = 0
                 else:
                     feedback = 'Fix Form'
+                    print('Fix Form')
         # draw bar
         if form == 1:
-            cv2.rectangle(out, (580, 50), (600, 380), (0, 255, 0), 3)
-            cv2.rectangle(out, (580, int(bar)), (600, 380), (0, 255, 0), cv2.FILLED)
-            cv2.putText(out, f'{int(per)}%', (565, 430), cv2.FONT_HERSHEY_PLAIN, 2,(255, 0, 0), 2)
+            cv2.putText(out, f'{int(per_left)}%', (565, 240), cv2.FONT_HERSHEY_PLAIN, 2,(0, 0, 255), 2)
+            cv2.putText(out, f'{int(per_right)}%', (10, 240), cv2.FONT_HERSHEY_PLAIN, 2,(0, 0, 255), 2)
         
-        # push up count
-        cv2.rectangle(out, (0,380), (100, 480), (0, 255, 0), cv2.FILLED)
+        # squat count
+        cv2.rectangle(out, (0,400), (100, 480), (0, 255, 0), cv2.FILLED)
         cv2.putText(out, str(int(count)), (25, 455), cv2.FONT_HERSHEY_PLAIN, 5, (255,0,0), 5)
 
         # feedback print
         cv2.rectangle(out, (500,0), (640, 40), (255,255,255), cv2.FILLED)
         cv2.putText(out, feedback, (500, 40), cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
+
     return count, form, direction, feedback, out
 
 

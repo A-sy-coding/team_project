@@ -1,53 +1,10 @@
-from django.shortcuts import render
-import cv2
-import threading
-
-from django.views.decorators import gzip
-from django.http import StreamingHttpResponse
-
-
-# 영상 클래스
-class VideoCamera(object):
-    def __init__(self):
-        self.video = cv2.VideoCapture(0)  # 카메라 열기
-        (self.grabbed, self.frame) = self.video.read() # 카메라 읽기
-        threading.Thread(target=self.update, args=()).start()
-
-    def __del__(self):  # 카메라 종료
-        self.video.release()
-
-    def get_frame(self):  # 프레임 캡처
-        image = self.frame
-        _, jpeg = cv2.imencode('.jpg', image)  # image를 Binary형태로 읽는다.
-        return jpeg.tobytes()
-    
-    def update(self):  # 프레임 캡처 계속 반복
-        while True:
-            (self.grabbed, self.frame) = self.video.read()
-
-    
-def gen(camera):
-    while True:
-        frame = camera.get_frame()
-        # yeild는 제너레이터를 반환하게 된다.
-        yield(b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-        
-@gzip.gzip_page
-def OpenPoseView(request):
-    try:
-        cam = VideoCamera()
-        response = StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame") 
-        print('----- response -------')
-        print(response)
-        return response
-    except:
-        print('Camera가 존재하지 않습니다.')
+from django.shortcuts import render, redirect
 
 
 ####################################
 # html로 webcam 가져오는 방법 구현
 ###################################
+import cv2
 import base64
 from django.http import JsonResponse
 
@@ -55,7 +12,11 @@ from django.views.decorators.csrf import csrf_exempt
 import numpy as np
 import os
 
-# 필요한 model 패키지
+# db에 count값 저장시 필요 패키지
+from .models import Count_Post
+from django.http import HttpResponse
+
+# 필요한 ai model 패키지
 import torch
 from openpose.utils import OpenPoseNet
 from openpose.webcam import img_preprocess, get_pafs_heatmaps, pose_test, findAngle, delete_duplicate, squat_condition
@@ -109,33 +70,76 @@ def setting_squat(img, net):
 
     return joint_dict, out
         
-        
-
 
 def HtmlWebcamView(request):
 
-    # return render(request, 'webcam.html')
-    return render(request, 'ex.html')
+    # return render(request, 'webcam.html') 
+    return render(request, 'squat_record.html')
+
+
 
 @csrf_exempt
 def record_video(request):
+    # POST 받기 전에 한번만 실행하도록 설정
+    net = setting_model() # 학습시킨 openpose 모델 --> 한번만 실행하도록 밖에다 빼서 실행
+    print('-------- 모델 세팅 완료 --------------')
+    
     if (request.method == 'POST'):
-        # video_data = request.POST.get('video')
+
         video_data = request.FILES['video'].read()
-        print(video_data)
-        print(type(video_data)) # bytes 타입
+        # print(video_data)
+        # print(type(video_data)) # bytes 타입
 
-        # mp4로 저장
-        File_output = "webcam.avi"
-        if os.path.isfile(File_output):
-            os.remove(File_output)
+        # 임시로 mp4로 저장
+        File_output = "webcam.mp4"
 
-        # writing binary
+        # writing binary(bytes 영상을 mp4로 변환하여 저장)
         with open(File_output, "wb") as out_file:
             out_file.write(video_data)
 
+        # 비디오를 프레임단위로 끊기
+        capture = cv2.VideoCapture(File_output)
+        success, _ = capture.read()
+        index = 0
 
-    return render(request, 'ex.html')
+        count = 0
+        direction = 0
+        form = 0
+        feedback = "Fix Form"
+        while success:
+            success, img = capture.read()  # 배열 이미지 가져오기
+
+            if success == False:
+                break
+            else:
+                joint_dict, out = setting_squat(img, net) # joint_dict 반환( 중복제거된 관절 정보들 -> 관절 번호 및 해당 , x,y좌표 )
+
+                # 스쿼트 시작 
+                count, form, direction, feedback, out = squat_condition(joint_dict, count, form, direction, feedback, out)
+                # print(joint_dict)
+                index += 1
+                print(f'--------- {index}번째 이미지... --------- ')
+                # print(count, form, feedback)
+                # cv2.imwrite('tem_img/img_{}_sample.png'.format(index), out)
+
+        print('--------- 최종 Squat count -------------')
+        print(int(count))
+
+        # webcam.mp4 파일 삭제
+        if os.path.isfile(File_output):
+            os.remove(File_output)
+
+        # Count_Post 모델 객체 생성
+        string_count = str(int(count))
+        post = Count_Post(text=string_count)
+        post.save()
+
+        # print('----------DB 조회 ---------------')
+        # print(Count_Post.objects.all().values())
+
+        success = 'You complete ' + string_count + ' squat challenge!'
+        return HttpResponse(success)                                                                                                                                                                                                                                                     
+    
 
 @csrf_exempt
 def canvas_image(request):

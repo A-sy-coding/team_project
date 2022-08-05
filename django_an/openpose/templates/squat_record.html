@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Squat Challenge </title>
+
+        <link rel = "stylesheet" href ="{% static 'challenge/challenge_exercise_squat.css' %}">
+        <!-- <script type="text/javascript" src="../js/exercise.js"></script> -->
+    </head>
+
+    <body>
+
+    <header>
+        <div class = "wrapper">
+        <h1>
+            <a href="{% url 'HealF:main' %}">HealF</a>
+        </h1>
+    </div>
+    </header>
+    <br><br><br><br>
+
+    <ul>
+        <li><a class="home" href="#">Squat</a></li>
+        <li><a href="#">Push-up</a></li>
+    </ul>
+        
+    <div class="all">
+
+        <!-- 버튼 가운데 정렬 div안의 버튼들을 가운데로 정렬 -->
+        <div class="exercise">
+            
+
+            <div class = "video">
+                <video muted id="video" autoplay></video>
+            </div>
+            
+        </div>
+
+        <div id="button_group" >
+            <button id="button">Start recording</button>
+            <button id="send_button">Send recording</button>
+        </div>
+
+        
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+        <script src="{% static 'js/record.js' %}"></script>
+        
+        <div class="result">
+            <h1>Squat Count!</h1>
+            <h2></h2>
+        </div>
+        
+    </div>
+
+    
+
+    </body>
+
+</html>
