@@ -9,7 +9,7 @@ urlpatterns = [
     
     # /openpose/webcam  --> html 파일을 사용하여 webcam 실행하기
     path('webcam/', views.HtmlWebcamView, name = 'webcam'),
-    path('webcam/canvas_image', views.canvas_image, name='canvas'),
-    path('webcam/record_video', views.record_video, name='record'),
+    path('webcam/canvas_image', views.canvas_image, name='canvas'), # 데이터를 받을 임시 경로
+    path('webcam/record_video', views.record_video, name='record'), # 데이터를 받을 임시 경로
 
 ]

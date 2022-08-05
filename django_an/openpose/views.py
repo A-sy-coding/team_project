@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 
 ####################################
@@ -72,7 +72,12 @@ def setting_squat(img, net):
         
 
 def HtmlWebcamView(request):
-
+    '''
+    챌린지 페이지에서 start를 누르면 넘어가도록 하는 페이지 
+    squat_record.html과 render된다.
+    suqat_record.html에서는 javascript를 이용하여 webcam을 키고, 데이터를 전송하도록 해준다.
+    데이터는 'webcam/record_video'으로 전송되게 된다. (record.js에서 설정)
+    '''
     # return render(request, 'webcam.html') 
     return render(request, 'squat_record.html')
 
@@ -80,6 +85,14 @@ def HtmlWebcamView(request):
 
 @csrf_exempt
 def record_video(request):
+    '''
+    squat_reocrd.html에서 webcam을 녹화하고 해당 영상을 'webcam/record_video'으로 전송하게 된다.
+    따라서, form형태의 데이터를 request로 받게 된다.
+    POST로 받은 데이터를 데이터 처리를 통해 프레임단위 이미지로 나누어 결과값을 도출한다.
+    models.py에서 db를 저장할 폼을 만들고 해당 폼 안에 스쿼트 count 값을 넣게 된다.
+    이후, 처리가 완료된 메세지를 'webcam/record_video'로 HttpResponse하게 한다.
+    response값은 record.js파일에서 ajax가 data로 받아 h2태그의 반환값으로 출력되게 한다. (비동기 방식으로)
+    '''
     # POST 받기 전에 한번만 실행하도록 설정
     net = setting_model() # 학습시킨 openpose 모델 --> 한번만 실행하도록 밖에다 빼서 실행
     print('-------- 모델 세팅 완료 --------------')
@@ -143,7 +156,12 @@ def record_video(request):
 
 @csrf_exempt
 def canvas_image(request):
-
+    '''
+    webcam.html 파일에서 ajax를 사용하여 POST request를 수행하게 된다.
+    웹페이지에서 webcam을 키고, 해당 webcam에서 프레임 이미지로 끊어 각 이미지를 해당 함수로 받아오게 구현
+    이미지를 전처리한 후 ai 모델에 넣어 결과값을 출력하는 코드 구현
+    수행하는데 시간의 delay가 발생하여 실제 real-time으로는 사용불가하다는 판단을 내림
+    '''
     count = 0
     direction = 0
     form = 0
