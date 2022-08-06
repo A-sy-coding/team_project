@@ -1,0 +1,22 @@
+{% extends 'healf/index.html' %}
+
+{% block contents %}
+<div>로그인 페이지</div>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% for form in forms %}
+    <div>
+        <label for="{{form.if_for_label}}">{{form.label}}</label> <!--label값-->
+        {{ form }} <!--widget 호출-->
+    </div>
+    {% endfor %}
+
+    {% if error %}
+    {{ error }} <!-- error 출력 class=errorlist -->
+    {% endif %} 
+    <button type="submit" name="login_submit" value="login">로그인</button>
+
+</form>
+{% endblock contents %}

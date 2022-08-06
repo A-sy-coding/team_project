@@ -1,0 +1,22 @@
+{% extends 'healf/index.html' %}
+
+{% block contents %}
+<div>회원가입 페이지</div>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% for form in forms %}
+    <div>
+        <label for="{{form.if_for_label}}">{{form.label}}</label> <!--label값-->
+        {{ form }} <!--widget 호출-->
+    </div>
+    {% endfor %}
+
+    {% if error %}
+    {{ error }} <!-- error 출력 class=errorlist -->
+    {% endif %} 
+    <button type="submit" name="regiser_submit" value="register">회원가입하기</button>
+
+</form>
+{% endblock contents %}
