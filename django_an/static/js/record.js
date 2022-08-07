@@ -1,7 +1,8 @@
 window.onload = function(){
     const parts = [];
     let mediaRecorder;
-    
+
+
     // 초기 세팅 -> send_button 비활성화
     // document.getElementById("send_button").disabled = true;
     document.getElementById("send_button").style.visibility = 'hidden';
@@ -64,6 +65,7 @@ window.onload = function(){
             var form = new FormData();
             form.append('video', blob);
             // data_ajax(blob);
+
             $.ajax({
                 type: "POST",
                 url: "record_video",
@@ -71,6 +73,7 @@ window.onload = function(){
                 enctype: 'multipart/form-data',
                 data: form,
                 // dataType: 'json',
+                
                 processData: false,
                 contentType: false,
                 // success function의 data는 views.py파일에서 HttPResponse 받은 값이 된다.

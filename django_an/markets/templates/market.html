@@ -7,17 +7,35 @@
         <title> 헬스 친구 HealF | 마켓</title>
         <!-- css-->
         <link rel = "stylesheet" href ="{% static 'market/market.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="{% static 'categorie/categorie.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <!-- <header>
             <div class = "wrapper">
             <h1>
                 <a href="{% url 'HealF:main' %}">HealF</a>
             </h1>
         </div>
-
-        
-        </header>
+        </header> -->
+        <nav class="navbar nav-global fixed-top navbar-expand-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'HealF:main' %}">
+                    <h1>
+                        <a href="{% url 'HealF:main' %}">HealF</a>
+                      </h1>
+                <ul class="navbar-nav ml-auto"> 
+                    <li class="nav-item">
+                        <a href="{% url 'markets:item_register' %}"><i class="material-icons ic-create">create</i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         
         <div class="all">
 

@@ -20,5 +20,6 @@ from django.urls import include # HealF application의 url과 연동을 시키�
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('HealF/', include('HealF.urls')),   # HealF application의 urls.py 파일 연결
-    path('openpose/', include('openpose.urls')),
+    path('openpose/', include('openpose.urls')), # openpose application 연결
+    path('markets/', include('markets.urls')), # markets application 연결
 ]
