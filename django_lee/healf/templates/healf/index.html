@@ -8,17 +8,17 @@
     </head>
     <body>
         <h1>HI</h1>
-        {% if user.is_authenticated %}
-        <p>
-            logged by {{ user }}
-            <a href="/">Logout</a>
-        </p>
-        {% else %}
-            <a href="/user/login">Login</a>
-        {% endif %}
         <a href=""><button>홈</button></a>
+
+        {% if login_session %}
+        logged by {{ user }} <br>
+        <a href="{% url 'user:logout' %}"><button>로그아웃</button></a>
+        {% else %}
         <a href="{% url 'user:login' %}"><button>로그인</button></a>
         <a href="{% url 'user:register' %}"><button>회원가입</button></a>
+        {% endif %}
+
+
         <div style="border-bottom: 1px solid #000; margin : 10px 0px;"></div>
         {% block contents %}
         {% endblock contents %}
