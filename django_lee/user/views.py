@@ -1,3 +1,4 @@
+from http.client import REQUEST_ENTITY_TOO_LARGE
 from django.db import transaction
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
@@ -42,6 +43,8 @@ def login(request : HttpRequest) -> HttpResponse:
         loginform = LoginForm(request.POST)
 
         if loginform.is_valid():
+            request.session['login_session'] = loginform.login_session
+            request.session.set_expiry(0) #set_expiry메서드는 세션만료시간을 설정합니다. 0을 넣을 경우 브라우저를 닫을 시 세션 쿠키 삭제 + DB의 만료기간은 14일로 설정됩니다.
             return redirect('/')
 
         else : 
@@ -50,3 +53,7 @@ def login(request : HttpRequest) -> HttpResponse:
                 for value in loginform.errors.values():
                     context['error'] = value
         return render(request, 'user/login.html', context)
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
