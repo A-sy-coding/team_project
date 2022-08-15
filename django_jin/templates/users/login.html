@@ -1,7 +1,6 @@
 {% load static %}
 <html>
     <head>
-
         <meta charset="utf-8"/>
         <title>로그인</title>
         <link rel = "stylesheet" href ="{% static 'login.css' %}">
@@ -29,6 +28,7 @@
             });
             };
         </script>
+
     </head>
     <body>
         <div style="background-color:white; height:140%" id="wrap">
@@ -45,16 +45,18 @@
             <div style="width:60%;height:80%;margin:0 auto;text-align:center">
                 <form action="{% url 'users:login' %}" method="post">
                     {% csrf_token %}
+    
+                    <label for="user_id"></label>
                     <div style=" width:60%;margin:5 auto;position:relative">
                           
                         <input type="email" class="email" style=" border:solid 0.5px;border-radius: 10px;"
                             name="user_id" id="user_id" placeholder="이메일 주소" required="" class="required" value="" data-msg-required="이메일 주소를 입력해 주세요." aria-invalid="true">
                         <img src="{% static '이메일.png' %}" class="emailimage"/>
                     </div>
+                    <label for="user_pw"></label>
                     <div style=" width:60%; margin:5 auto;position:relative"> 
                         <input type="password" class="password" style=" border:solid 0.5px;border-radius: 10px;"
-                          name="user_pw" id="user_pw" placeholder="비밀번호" required="" class="required" value="" data-msg-required="비밀번호를 입력해 주세요." aria-invalid="true">
-
+                        name="user_pw" id="user_pw" placeholder="비밀번호" required="" class="required" value="" data-msg-required="비밀번호를 입력해 주세요." aria-invalid="true">
                         <img class="pwimage" src="{% static '비밀번호.png' %}"/>
                     </div> 
 
@@ -112,5 +114,6 @@
             });
             };
             </script> -->
+            
     </body>
 </html>
