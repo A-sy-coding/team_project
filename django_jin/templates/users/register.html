@@ -19,7 +19,7 @@
                 </div>
             </header>
             <div style="background-color:white; width:35%;height:900px; margin:5% auto; padding:auto; border:solid 0.5px;border-radius: 10px;">
-                <form action="{% url 'users:signup' %}" method="post">
+                <form method="post" id="form" onsubmit="return false;">
                     {% csrf_token %}
                     <div id="content">
                         <div>
@@ -43,24 +43,25 @@
                             </h3>
                             <div>
                                 <span>
-                                    <input class="int" type="password" id="pw1" placeholder="비밀번호" name="password1" >
+                                    <input class="int" type="password" id="pw1" placeholder="비밀번호" name="password1" onkeyup='pw_valid()' >
                                 </span>
                             </div>
+                            <div class="int"></div>
 
                             <h3>
                                 <label for="password2">비밀번호 확인</label>
                             </h3>
                             <div>
                                 <span>
-                                    <input  class="int" type="password" id="pw2" placeholder="비밀번호 확인" name="password2" >
+                                    <input  class="int" type="password" id="pw2" placeholder="비밀번호 확인" name="password2" onkeyup='pw_valid2()'>
                                 </span>
                             </div>
-                            
+                            <div class="int"></div>
                             <h3>
-                                <label for="email">이메일</label>
+                                <label for="user_email">이메일</label>
                             </h3>
                             <span>
-                                <input  class="int" type='email' id="email" placeholder="이메일" name="email" >
+                                <input  class="int" type='email' id="user_email" placeholder="이메일" name="user_email" >
                             </span>
                             <button id="emailval" type="button" style="margin-top:10;background-color:rgba(108, 60, 244, 0.85);color:white;border:0px;border-radius: 2px;">인증번호 전송</button>
     
@@ -76,15 +77,15 @@
 
                         <div>
                             <h3>
-                                <label for="id">이름</label>
+                                <label for="user_name">이름</label>
                             </h3>
                             <span>
-                                <input class="int" type="text" id="name" placeholder="이름" name="name">        
+                                <input class="int" type="text" id="user_name" placeholder="이름" name="user_name">        
                             </span>
                             <h3>
-                                <label for="id">생년월일</label>
+                                <label for="birth">생년월일</label>
                             </h3>
-                            <div class="birthwrap">
+                            <div class="birthwrap" id="'birth">
                                 <span class="birthyy" style="width:80%">
                                     <input class="birthyy" type="text" id="birthyy" placeholder="년도">
                                     <p style="text-align:center;margin:auto 0" >년</p>
@@ -95,10 +96,10 @@
                                 </span>       
                             </div>
                             <h3>
-                                <label for="id">성별</label>
+                                <label for="user_sex">성별</label>
                             </h3>
                             <div style="height:4%">
-                                <select name="sex" style="height:100%;width:30%">
+                                <select name="user_sex" style="height:100%;width:30%">
                                     <option value="" selected>성별</option>
                                     <option value="M">남자</option>
                                     <option value="F">여자</option>
@@ -110,7 +111,7 @@
                     
                     </div>
                     <div class="psbox" style="text-align:center; margin-top: 10%;height:auto">
-                        <input type='submit' style="background-color:rgba(108, 60, 244, 0.85); color:white; width:17%;font-size:100%;border:0px;border-radius: 2px;" value="다음">
+                        <input type='button' style="background-color:rgba(108, 60, 244, 0.85); color:white; width:17%;font-size:100%;border:0px;border-radius: 2px;" value="다음" id="send">
                     </div>
                 </form>
                 
