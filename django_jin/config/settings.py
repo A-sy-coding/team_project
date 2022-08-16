@@ -120,7 +120,6 @@ EMAIL_HOST = 'smtp.naver.com'
 EMAIL_HOST_USER = 'jinus7949@naver.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD='wlsdntjr1!'
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -145,6 +144,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-AUTH_USER_MODEL = 'users.Profile'
 

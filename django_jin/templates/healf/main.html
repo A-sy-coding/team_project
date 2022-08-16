@@ -20,7 +20,7 @@
         </h1>
         <ul class = "menu">
           {% if user.is_authenticated %}
-            <li>{{user.name}}님 접속을 환영합니다.</li>
+            <li>{{user.user_name}}님 접속을 환영합니다.</li>
           {% else %}
             <li><a href="../login/login.html">로그인</a></li>
             <li><a href="../login/signup.html">회원가입</a></li>
