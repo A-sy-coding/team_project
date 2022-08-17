@@ -35,12 +35,12 @@
             <header>
                 <div class = "wrapper">
                     <h1>
-                    <a href="../main/main.html">HealF </a>
+                    <a href="{% url 'healf:main' %}">HealF </a>
                     </h1>
                 </div>
             </header>
             <div class="healf" style='margin: 40 auto;'>
-                <a href="../main/main.html">HealF</a>
+                <p>HealF</p>
             </div>
             <div style="width:60%;height:80%;margin:0 auto;text-align:center">
                 <form action="{% url 'users:login' %}" method="post">
