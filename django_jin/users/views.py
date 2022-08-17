@@ -20,8 +20,9 @@ def login_view(request):
         except Profile.DoesNotExist:
             myuser = None
         if myuser is not None:
-            if login_user_pw == myuser.password:
+            if login_user_pw == myuser.user_pw:
                 request.session['user'] = myuser.id
+
                 # Redirect to a success page.
                 return redirect('healf:main')
         else:
@@ -35,15 +36,15 @@ def register(request):
     if request.method == 'GET':
         return render(request, 'users/register.html')
     if request.method == 'POST':
+        user_birth=request.POST['birthyy']+'-'+request.POST['birthmm']+'-'+request.POST['birthdd']
         Profile.objects.create(
             user_id=request.POST['user_id'], 
             user_pw=request.POST['password1'],
             user_email=request.POST['user_email'],
             user_name=request.POST['user_name'],
             user_sex=request.POST['user_sex'],
-            user_birth=request.POST['user_birth']
+            user_birth=user_birth
         )
-        Profile.save()
         return redirect('/users/clear')
     return render(request, 'users/register.html')
 
@@ -100,24 +101,25 @@ def email_validater(request): #이메일 인증기
 
 
 def auth_num_validater(request):#인증번호
-    if request.POST['auth_num'] == auth_number.objects.get(auth_number[0]):
+    if 'auth_num' in request.POST:
+        try:
+            my_auth_number=auth_number.objects.get(auth_number=request.POST['auth_num'])
+        except Exception as e:
+            my_auth_number=None
+            result = {
+                    'result':'success',
+                    'data' : "no cor"
+                }
+            return JsonResponse(result)
         result = {
                 'result':'success',
                 'data' : "cor"
             }
-        auth_number.objects.all().truncate()
         return JsonResponse(result)
 
-    else:
-        result = {
-                'result':'success',
-                'data' : "no cor"
-            }
-        auth_number.objects.all().truncate()
-        return JsonResponse(result) 
 
 
 # Create your views here.
 def logout(request):
     request.session.pop('user')
-    return redirect('/')
+    return redirect('healf:main')

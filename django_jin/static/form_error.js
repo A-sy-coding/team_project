@@ -5,7 +5,7 @@ const phone_regExp=/^\d{3}-\d{3,4}-\d{4}$/;
 const pattern_regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 var id_clean = false;
 var pw_clean = false;
-var pw_clean2=false
+var pw_clean2=false;
 var email_clean = false;
 var sex_clean = false;
 var birth_clean = false;
@@ -22,13 +22,14 @@ function create_error(value){
 function pw_valid(){
     var pw= document.getElementById('pw1').value;
     if (pattern_regExp.test(pw)){//관련정규식 투입
-            document.getElementById('pw_error').innerText='영문자,숫자,특수문자를 포함한 8자리 문자를 입력해주세요';pw_valid=False}
-    else{document.getElementById('pw_error').innerText='';pw_clean=true}    
+            document.getElementById('pw_error').innerText='영문자,숫자,특수문자를 포함한 8자리 문자를 입력해주세요'}
+    else{document.getElementById('pw_error').innerText='사용가능한 비밀번호입니다.';pw_clean=true}    
         }
 function pw_valid2(){
     var pw1= document.getElementById('pw1').value;
+    console.log(pw1)
     var pw2= document.getElementById('pw2').value;
-    if (pw1.equals(pw2)){pw_clean2=True;}
+    if (pw1==pw2){document.getElementById('pw2_error').innerText='비밀번호가 일치합니다.';pw_clean2=true;}
     else{document.getElementById('pw2_error').innerText='비밀번호가 일치하지 않습니다.';pw_clean2=false}}
 
 var csrftoken = $('[name=csrfmiddlewaretoken]').val();
@@ -60,7 +61,6 @@ $(function(){
                 }
                 else{
                     $('#idbutton').attr("disabled", true);
-                    $('#user_id').attr("disabled", true);
                     alert("사용가능한 아이디입니다!");
                     id_clean=true;
                     return;
@@ -77,13 +77,12 @@ $(function(){
 
 $(function(){
     $('#emailval').click(function(){
-        var email = $('#email').val()
+        var email = $('#user_email').val()
         if(email == ''){
             alert('이메일을 입력해주세요.');
             email_clean=false;
             return;
         }
-        alert("인증번호가 전송되었습니다.");
         $.ajax({
             url:'emailvalid/',
             type:'get',
@@ -91,6 +90,7 @@ $(function(){
             headers: {'X-CSRFToken': csrftoken},
             data:{email:email},
             success:function(){
+                alert("인증번호가 전송되었습니다.");
                 document.getElementById("auth_num").setAttribute('style','display:block;');
                 document.getElementById("authnum_button").setAttribute('style','display:block;');
             }
@@ -123,7 +123,7 @@ $(function(){
                 
             },
             error : function(xhr, error){
-                alert("서버와의 통신에서 문제가 발생했습니다.");
+                alert("유효하지 않은 이메일입니다.");
                 console.error("error : " + error);
             }
         })
@@ -139,13 +139,15 @@ send.addEventListener("click", function () {
     var birth_mm =document.getElementById("birthmm");
     var birth_dd =document.getElementById("birthdd");
     user_birth=birth_yy+'-'+birth_mm+'-'+birth_dd;
-    if(user_sex){sex_clean=true;};
-    if(user_name){birth_clean=true;};
-    if(user_birth){name_clean=true;};
+    if(user_sex!=null){sex_clean=true;};
+    if(user_birth!=null){birth_clean=true;};
+    if(user_name!=null){name_clean=true;};
     var form = document.getElementById("form");
+    console.log(birth_clean,sex_clean,name_clean,email_clean,id_clean,pw_clean,pw_clean2);
+
     if (id_clean==true&pw_clean==true&email_clean==true&sex_clean==true&birth_clean==true&name_clean==true){
-        form.action = "http://www.naver.com";
-        form.mothod = "POST";
+        form.action = '';
+        form.method = "POST";
         form.submit();}
     else{alert()}
     
