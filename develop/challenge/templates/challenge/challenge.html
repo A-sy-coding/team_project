@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title> 헬스 친구 HealF | 챌린지</title>
+
+        <!-- css-->
+        <link rel = "stylesheet" href ="{% static 'challenge/challenge.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <header>
+            <div class = "wrapper">
+            <h1>
+                <!-- HealF 메인 페이지로 이동하도록 설정 -->
+                <a href="{% url 'home' %}">HealF</a>  
+            </h1>
+        </div>
+        </header>
+
+        <p style="font-size:25px;font-weight:800; margin-top:230px; text-align: center;">현재 진행중인 도전과제</p>
+        <div class="container">
+        <div class="menu"><p style="margin-top:65px"><a href="{% url 'challenge:challenge_exercise' %}" style="color:white">운동<br>도전 과제</a></p></div>
+        <div class="menu"><p style="margin-top:65px"><a href="{% url 'challenge:challenge_diet' %}" style="color:white">다이어트<br>도전 과제</a></p></div>
+
+    </body>
+
+</html>
