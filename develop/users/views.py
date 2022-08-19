@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login
 from .models import Profile
 from django.core.exceptions import ValidationError
 from .models import auth_number
@@ -104,17 +103,19 @@ def auth_num_validater(request):#인증번호
     if 'auth_num' in request.POST:
         try:
             my_auth_number=auth_number.objects.get(auth_number=request.POST['auth_num'])
-        except Exception as e:
+        except Exception:
             my_auth_number=None
             result = {
                     'result':'success',
                     'data' : "no cor"
                 }
+            auth_number.delete()
             return JsonResponse(result)
         result = {
                 'result':'success',
                 'data' : "cor"
             }
+        auth_number.delete()
         return JsonResponse(result)
 
 
