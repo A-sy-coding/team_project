@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'users',  # 로그인 apps
+    'commmunity', # 게시판 apps
 ]
 
 MIDDLEWARE = [
