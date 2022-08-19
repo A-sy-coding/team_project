@@ -1,0 +1,118 @@
+{% load static %}
+<html>
+    <head>
+
+        <meta charset="utf-8"/>
+        <title>로그인</title>
+        <link rel = "stylesheet" href ="{% static 'login.css' %}">
+        <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+            Kakao.init('45dd1fae018be699da92b868bfbb5042');
+            Kakao.isInitialized();
+            function kakaoLogin() {
+                window.Kakao.Auth.login({
+                scope: 'profile_nickname', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                success: function(response) {
+                    console.log(response) // 로그인 성공하면 받아오는 데이터
+                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+                        url: '/v2 /user/me',
+                        success: (res) => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account)
+                        }
+                    });
+                    window.location.href='/healf.html'
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });
+            };
+        </script>
+    </head>
+    <body>
+        <div style="background-color:white; height:140%" id="wrap">
+            <header>
+                <div class = "wrapper">
+                    <h1>
+                    <a href="{% url 'healf:main' %}">HealF </a>
+                    </h1>
+                </div>
+            </header>
+            <div class="healf" style='margin: 40 auto;'>
+                <p>HealF</p>
+            </div>
+            <div style="width:60%;height:80%;margin:0 auto;text-align:center">
+                <form action="{% url 'users:login' %}" method="post">
+                    {% csrf_token %}
+                    <div style=" width:60%;margin:5 auto;position:relative">
+                          
+                        <input type="email" class="email" style=" border:solid 0.5px;border-radius: 10px;"
+                            name="user_id" id="user_id" placeholder="이메일 주소" required="" class="required" value="" data-msg-required="이메일 주소를 입력해 주세요." aria-invalid="true">
+                        <img src="{% static '이메일.png' %}" class="emailimage"/>
+                    </div>
+                    <div style=" width:60%; margin:5 auto;position:relative"> 
+                        <input type="password" class="password" style=" border:solid 0.5px;border-radius: 10px;"
+                        name="user_pw" id="user_pw" placeholder="비밀번호" required="" class="required" value="" data-msg-required="비밀번호를 입력해 주세요." aria-invalid="true">
+                        <img class="pwimage" src="{% static '비밀번호.png' %}"/>
+                    </div>  
+                    <div>
+                        <p>로그인에 실패하였습니다.</p>
+                    </div>
+
+                    <div style=" width:60%; margin:0 auto">
+                        <input type="submit" value="로그인" href = " " class="login" style=" border:solid 0.5px;border-radius: 10px;">
+                    </div>
+                       
+                    
+                </form>
+                <div style=" width:60%;height:6%; margin:0 auto;">
+                    <a href="javascript:kakaoLogin()">
+                        <img class="kakaoimage" src="{% static '카카오톡.png' %}"
+                        id="kakao login"/>
+                    </a>
+                </div>
+                <div style=" width:60%;height:6%; margin:0 auto">            
+                    <a href="https://www.naver.com/">
+                        <img class="naverimage" src="{% static '네이버.png' %}"
+                        id="naver login"/>
+                    </a>
+                </div>
+                <div style=" width:60%; margin:10 210;display:flex;">
+                    <div class="question">아직 회원이 아니시라면?</div>
+                    <a href="register"><button class="register">회원가입</button></a>
+                </div>
+            
+                
+            </div>
+            
+        </div>
+
+        <!-- <script src="login.js"></script>
+        <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+            Kakao.init('45dd1fae018be699da92b868bfbb5042');
+            Kakao.isInitialized();
+            document.getElementById("kakao login").addEventListener('click', kakaoLogin);
+            function kakaoLogin() {
+                window.Kakao.Auth.login({
+                scope: 'profile_nickname', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                success: function(response) {
+                    console.log(response) // 로그인 성공하면 받아오는 데이터
+                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+                        url: '/v2/user/me',
+                        success: (res) => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account)
+                        }
+                    });
+                    window.location.href='/healf.html'
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });
+            };
+            </script> -->
+    </body>
+</html>

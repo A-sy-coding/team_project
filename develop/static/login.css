@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Baloo';
+    src: url('BalooBhai.ttf') format('truetype');
+}
+
+*{
+    margin : 0;
+    padding : 0;
+}
+
+ul,li {
+    list-style : none;
+}
+
+a {
+    text-decoration: none;
+    color : inherit;
+}
+
+header {
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color: rgba(108, 60, 244, 0.85);
+    color: white;
+    position: relative;
+    top : 0;
+    left : 0;
+}
+
+
+/*healf*/
+h3{
+    font-size:20px;
+    margin: 10 auto;
+}
+
+h1{
+    line-height:60px;
+    font-size: 40px;
+    float : left;
+}
+
+h1 a{
+    text-decoration: none;
+    color : white;
+}
+
+.menu{
+    float : right;
+}
+
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+/*form*/
+.wrap{
+    max-width: 768px;
+    min-width: 460px;
+    margin:0 auto;
+}
+
+.healf{
+    width: 18.3333vw;
+    height: 5.5556vw;
+    margin: 30 40%;
+    text-align:center;
+    font-family: 'Baloo Bhai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4.1667vw;
+    line-height: 6.6667vw;
+    color:rgba(108, 60, 244, 0.85);
+}
+
+.email{
+    padding:0 8%;
+    margin: auto;
+    width: 70%;
+    height: 6%;
+    font-size: 1.3889vw;
+    font-family:NanumSquareRoundB;
+    background: rgba(255, 255, 255, 0.35);
+    border: 2px solid #000000;
+}
+
+.password{
+    box-sizing: border-box;
+    margin:auto;
+    padding:0 8%;
+    width: 70%;
+    height: 6%;
+
+    font-size: 1.3889vw;
+    background: rgba(255, 255, 255, 0.35);
+    border: 2px solid #000000;
+}
+
+.login{
+    box-sizing: border-box;
+    margin:10 auto;
+    width: 70%;
+    height: 6%;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5278vw;
+    cursor:pointer;
+    color:black;
+    background: #E5E0F2;
+    border: 2px solid #000000;
+}
+
+.emailimage{
+    left:17%;
+    top:25%;
+    position:absolute;
+    z-index:99;
+    width: 5%;
+    height: 50%;
+}
+
+.pwimage{
+    left:17%;
+    top:25%;
+    position:absolute;
+    z-index:99;
+    width: 5%;
+    height: 50%;
+}
+
+.kakaoimage{
+    margin:10 auto;
+    width: 70%;
+    height: 90%;
+
+}
+
+.naverimage{
+    margin:10 auto;
+    width: 70%;
+    height: 90%;
+
+}
+
+/*회원 가입 유도*/
+
+.question{
+    margin:9 0 10 30;
+    width: 50%;
+    height: 20%;
+    text-align:right;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.0417vw;
+    line-height: 2.2222vw;
+
+    color: #000000;
+}
+
+.register{
+    margin:10 ;
+    padding: 3px;
+    text-decoration: none;
+    font-size: 1.0000vw;
+    cursor:pointer;
+    color:white;
+    border-radius: 10px;
+    background: #000;
+    cursor: pointer;
+}
+

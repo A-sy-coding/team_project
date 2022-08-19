@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="keywords" content=""> <!--검색엔진 키워드-->
+    <meta name="description" content=""> <!--홈페이지 설명-->
+    <title>헬스 친구 HealF</title>
+
+    <!-- css -->
+    <link rel = "stylesheet" href="{% static 'main.css' %}">
+
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class = "wrapper">
+        <h1>
+          <a href="{% url 'healf:main'%}">HealF </a>
+        </h1>
+        <ul class = "menu">
+          {% if user_name != anonymous %}
+            <li>{{user_name}}님 접속을 환영합니다.</li>
+            <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+          {% else %}
+            <li><a href="{% url 'users:login'%}">로그인</a></li>
+            <li><a href="{% url 'users:register'%}">회원가입</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </header>
+    <!--어플 다운로드 링크-->
+    <div class = "appdown">
+       <a href="#" calss = "android" target="blank" title="구글플레이 다운로드">
+         <img src="사진/앱다운로드.png" alt="앱 다운로드 하기">
+       </a>
+    </div>
+    <!--main 설명-->
+    <div class = "main">
+      <h3>Health Friends</h3>
+      <p>대한민국 1위 헬스 플랫폼</p>
+    </div>
+    <!--바로가기-->
+    <div class = "link">
+      <a href="..\exercise\exercise.html">
+        <img src="{% static '사진/운동하기.png' %}"><p>운동하기</p>
+      </a>
+      <a href="../challenge/challenge.html">
+        <img src="{% static '사진/챌린지.png' %}"><p>챌린지</p>
+      </a>
+      <a href="../community/commu.html">
+        <img src="{% static '사진/커뮤니티.png' %}"><p>커뮤니티</p>
+      </a>
+      <a href="../market/market.html">
+        <img src="{% static '사진/마켓.png' %}"><p>마켓</p>
+      </a>
+      <a href="{%url 'healf:mypage' %}">
+        <img src="{% static '사진/나의정보.png' %}"><p>나의 정보</p>
+      </a>
+    </div>
+  </body>
+</html>
