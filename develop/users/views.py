@@ -24,7 +24,7 @@ def login_view(request):
                 request.session['user'] = myuser.id
 
                 # Redirect to a success page.
-                return redirect('healf:main')
+                return redirect('home')
         else:
             # Return an 'invalid login' error message.
             return render(request, 'users/logfail.html')
@@ -122,4 +122,4 @@ def auth_num_validater(request):#인증번호
 # Create your views here.
 def logout(request):
     request.session.pop('user')
-    return redirect('healf:main')
+    return redirect('home')

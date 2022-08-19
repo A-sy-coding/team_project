@@ -6,7 +6,7 @@
         <title>회원가입</title>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <link rel = "stylesheet" href ="{% static 'signup.css' %}">
+        <link rel = "stylesheet" href ="{% static 'users/signup.css' %}">
     </head>
 
     <body>
@@ -14,7 +14,7 @@
             <header>
                 <div class = "wrapper">
                     <h1>
-                    <a href="../main/main.html">HealF </a>
+                    <a href="{% url 'home' %}">HealF </a>
                     </h1>
                 </div>
             </header>
@@ -117,6 +117,6 @@
                 
             </div>
         </div>
-        <script src="{% static 'form_error.js' %}"></script>
+        <script src="{% static 'users/form_error.js' %}"></script>
     </body>
 </html>
