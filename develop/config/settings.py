@@ -51,8 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'healf',
-    'users',
+    'users',  # 로그인 apps
 ]
 
 MIDDLEWARE = [
