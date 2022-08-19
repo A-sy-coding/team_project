@@ -122,4 +122,4 @@ def auth_num_validater(request):#인증번호
 # Create your views here.
 def logout(request):
     request.session.pop('user')
-    return redirect('healf:main')
+    return redirect('home')
