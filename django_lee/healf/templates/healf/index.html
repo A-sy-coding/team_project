@@ -9,6 +9,7 @@
     <body>
         <h1>HI</h1>
         <a href=""><button>홈</button></a>
+        <a href="{% url 'board:board_list' %}"><button>게시판</button></a>
 
         {% if login_session %}
         logged by {{ user }} <br>

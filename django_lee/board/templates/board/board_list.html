@@ -1,0 +1,7 @@
+{% extends 'healf/index.html' %}
+
+{% block contents %}
+<div>게시판!</div>
+<div><a href="{% url 'board:board_write' %}"><button>글쓰기</button></a></div>
+<div style="border : 1px #000 solid; margin : 20px 0px;"></div>
+{% endblock contents %}
