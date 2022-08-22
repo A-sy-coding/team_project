@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'users',  # 로그인 apps
+    'challenge', # 챌린지 apps
+    'exercise', # 운동하기 apps 영하
 ]
 
 MIDDLEWARE = [
@@ -69,7 +71,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # templates를 찾을 때 가장 먼저 탐색할 경로
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

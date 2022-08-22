@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title> 헬스 친구 HealF | 운동하기</title>
+
+        <link rel = "stylesheet" href ="{% static 'challenge/challenge_exercise.css' %}">
+
+    </head>
+
+    <body>
+
+    <header>
+        <div class = "wrapper">
+        <h1>
+            <a href="{% url 'home' %}">HealF</a>
+        </h1>
+    </div>
+    </header>
+    <br><br><br><br>
+
+    <ul>
+        <li><a class="home" href="#">Squat</a></li>
+        <li><a href="#">Push-up</a></li>
+    </ul>
+        
+    <div class="all">
+
+        <div class="all1">
+        <div class="exercise">
+                    
+            <img src="/static/challenge/squat.jpg">
+            <!-- <div class="start"> start! </div> -->
+            <div class="start"><a href="{% url 'challenge:webcam' %}" style="color:white">start!</a></div>
+        </div>
+        </div>
+        
+    </div>
+
+    </body>
+
+</html>
