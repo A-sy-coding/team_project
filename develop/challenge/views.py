@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 from django.views.decorators.csrf import csrf_exempt
@@ -14,12 +14,26 @@ import torch, cv2
 from challenge.utils import OpenPoseNet
 from challenge.webcam import img_preprocess, get_pafs_heatmaps, pose_test, findAngle, delete_duplicate, squat_condition
 
+
 #--- TemplateView
 class ChallengeView(TemplateView):
     template_name = 'challenge/challenge.html' # 챌린지 화면
+    
 
 class Challenge_exerciseView(TemplateView):
+    '''
+    Description :
+        로그인이 되면 바로 접속이 가능하도록 하고, 로그인이 안되어 있으면 로그인 화면으로 redirect되도록 한다.
+    '''
     template_name = 'challenge/challenge_exercise.html' # challege화면의 운동하기 화면
+
+    def dispatch(self, request, *args, **kwargs): 
+        login_session = request.session.get('user')
+        
+        if login_session is None:
+            return redirect('users:login')
+        return super().dispatch(request, *args, **kwargs)
+
 
 class Challenge_dietView(TemplateView):
     template_name = 'challenge/challenge_diet.html' #challenge화면의 다이어트하기 화면
@@ -148,11 +162,11 @@ def record_video(request):
 
         # Count_Post 모델 객체 생성
         string_count = str(int(count))
-        post = Count_Post(text=string_count)
+        post = Count_Post(user_count=string_count)
         post.save()
 
-        # print('----------DB 조회 ---------------')
-        # print(Count_Post.objects.all().values())
+        print('----------DB 조회 ---------------')
+        print(Count_Post.objects.all())
 
         success = 'You complete ' + string_count + ' squat challenge!'
         return HttpResponse(success)
