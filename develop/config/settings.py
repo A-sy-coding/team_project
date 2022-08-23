@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'users',  # 로그인 apps
     'challenge', # 챌린지 apps
     'exercise', # 운동하기 apps 영하
+    'community', # 게시판
 ]
 
 MIDDLEWARE = [
@@ -147,4 +148,39 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+# summernote 필수 설정
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+INSTALLED_APPS +=['django_summernote']
+
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+#summernote 선택설정
+SUMMERNOTE_THEME='bs4'
+
+SUMMERNOTE_CONFIG = {
+    'attachment_filesize_limit' : 1024*1024*10,
+
+     # Summernote settings
+    'summernote': {
+                    'width': 720,
+                    'height': 480,
+                    'lang': 'ko-KR',
+                    'toolbar': [
+                        ['style', ['style']],
+                        ['font', ['bold', 'italic', 'underline', 'superscript', 'subscript',
+                                'strikethrough', 'clear']],
+                        ['fontname', ['fontname']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'hr']],
+                        ['view', ['fullscreen', 'codeview']],
+                        ['help', ['help']],
+                    ],
+                }
+}

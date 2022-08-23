@@ -162,7 +162,7 @@ class LoginForm(forms.Form):
             
             try :
                 PasswordHasher().verify(user.user_pw, user_pw)
-            except exceptions.VeifyMismatchError:
+            except exceptions.VerifyMismatchError:
                 return self.add_error('user_pw', '비밀번호가 다릅니다.')
 
             self.login_session = user.user_id
