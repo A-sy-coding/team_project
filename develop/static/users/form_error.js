@@ -125,7 +125,7 @@ $(function(){
                 
             },
             error : function(xhr, error){
-                alert("유효하지 않은 이메일입니다.");
+                alert("인증번호 전송을 실패했습니다.");
                 console.error("error : " + error);
             }
         })

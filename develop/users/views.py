@@ -109,13 +109,13 @@ def auth_num_validater(request):#인증번호
                     'result':'success',
                     'data' : "no cor"
                 }
-            auth_number.delete()
+            auth_number.objects.all().delete()
             return JsonResponse(result)
         result = {
                 'result':'success',
                 'data' : "cor"
             }
-        auth_number.delete()
+        auth_number.objects.all().delete()
         return JsonResponse(result)
 
 
