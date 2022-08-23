@@ -6,14 +6,19 @@ from users.models import Profile
 from users.decorators import login_required
 
 def board_list(request):
-    login_session = request.session.get('login_session', '')
+    login_session = request.session.get('user')
     context = {'login_session' : login_session}
 
     boards = Board.objects.all().order_by('-id')
 
-    context['boards'] = boards
-
-    return render(request, 'community/board_list.html', context)
+    if login_session != None:
+            user=Profile.objects.get(id=login_session)
+            context={'user_name':user.user_name}
+            context['boards'] = boards
+            return render(request,'community/board_list.html',context)
+    if login_session == None:
+            context['boards'] = boards
+            return render(request,'community/board_list.html',context)
 
 @login_required
 def board_write(request):
@@ -29,7 +34,7 @@ def board_write(request):
         write_form = BoardWriteForm(request.POST)
 
         if write_form.is_valid():
-            writer = profile.objects.get(user_id = login_session)
+            writer = profile.objects.get(id = login_session)
             board = Board(
                 title = write_form.title,
                 contents = write_form.contents,

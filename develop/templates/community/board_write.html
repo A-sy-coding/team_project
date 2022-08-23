@@ -1,4 +1,4 @@
-{% laod static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -17,11 +17,11 @@
                 </h1>
                 <ul class = "menu">
                     {% if user_name != anonymous %}
-                    <li>{{user_name}}님 접속을 환영합니다.</li>
-                    <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+                        <li>{{user_name}}님 접속을 환영합니다.</li>
+                        <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
                     {% else %}
-                    <li><a href="{% url 'users:login'%}">로그인</a></li>
-                    <li><a href="{% url 'users:register'%}">회원가입</a></li>
+                        <li><a href="{% url 'users:login'%}">로그인</a></li>
+                        <li><a href="{% url 'users:register'%}">회원가입</a></li>
                     {% endif %}
                 </ul>
             </div>

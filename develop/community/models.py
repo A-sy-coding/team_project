@@ -1,9 +1,9 @@
 from django.db import models
-
+import users
 class Board(models.Model) :
     title = models.CharField(max_length=64, verbose_name='글 제목')
     contents = models.TextField(verbose_name='글 내용')
-    writer = models.ForeignKey('users.profile', on_delete=models.CASCADE, verbose_name='작성자')
+    writer = models.ForeignKey(users.models.Profile, on_delete=models.CASCADE, verbose_name='작성자')
     write_dttm = models.DateTimeField(auto_now_add=True, verbose_name='글 작성일')
 
     update_dttm = models.DateTimeField(auto_now=True, verbose_name='마지막 수정일')
