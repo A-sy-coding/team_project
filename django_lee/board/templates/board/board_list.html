@@ -1,0 +1,19 @@
+{% extends 'healf/index.html' %}
+
+{% block contents %}
+<div>게시판!</div>
+<div><a href="{% url 'board:board_write' %}"><button>글쓰기</button></a></div>
+<div style="border : 1px #000 solid; margin : 20px 0px;"></div>
+
+<div class="board" style="display : flex">
+    <div class="py-board" style="width : 50%">
+        <p> 파이썬 게시판 </p>
+        {%  for board in boards %}
+        {% if board %}
+        <div> {{board.id}} / {{ board.title }} / {{ board.writer }} / {{ board.wrtie_dttm }}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock contents %}

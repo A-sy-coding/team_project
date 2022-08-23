@@ -9,6 +9,7 @@ urlpatterns = [
     path('home/', include('healf.urls')),
     path('', RedirectView.as_view(url='/home/')),
     path('user/', include('user.urls')),
+    path('board/', include('board.urls')),
 ]
 
 # Summernote 설정
