@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 import numpy as np
 import os
-
+from pathlib import Path
 # db에 count값 저장시 필요 패키지
 from .models import Count_Post
 from django.http import HttpResponse
@@ -122,7 +122,8 @@ def record_video(request):
         # print(type(video_data)) # bytes 타입
 
         # 임시로 mp4로 저장
-        File_output = "webcam.mp4"
+        Base_path = Path(__file__).resolve().parent
+        File_output = os.path.join(Base_path,"webcam.mp4")
 
         # writing binary(bytes 영상을 mp4로 변환하여 저장)
         with open(File_output, "wb") as out_file:
@@ -157,8 +158,11 @@ def record_video(request):
         print(int(count))
 
         # webcam.mp4 파일 삭제
-        if os.path.isfile(File_output):
-            os.remove(File_output)
+        try:
+            if os.path.isfile(File_output):
+                os.remove(File_output)
+        except:
+            pass
 
         # Count_Post 모델 객체 생성
         string_count = str(int(count))
