@@ -3,6 +3,7 @@ const int_regExp = /^[0-9]+$/;
 const email_regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 const phone_regExp=/^\d{3}-\d{3,4}-\d{4}$/;
 const pattern_regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+const pw_regExp = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 var id_clean = false;
 var pw_clean = false;
 var pw_clean2=false;
@@ -14,15 +15,11 @@ var name_clean = false;
 
 
 
-function create_error(value){
-    var newDiv = document.createElement('div');
-    newDiv.innerHTML = '<div>'+ value+" 오류" +'</div>';
-}
 
 function pw_valid(){
     var pw= document.getElementById('pw1').value;
-    if (pattern_regExp.test(pw)){//관련정규식 투입
-            document.getElementById('pw_error').innerText='영문자,숫자,특수문자를 포함한 8자리 문자를 입력해주세요'}
+    if (pw_regExp.test(pw)==false){//관련정규식 투입
+            document.getElementById('pw_error').innerText='영문자,숫자,특수문자를 포함한 8자리이상의 비밀번호를 입력해주세요'}
     else{document.getElementById('pw_error').innerText='사용가능한 비밀번호입니다.';pw_clean=true}    
         }
 function pw_valid2(){
@@ -36,8 +33,8 @@ var csrftoken = $('[name=csrfmiddlewaretoken]').val();
 $(function(){
     $('#idbutton').click(function(){
         var id = $('#user_id').val()
-        if ((new RegExp(/^[A-Za-z]{6~16}/gi)).test(id)) {
-            alert("ID는 영숫자 조합만 사용하세요");
+        if ((new RegExp(/^[A-Za-z0-9]{6,}$/)).test(id) == false) {
+            alert("ID는 6자리 이상의 영숫자 조합만 사용하세요");
             id_clean=false; 
             return; 
         }
@@ -80,6 +77,11 @@ $(function(){
         var email = $('#user_email').val()
         if(email == ''){
             alert('이메일을 입력해주세요.');
+            email_clean=false;
+            return;
+        }
+        if(email_regExp.test(email) == false){
+            alert('이메일 형식을 맞춰주세요.');
             email_clean=false;
             return;
         }
@@ -143,12 +145,10 @@ send.addEventListener("click", function () {
     if(user_birth!=null){birth_clean=true;};
     if(user_name!=null){name_clean=true;};
     var form = document.getElementById("form");
-    console.log(birth_clean,sex_clean,name_clean,email_clean,id_clean,pw_clean,pw_clean2);
-
     if (id_clean==true&pw_clean==true&email_clean==true&sex_clean==true&birth_clean==true&name_clean==true){
         form.action = '';
         form.method = "POST";
         form.submit();}
-    else{alert()}
+    else{alert("유효하지 않은 정보가 존재합니다.")}
     
 })
