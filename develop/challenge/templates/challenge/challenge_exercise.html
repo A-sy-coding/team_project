@@ -34,6 +34,13 @@
                     
             <img src="/static/challenge/squat.jpg">
             <!-- <div class="start"> start! </div> -->
+            
+            {% if check == "ok" %}
+            <script>
+            alert('챌린지는 하루에 한번만 가능합니다.');
+            </script>
+            {% endif %}
+            
             <div class="start"><a href="{% url 'challenge:webcam' %}" style="color:white">start!</a></div>
         </div>
         </div>

@@ -9,12 +9,14 @@ from pathlib import Path
 # db에 count값 저장시 필요 패키지
 from .models import Count_Post
 from users.models import Profile
+from datetime import datetime
 from django.http import HttpResponse
 
 # 필요한 ai model 패키지
 import torch, cv2
 from challenge.utils import OpenPoseNet
 from challenge.webcam import img_preprocess, get_pafs_heatmaps, pose_test, findAngle, delete_duplicate, squat_condition
+
 
 
 #--- TemplateView
@@ -91,17 +93,38 @@ def setting_squat(img, net):
     return joint_dict, out
         
 
-def HtmlWebcamView(request):
+class HtmlWebcamView(TemplateView):
     '''
     챌린지 페이지에서 start를 누르면 넘어가도록 하는 페이지 
     squat_record.html과 render된다.
     suqat_record.html에서는 javascript를 이용하여 webcam을 키고, 데이터를 전송하도록 해준다.
     데이터는 'webcam/record_video'으로 전송되게 된다. (record.js에서 설정)
+
+    Plus-Description:
+        Profile models에서 로그인 정보를 가져와 로그인 되어 있는 user의 count정보를 Count_Post models에서 가져오도록 한다.
+        Count_Post의 user_dt와 페이지의 start 버튼을 누를 때의 시간을 비교하여
+        챌린지를 하였지만, 날짜가 같다면 더 이상 챌린지가 불가능하다는 메세지가 나오는 창으로 이동(redirect)
+        챌린지를 하였지만, 날짜가 다르면 챌린지를 하는 창으로 이동하게 한다. (챌린지를 하지 않음과 동일)
     '''
-    # return render(request, 'webcam.html') 
-    return render(request, 'challenge/squat_record.html')
+    template_name = 'challenge/squat_record.html'
 
+    # 현재 로그인 정보 가져오기
+    def dispatch(self, request, *args, **kwargs):
+        current_user_id = request.session.get('user')  # 현재 접속 중인 user의 고유 id가 출력된다.
+        challenge_info = Count_Post.objects.filter(user_info_id=current_user_id).values().order_by('-user_dt') # Count_Post에서 현재 로그인 된 유저 정보 가져오기
+        
+        if not challenge_info:  # 로그인된 유저에 연관된 Count_Post 정보가 아무것도 없을 때는 바로 챌린지 화면으로 넘긴다.
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            click_time = datetime.now().date() # 클릭시 시간을 저장
+            challenge_info_time = challenge_info[0]['user_dt']  # 시간별 내림차순 정렬이므로 가장 최신 정보 시간 가져오기
+            
+            if click_time == challenge_info_time:  # 챌린지를 수행한 뒤, 다시 챌린지 화면을 클릭시 시간과 저장된 시간이 동일하면 안된다는 오류 메세지 출력
+                return render(request, 'challenge/challenge_exercise.html', {'check': "ok"})
 
+            else:  # 챌린지 화면 클릭 날짜가 다르면, 접속이 가능하도록 한다.
+                return super().dispatch(request, *args, **kwargs)
+        
 
 @csrf_exempt
 def record_video(request):
@@ -170,14 +193,10 @@ def record_video(request):
         except:
             pass
 
-        # Count_Post 모델 객체 생성
+        # Count_Post 모델에 필요 데이터 저장
         string_count = str(int(count))
-        temp = Count_Post(user_count=string_count, user_info=user_info)
+        temp = Count_Post(user_count=string_count, user_info=user_info, user_confirm=True)
         temp.save()
-        # Count_Post.objects.create(user_count = string_count)
-        
-        # post = Count_Post(user_count=string_count)
-        # post.save()
 
         print('----------DB 조회 ---------------')
         print(Count_Post.objects.all().values())

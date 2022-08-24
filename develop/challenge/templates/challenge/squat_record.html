@@ -10,6 +10,7 @@
 
         <link rel = "stylesheet" href ="{% static 'challenge/challenge_exercise_squat.css' %}">
 
+        
     </head>
 
     <body>
@@ -28,6 +29,16 @@
         <li><a href="#">Push-up</a></li>
     </ul>
         
+    {% if messages %}
+        <div class="row" style="margin:20px auto;">
+        <div class="col-sm-12">
+            <div class="alert alert-danger">
+            <strong>{{ message.tags }}!</strong> {{ message.message }}
+            </div>
+        </div>
+        </div>
+    {% endif %}
+
     <div class="all">
 
         <!-- 버튼 가운데 정렬 div안의 버튼들을 가운데로 정렬 -->
