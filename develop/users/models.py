@@ -6,7 +6,7 @@ class Profile(models.Model):
     user_id = models.CharField(max_length=32, unique=True, verbose_name='유저 아이디')
     user_pw = models.CharField(max_length=128, verbose_name='유저 비밀번호')
     user_name = models.CharField(max_length=16, verbose_name='유저 이름')
-    user_email = models.EmailField(max_length=128, unique=True, verbose_name='유저 이메일')
+    user_email = models.EmailField(max_length=128, verbose_name='유저 이메일')
     user_sex = models.CharField(max_length=16, verbose_name='유저 성별')
     user_birth = models.CharField(max_length=16,verbose_name='유저 생일')
     user_register_dttm = models.DateField(auto_now_add=True, verbose_name='계정 생성시간')
