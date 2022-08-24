@@ -7,26 +7,25 @@ import smtplib
 from email.mime.text import MIMEText
 from random import randint
 
-
+#로그인 함수
 def login_view(request):
     if request.method == "GET":
         return render(request, 'users/login.html')
     elif request.method == "POST":
         login_user_id=request.POST['user_id']
         login_user_pw = request.POST['user_pw']
-        try:
-            myuser = Profile.objects.get(user_id=login_user_id)
-        except Profile.DoesNotExist:
-            myuser = None
-        if myuser is not None:
-            if login_user_pw == myuser.user_pw:
-                request.session['user'] = myuser.id
-
-                # Redirect to a success page.
-                return redirect('home')
-        else:
-            # Return an 'invalid login' error message.
-            return render(request, 'users/logfail.html')
+    try:
+        myuser = Profile.objects.get(user_id__exact=login_user_id,user_pw__exact=login_user_pw)    
+        print(myuser.id)
+    except:
+        myuser = None    
+    if myuser != None:
+        request.session['user'] = myuser.id
+            # Redirect to a success page.
+        return redirect('home')
+    else:
+        # Return an 'invalid login' error message.
+        return render(request, 'users/logfail.html')
 
 
 
@@ -54,7 +53,7 @@ def iddupl(request):#아이디 유효성 검사기
     if 'user_id' in request.POST:    
         try:
             user_id = Profile.objects.get(user_id=request.POST['user_id'])
-        except Exception as e:
+        except:
             user_id=None
         if user_id==None:
             result = {
@@ -88,12 +87,12 @@ def email_validater(request): #이메일 인증기
         s.starttls()
         s.login(sendEmail, password)
         s.sendmail(sendEmail, recvEmail, msg.as_string())
-        s.close
-        auth_number.objects.create(auth_number = auth_num)
         result = {
                 'result':'success',
                 'auth_info' : str(auth_num)
             }
+        s.close
+        auth_number.objects.create(auth_number = auth_num)
         return JsonResponse(result)
     else:
         raise ValidationError("오류입니다")
