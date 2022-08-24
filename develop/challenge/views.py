@@ -5,8 +5,10 @@ from django.views.decorators.csrf import csrf_exempt
 import numpy as np
 import os
 from pathlib import Path
+
 # db에 count값 저장시 필요 패키지
 from .models import Count_Post
+from users.models import Profile
 from django.http import HttpResponse
 
 # 필요한 ai model 패키지
@@ -115,6 +117,10 @@ def record_video(request):
     net = setting_model() # 학습시킨 openpose 모델 --> 한번만 실행하도록 밖에다 빼서 실행
     print('-------- 모델 세팅 완료 --------------')
     
+    # 현재 로그인 정보 가져오기
+    current_user_id = request.session.get('user')  # 현재 접속 중인 user의 고유 id가 출력된다.
+    user_info = Profile.objects.get(id=current_user_id) # Profile에서 유저 정보를 가져오도록 한다.
+    
     if (request.method == 'POST'):
 
         video_data = request.FILES['video'].read()
@@ -166,11 +172,15 @@ def record_video(request):
 
         # Count_Post 모델 객체 생성
         string_count = str(int(count))
-        post = Count_Post(user_count=string_count)
-        post.save()
+        temp = Count_Post(user_count=string_count, user_info=user_info)
+        temp.save()
+        # Count_Post.objects.create(user_count = string_count)
+        
+        # post = Count_Post(user_count=string_count)
+        # post.save()
 
         print('----------DB 조회 ---------------')
-        print(Count_Post.objects.all())
+        print(Count_Post.objects.all().values())
 
         success = 'You complete ' + string_count + ' squat challenge!'
         return HttpResponse(success)

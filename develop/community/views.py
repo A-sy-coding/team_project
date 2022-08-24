@@ -6,7 +6,7 @@ from users.models import Profile
 from users.decorators import login_required
 
 def board_list(request):
-    login_session = request.session.get('user', '')
+    login_session = request.session.get('user')
     context = {'login_session' : login_session}
 
     boards = Board.objects.all().order_by('-id')
@@ -22,7 +22,7 @@ def board_list(request):
 
 @login_required
 def board_write(request):
-    login_session = request.session.get('user', '')
+    login_session = request.session.get('user')
     context = {'login_session' : login_session}
 
     if request.method =='GET' :
