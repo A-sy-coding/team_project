@@ -5,6 +5,10 @@
 <form action="" method="POST">
     {% csrf_token %}
 
+
+    <label for="title"></label>
+
+    <label for="contents"></label>
     {% for form in forms %}
     <div>
         <label for="{{ form.id_for_label}}">{{form.label}}</label>
