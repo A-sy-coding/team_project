@@ -49,7 +49,7 @@
                             {{ board.title }}
                         </a></div>
                     <div class="writer">{{ board.writer }}</div>
-                    <div class="date">{{ board.wrtie_dttm }}</div>
+                    <div class="date">{{ board.write_dttm |date:'Y.m.d H:i' }}</div>
                     <div class="count">10</div>
                 </div>
                 {% endif %}

@@ -1,16 +1,27 @@
-@font-face{
+@font-face {
     font-family: 'Baloo';
-    src: url("BalooBhai.ttf") format("truetype");
+    src: url('BalooBhai.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'ovo';
+    src: url('Ovo-Regular.ttf') format('truetype');
+}
+ul,li {
+    list-style : none;
+}
+
+a {
+    text-decoration: none;
+    color : inherit;
+}
+
 
 header {
     font-family : 'Baloo';
     height : 60px;
     width: 100%;
     background-color: rgba(108, 60, 244, 0.85);
-    color: white;
     position: fixed;
-    z-index: 9999;
     top : 0;
     left : 0;
   }
@@ -22,13 +33,16 @@ h1{
 }
  
 h1 a{
-    text-decoration: none;
     color : white;
 }
 
-a{
-    text-decoration: none;
-    font-family: 'Noto Sans KR', sans-serif;
+.menu{
+    font-family : ovo;
+    float : right;
+}
+
+.menu li{
+    float : left;
 }
 
 .wrapper{

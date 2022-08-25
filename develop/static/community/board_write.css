@@ -27,6 +27,11 @@ header{
     left : 0;
 }
 
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
 h1{
     line-height:60px;
     font-size: 40px;
@@ -38,17 +43,7 @@ h1 a{
     color : white;
 }
 
-.wrapper{
-    width :70%;
-    margin : 0 auto;
-}
-
-.board_wrap{
-    width : 65%;
-    margin : 110px auto;
-}
-
-.board_wrap .info{
-    margin-bottom: 30px;
-    font-size: 30px;
+.menu{
+    font-family : ovo;
+    float : right;
 }
