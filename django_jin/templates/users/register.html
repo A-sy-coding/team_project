@@ -6,7 +6,7 @@
         <title>회원가입</title>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <link rel = "stylesheet" href ="{% static 'signup.css' %}">
+        <link rel = "stylesheet" href ="{% static 'users/signup.css' %}">
     </head>
 
     <body>
@@ -14,7 +14,7 @@
             <header>
                 <div class = "wrapper">
                     <h1>
-                    <a href="../main/main.html">HealF </a>
+                    <a href="{% url 'home' %}">HealF </a>
                     </h1>
                 </div>
             </header>
@@ -69,9 +69,6 @@
                                 <input  style='display:none' class="int" type='text' id="auth_num" placeholder="인증번호" name="auth_num" >
                             </span>
                             <button id="authnum_button" type="button" style="display:none;margin-top:10;background-color:rgba(108, 60, 244, 0.85);color:white;border:0px;border-radius: 2px;">인증번호 확인</button>
-                            
-                        
-                        
                         </div>
 
 
@@ -87,12 +84,9 @@
                             </h3>
                             <div class="birthwrap" id="'birth">
                                 <span class="birthyy" style="width:80%">
-                                    <input class="birthyy" type="text" id="birthyy" name="birthyy" placeholder="년도">
-                                    <p style="text-align:center;margin:auto 0" >년</p>
-                                    <input class="birthyy" type="text" id="birthmm" name="birthmm" placeholder="월"> 
-                                    <p style="text-align:center;margin:auto 0">월</p>
-                                    <input class="birthyy" type="text" id="birthdd" name="birthdd" placeholder="일"> 
-                                    <p style="text-align:center;margin:auto 0">일</p>
+                                    <select name="yy" id="birthyy"></select>년
+                                    <select name="mm" id="birthmm"></select>월
+                                    <select name="dd" id="birthdd"></select>일
                                 </span>       
                             </div>
                             <h3>
@@ -117,6 +111,6 @@
                 
             </div>
         </div>
-        <script src="{% static 'form_error.js' %}"></script>
+        <script src="{% static 'users/form_error.js' %}"></script>
     </body>
 </html>

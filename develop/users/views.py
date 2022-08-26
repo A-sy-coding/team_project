@@ -6,6 +6,7 @@ from django.http import JsonResponse
 import smtplib
 from email.mime.text import MIMEText
 from random import randint
+from config.settings import get_secret
 
 #로그인 함수
 def login_view(request):
@@ -73,7 +74,7 @@ def email_validater(request): #이메일 인증기
         email=request.GET.get('email')   
         sendEmail = "jinus7949@naver.com"
         recvEmail = str(email)
-        password = "wlsdntjr1!"
+        password=get_secret('EMAIL_HOST_PASSWORD')
         smtpName = "smtp.naver.com"
         smtpPort = 587
         auth_num = randint(100000, 1000000)

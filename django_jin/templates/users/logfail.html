@@ -4,7 +4,7 @@
 
         <meta charset="utf-8"/>
         <title>로그인</title>
-        <link rel = "stylesheet" href ="{% static 'login.css' %}">
+        <link rel = "stylesheet" href ="{% static 'users/login.css' %}">
         <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
         <script>
             Kakao.init('45dd1fae018be699da92b868bfbb5042');
@@ -35,7 +35,7 @@
             <header>
                 <div class = "wrapper">
                     <h1>
-                    <a href="{% url 'healf:main' %}">HealF </a>
+                    <a href="{% url 'home' %}">HealF</a>
                     </h1>
                 </div>
             </header>
@@ -47,14 +47,14 @@
                     {% csrf_token %}
                     <div style=" width:60%;margin:5 auto;position:relative">
                           
-                        <input type="email" class="email" style=" border:solid 0.5px;border-radius: 10px;"
+                        <input type="id" class="email" style=" border:solid 0.5px;border-radius: 10px;"
                             name="user_id" id="user_id" placeholder="이메일 주소" required="" class="required" value="" data-msg-required="이메일 주소를 입력해 주세요." aria-invalid="true">
-                        <img src="{% static '이메일.png' %}" class="emailimage"/>
+                        <img src="{% static 'users/이메일.png' %}" class="emailimage"/>
                     </div>
                     <div style=" width:60%; margin:5 auto;position:relative"> 
                         <input type="password" class="password" style=" border:solid 0.5px;border-radius: 10px;"
                         name="user_pw" id="user_pw" placeholder="비밀번호" required="" class="required" value="" data-msg-required="비밀번호를 입력해 주세요." aria-invalid="true">
-                        <img class="pwimage" src="{% static '비밀번호.png' %}"/>
+                        <img class="pwimage" src="{% static 'users/비밀번호.png' %}"/>
                     </div>  
                     <div>
                         <p>로그인에 실패하였습니다.</p>
@@ -68,13 +68,13 @@
                 </form>
                 <div style=" width:60%;height:6%; margin:0 auto;">
                     <a href="javascript:kakaoLogin()">
-                        <img class="kakaoimage" src="{% static '카카오톡.png' %}"
+                        <img class="kakaoimage" src="{% static 'users/카카오톡.png' %}"
                         id="kakao login"/>
                     </a>
                 </div>
                 <div style=" width:60%;height:6%; margin:0 auto">            
                     <a href="https://www.naver.com/">
-                        <img class="naverimage" src="{% static '네이버.png' %}"
+                        <img class="naverimage" src="{% static 'users/네이버.png' %}"
                         id="naver login"/>
                     </a>
                 </div>

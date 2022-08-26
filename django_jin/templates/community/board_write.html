@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{% static 'community/board_write.css' %}">
+        <title>Community</title>
+    </head>
+    <body>
+        <header>
+            <div class = "wrapper">
+                <h1>
+                    <a href="{% url 'home'%}">HealF </a>
+                </h1>
+                <ul class = "menu">
+                    {% if user_name != anonymous %}
+                    <li>{{user_name}}님 접속을 환영합니다.</li>
+                    <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+                    {% else %}
+                    <li><a href="{% url 'users:login'%}">로그인</a></li>
+                    <li><a href="{% url 'users:register'%}">회원가입</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+        <div class="board_wrap">
+            <div class="info">
+                <div class="name">
+                    <strong>글작성</strong> 
+                </div>
+            </div>
+            <div class="board_write">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                
+                    {% for form in forms %}
+                    <div>
+                        <label for="{{ form.id_for_label}}">{{form.label}}</label>
+                        {{form}}
+                    </div>
+                    {% endfor %}
+
+                    {% if error %}
+                    {{ error }}
+                    {% endif %}
+                
+                    <button type="submit">투고하기</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

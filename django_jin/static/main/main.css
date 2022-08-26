@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'Baloo';
+    src: url('BalooBhai.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'ovo';
+    src: url('Ovo-Regular.ttf') format('truetype');
+}
+ul,li {
+    list-style : none;
+}
+
+a {
+    text-decoration: none;
+    color : inherit;
+}
+
+
+header {
+    
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color: rgba(108, 60, 244, 0.85);
+    position: fixed;
+    top : 0;
+    left : 0;
+  }
+/*healf*/
+h1{
+    line-height:5px;
+    font-size: 40px;
+    float : left;
+}
+ 
+h1 a{
+    color : white;
+}
+
+.menu{
+    font-family : ovo;
+    float : right;
+}
+
+.menu li{
+    float : left;
+}
+/*로그인 회원가입*/
+.menu a{
+    padding-top: 56.25%;
+    font-size: 12pt;
+    line-height:30px;
+    color : white;
+    padding : 0 5px;
+    display : block;
+}
+
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+/*앱 다운로드 박스 비율 고정하기*/
+.appdown{
+    float : right;
+    line-height: 200px;
+    margin-right : 60px;
+    width : 19%;
+}
+
+.appdown img{
+    width : 50%;
+    height : 20%;
+}
+
+/*main*/
+.main h3{
+    font-family: 'Baloo';
+
+    text-align : center;
+    align-items : center;
+
+    position: absolute;
+    width: 766px;
+    height: 121px;
+    left: 380px;
+    top: 50px;
+
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 175px;
+
+    color: rgba(108, 60, 244, 0.85);
+}
+.main p{
+    font-family: 'Baloo';
+
+    position : absolute;
+    width : 790px;
+    height : 160px;
+    left : 580px;
+    top : 200px;
+
+    color : rgba(108, 60, 244, 0.85);
+    font-style : normal;
+    font-weight : 400;
+    font-size : 30px;
+    line-height : 60px;
+    display : flex;
+    align-items : center;
+}
+
+/*link*/
+.link{
+    position : absolute;
+    width : 100%;
+    height : 210px;
+    left : 0px;
+    top : 480px;
+
+    padding-left: 270px;
+
+    background: rgba(245, 245, 245, 0.9);    
+}
+.link a{
+    float : left;
+}
+
+.link img{
+    width : 100px;
+    height : 100px;
+    display: inline-block;
+    margin : 30px 50px -10px 50px;
+}
+
+.link p{
+    font-family : ovo;
+    text-align: center;
+}
