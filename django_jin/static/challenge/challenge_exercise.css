@@ -1,0 +1,167 @@
+@font-face{
+    font-family: 'Baloo';
+    src: url("BalooBhai.ttf") format("truetype");
+}
+
+header {
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color: rgba(108, 60, 244, 0.85);
+    color: white;
+    position: fixed;
+    z-index: 9999;
+    top : 0;
+    left : 0;
+  }
+/*healf*/
+h1{
+    line-height:5px;
+    font-size: 40px;
+    float : left;
+}
+ 
+h1 a{
+    text-decoration: none;
+    color : white;
+}
+
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+.box{
+    margin : 50%;
+    padding : 30px;
+    border : 1px solid black;
+    border-radius : 5px;
+}
+
+/*네비게이션바*/
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-left: 15%;
+    width: 90px;
+    background: rgb(225, 221, 247);
+    /* height: 34%; */
+    overflow: auto;
+    position: fixed;
+    margin-top : 2.7%;
+  }
+  
+  li a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: rgb(28, 4, 4);
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  li a:hover {
+    background:  rgba(108, 60, 244, 0.85);
+    color: #fff;
+  }
+  
+  li a.home {
+    background :  rgba(108, 60, 244, 0.85);
+    color: #fff;
+  }
+
+
+/*운동하기*/
+
+
+.all{
+  background-color : rgb(255, 255, 255);
+  width : 1250px;
+  height : 620px;
+  padding-left: 24%;
+  padding-top:24px;
+}
+
+.all1{
+    background-color : rgb(255, 255, 255);
+    width : 900px;
+    height : 600px;
+    display : inline-flex;
+   }
+
+a{
+  text-decoration: none;
+}
+
+.exercise{
+  background-color:rgb(233, 237, 255);
+  width : 850px;
+  height : 500px;
+  text-align : center;
+  font-family : 'Baloo';
+  font-weight: bold;
+  margin-left:4%;
+  border-radius : 20px;
+  display:flex;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.exercise img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 투명도 설정 */
+    opacity:0.5;
+    filter: alpha(opacity=70);
+    /* 이미지 뒤로 보내기 순서 */
+    z-index:2;
+}
+
+/* 마우스를 올렸을 때 진하게 보일 수 있게 설정 */
+.exercise img:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* IE8 및 그 이하 버전용 */
+    }
+    
+
+.start{
+  font-family:Arial;
+  box-shadow:inset 0px 0px 15px -2px #9fb4f2;
+  background-color: #7543ff;
+  width : 150px;
+  height : 50px;
+  color : rgb(255, 255, 255);
+  font-size:34px;
+  line-height: 50px;
+	border-radius:11px;
+  margin-top:48%;
+  margin-left:44%;
+  z-index:3;
+}
+
+.action{
+  background-color:rgb(255, 255, 255);
+  width : 280px;
+  height : 150px;
+  color : black;
+  text-align : center;
+  font-family : 'Baloo';
+  font-weight: bold;
+  font-size : 25px;
+  margin-left : 5px;
+  margin:8px;
+}
+
+.action:first-child{
+  font-size: 0;
+  margin-top:25px;
+}
+
+
+        

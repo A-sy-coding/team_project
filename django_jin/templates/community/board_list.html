@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{% static 'community/board_list.css' %}">
+
+        <title>Community</title>
+    </head>
+    <body>
+        <header>
+            <div class = "wrapper">
+                <h1>
+                    <a href="{% url 'home'%}">HealF </a>
+                </h1>
+                <ul class = "menu">
+                    {% if user_name != anonymous %}
+                    <li>{{user_name}}님 접속을 환영합니다.</li>
+                    <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+                    {% else %}
+                    <li><a href="{% url 'users:login'%}">로그인</a></li>
+                    <li><a href="{% url 'users:register'%}">회원가입</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+        <div class="board_wrap">
+            <div class="info">
+                <div class="name">
+                    <strong>community</strong><br> 
+                </div>
+            </div>
+            <div class="board">
+                <div class="top">
+                    <div class="num">번호</div>
+                    <div class="title">제목</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">날짜</div>
+                    <div class="count">조회수</div>
+                </div>
+                {%  for board in boards %}
+                {% if board %}
+                <div>
+                    <div class="num">{{ board.id }}</div>
+                    <div class="title">
+                        <a href="아직 안만든 부분인듯?">
+                            {{ board.title }}
+                        </a></div>
+                    <div class="writer">{{ board.writer }}</div>
+                    <div class="date">{{ board.wrtie_dttm }}</div>
+                    <div class="count">10</div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="button_page">
+                <a href="#"><<</a>
+                <a href="#"><</a>
+                <a href="#" class="num">1</a>
+                <a href="#">></a>
+                <a href="#">>></a>
+            </div>
+            <div class="button">
+                <a href="{% url 'community:board_write' %}">글작성</a>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <a href="{% url 'home'%}">2022 HealF</a>
+                <h6>Copyright © HealF Inc. All rights reserved.</h6>
+            </div>
+        </footer>
+        
+    </body>
+</html>

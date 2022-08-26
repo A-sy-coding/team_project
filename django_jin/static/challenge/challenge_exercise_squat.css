@@ -1,0 +1,171 @@
+@font-face{
+    font-family: 'Baloo';
+    src: url("BalooBhai.ttf") format("truetype");
+}
+
+header {
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color: rgba(108, 60, 244, 0.85);
+    color: white;
+    position: fixed;
+    z-index: 9999;
+    top : 0;
+    left : 0;
+  }
+/*healf*/
+.wrapper h1{
+    line-height:5px;
+    font-size: 40px;
+    float : left;
+}
+ 
+  h1 a{
+    text-decoration: none;
+    color : white;
+}
+
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+.box{
+    margin : 50%;
+    padding : 30px;
+    border : 1px solid black;
+    border-radius : 5px;
+}
+
+/*네비게이션바*/
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-left: 15%;
+    width: 90px;
+    background: rgb(225, 221, 247);
+    /* height: 34%; */
+    overflow: auto;
+    position: fixed;
+    margin-top : 2.7%;
+  }
+  
+  li a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: rgb(28, 4, 4);
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  li a:hover {
+    background:  rgba(108, 60, 244, 0.85);
+    color: #fff;
+  }
+  
+  li a.home {
+    background :  rgba(108, 60, 244, 0.85);
+    color: #fff;
+  }
+
+
+/*운동하기*/
+
+
+.all{
+  background-color : rgb(255, 255, 255);
+  width : 1250px;
+  height : 620px;
+  padding-left: 24%;
+  padding-top:24px;
+}
+
+
+.exercise{
+  background-color:rgb(233, 237, 255);
+  width : 850px;
+  height : 500px;
+  text-align : center;
+  font-family : 'Baloo';
+  font-weight: bold;
+  margin-left:4%;
+  border-radius : 20px;
+  display:flex;
+
+  position: relative;
+  overflow: hidden;
+  
+}
+
+.video{
+  width : 100%;
+  height : auto;
+}
+
+#button{
+  margin-right:-4px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#send_button{
+  margin-left: 1px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#button_group button{
+  border: 5px solid rgba(108, 60, 244, 0.85);;
+  background-color: rgba(108, 60, 244, 0.85);
+  color: white;
+  font-weight: bold;
+  padding: 10px; 
+  position: relative;
+  left: 35%;               
+}
+div#button_group {
+  margin-top: auto;
+  margin-right: 280px;
+}
+#button_group button:hover{
+  color:white;
+  background-color: skyblue;
+}
+
+.result h1{
+  font-size: 20px;
+  position: relative;
+  left: 60px;
+}
+
+.result h2{
+  font-size: 20px;
+  position:relative;
+  left:60px;
+}
+
+.action{
+  background-color:rgb(255, 255, 255);
+  width : 280px;
+  height : 150px;
+  color : black;
+  text-align : center;
+  font-family : 'Baloo';
+  font-weight: bold;
+  font-size : 25px;
+  margin-left : 5px;
+  margin:8px;
+}
+
+.action:first-child{
+  font-size: 0;
+  margin-top:25px;
+}
+
+
+        
