@@ -63,9 +63,11 @@
                     </div> 
 
                     <div class="login_wrap">
+                        <!-- 추가 부분(이전 경로 가져오기) -->
+                        <input type="hidden" name="prev_path" value="{{ prev_path }}"></input>
                         <input class="login" type="submit" value="로그인">
                     </div>
-                </form>
+                </form> 
 
                 <div class="kakao">
                     <a href="javascript:kakaoLogin()">

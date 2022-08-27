@@ -33,9 +33,11 @@ class Challenge_exerciseView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs): 
         login_session = request.session.get('user')
+    
         
         if login_session is None:
-            return redirect('users:login')
+            return render(request, 'users/login.html', {'prev_path':request.path} )
+
         return super().dispatch(request, *args, **kwargs)
 
 

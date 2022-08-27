@@ -10,20 +10,32 @@ from config.settings import get_secret
 
 #로그인 함수
 def login_view(request):
+
     if request.method == "GET":
-        return render(request, 'users/login.html')
+        prev_path = request.GET.get('prev_path') # a href으로 이전 페이지 url을 받아오도록 한다.
+        return render(request, 'users/login.html', {'prev_path':prev_path})
+
     elif request.method == "POST":
         login_user_id=request.POST['user_id']
         login_user_pw = request.POST['user_pw']
+        
+        prev_path = request.POST.get('prev_path') # login 페이지에서 로그인을 누르면 POST방식으로 데이터 전송
+                                                  # 이전 경로를 기억하도록 하여 prev_path로 저장
+    
+    print('이전 경로-------------------')
+    print(prev_path)
     try:
         myuser = Profile.objects.get(user_id__exact=login_user_id,user_pw__exact=login_user_pw)    
         print(myuser.id)
     except:
         myuser = None    
+    
     if myuser != None:
         request.session['user'] = myuser.id
             # Redirect to a success page.
-        return redirect('home')
+        # return redirect('home')
+        return redirect(prev_path)
+        
     else:
         # Return an 'invalid login' error message.
         return render(request, 'users/logfail.html')
