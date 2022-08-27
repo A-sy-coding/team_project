@@ -22,8 +22,6 @@ def login_view(request):
         prev_path = request.POST.get('prev_path') # login 페이지에서 로그인을 누르면 POST방식으로 데이터 전송
                                                   # 이전 경로를 기억하도록 하여 prev_path로 저장
     
-    print('이전 경로-------------------')
-    print(prev_path)
     try:
         myuser = Profile.objects.get(user_id__exact=login_user_id,user_pw__exact=login_user_pw)    
         print(myuser.id)
@@ -32,8 +30,7 @@ def login_view(request):
     
     if myuser != None:
         request.session['user'] = myuser.id
-            # Redirect to a success page.
-        # return redirect('home')
+        # Redirect to a success page.
         return redirect(prev_path)
         
     else:
