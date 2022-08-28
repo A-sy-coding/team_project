@@ -8,12 +8,23 @@
 <div class="board" style="display : flex">
     <div class="py-board" style="width : 50%">
         <p> 파이썬 게시판 </p>
-        {%  for board in boards %}
+        {%  for board in py_boards %}
         {% if board %}
-        <div> {{board.id}} / {{ board.title }} / {{ board.writer }} / {{ board.wrtie_dttm }}</div>
+        <a href="/board/detail/{{board.id}}" target="_self">
+            <div> {{board.id}} / {{ board.title }} / {{ board.writer }} / {{ board.wrtie_dttm }}</div>
+        </a>
         {% endif %}
         {% endfor %}
     </div>
-
+    <div class="py-board" style="width : 50%; border-left: 2px #000; padding-left: 25px;">
+        <p> 자바스크립트 게시판 </p>
+        {%  for board in js_boards %}
+        {% if board %}
+        <a href="/board/detail/{{board.id}}" target="_self">
+            <div> {{board.id}} / {{ board.title }} / {{ board.writer }} / {{ board.wrtie_dttm }}</div>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock contents %}

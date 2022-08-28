@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{% static 'community/board_detail.css' %}">
+        <title>Community</title>
+    </head>
+    <body>
+        <header>
+            <div class = "wrapper">
+                <h1>
+                    <a href="{% url 'home'%}">HealF </a>
+                </h1>
+                <ul class = "menu">
+                    {% if user_name != anonymous %}
+                    <li>{{user_name}}님 접속을 환영합니다.</li>
+                    <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+                    {% else %}
+                    <li><a href="{% url 'users:login'%}">로그인</a></li>
+                    <li><a href="{% url 'users:register'%}">회원가입</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+        <div class="board_wrap">
+            <div class="board_view">
+                <div class="title">
+                    <strong>{{board.title}}</strong>
+                    <div class="date">{{board.write_dttm}}</div>
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd>{{board.writer}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회</dt>
+                        <dd>{{board.hits}}</dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    {{board.contents|safe}}
+                </div>
+            </div>
+            <div class="button">
+                <a href="{% url 'community:board_list' %}">목록</a>
+                {% if writer %}
+                <a href="/community/detail/{{ board.id }}/delete">삭제</a>
+                <a href="/community/detail/{{ board.id }}/modify">수정</a>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>

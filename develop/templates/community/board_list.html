@@ -45,12 +45,12 @@
                 <div>
                     <div class="num">{{ board.id }}</div>
                     <div class="title">
-                        <a href="아직 안만든 부분인듯?">
+                        <a href="/community/detail/{{board.id}}" target="_self">
                             {{ board.title }}
                         </a></div>
                     <div class="writer">{{ board.writer }}</div>
-                    <div class="date">{{ board.write_dttm |date:'Y.m.d H:i' }}</div>
-                    <div class="count">10</div>
+                    <div class="date">{{ board.write_dttm |date:'Y.m.d' }}</div>
+                    <div class="count">{{ board.hits }}</div>
                 </div>
                 {% endif %}
                 {% endfor %}

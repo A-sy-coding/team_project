@@ -8,7 +8,8 @@ class BoardAdmin(SummernoteModelAdmin) :
     list_display = (
         'title', 
         'contents', 
-        'writer', 
+        'writer',
+        'board_name',
         'hits', 
         'write_dttm', 
         'update_dttm'

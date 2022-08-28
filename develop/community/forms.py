@@ -5,7 +5,7 @@ from django_summernote.widgets import SummernoteWidget
 
 class BoardWriteForm(forms.ModelForm) : 
     title=forms.CharField(
-        label = '글 제목',
+        label = '글제목',
         widget = forms.TextInput(
             attrs={
                 'placeholder' : '게시글 제목'
@@ -27,7 +27,7 @@ class BoardWriteForm(forms.ModelForm) :
             'contents',
         ]
         widgets = {
-            'contents' : SummernoteWidget()
+            'contents' : SummernoteWidget(attrs={'summernote': {'width': '100%', 'height': '400px', 'resize': 'vertical'}})
         }
 
     def clean(self):

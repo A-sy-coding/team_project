@@ -6,6 +6,7 @@ class Board(models.Model) :
     writer = models.ForeignKey('user.User', on_delete=models.CASCADE, verbose_name='작성자')
     write_dttm = models.DateTimeField(auto_now_add=True, verbose_name='글 작성일')
 
+    board_name = models.CharField(max_length=32, default='Python', verbose_name='게시판 종류')
     update_dttm = models.DateTimeField(auto_now=True, verbose_name='마지막 수정일')
     hits = models.PositiveIntegerField(default=0, verbose_name='조회수')
 

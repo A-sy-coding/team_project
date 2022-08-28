@@ -1,0 +1,157 @@
+@font-face {
+    font-family: 'Baloo';
+    src: url('BalooBhai.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'ovo';
+    src: url('Ovo-Regular.ttf') format('truetype');
+}
+ul,li {
+    list-style : none;
+}
+
+a {
+    text-decoration: none;
+    color : inherit;
+}
+
+
+header {
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color: rgba(108, 60, 244, 0.85);
+    position: fixed;
+    top : 0;
+    left : 0;
+}
+
+.wrapper{
+    width :70%;
+    margin : 0 auto;
+}
+
+/*healf*/
+h1{
+    line-height:5px;
+    font-size: 40px;
+    float : left;
+}
+ 
+h1 a{
+    color : white;
+}
+
+.menu{
+    font-family : ovo;
+    float : right;
+}
+
+/*로그인 회원가입*/
+.menu li{
+    float : left;
+    font-size: 12pt;
+    line-height:30px;
+    color : white;
+    padding : 0 5px;
+    display : block;
+}
+
+/* view */
+.board_wrap{
+    width : 65%;
+    margin : 110px auto;
+}
+
+.board_view .title{
+    width : 100%;
+    border-bottom: 1px solid rgba(153,153,153,0.9);
+    border-top: 1px solid rgba(153,153,153,0.9);
+    font-size: 18px;
+    background-color: rgba(153, 153, 153, 0.097);
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.board_view .title .date{
+    float : right;
+    font-size : 12px;
+    padding-top : 3px;
+}
+
+.board_view .info{
+    width: 100%;
+    padding :10px;
+    border-bottom: 1px solid rgba(153,153,153,0.9);
+    font-size:0px;
+}
+
+.board_view .info dl{
+    position : relative; /*밑의 position:absolute의 기준이 됨*/
+    display: inline-block;
+    padding : 0 20px;
+}
+
+.board_view .info dl:first-child{
+    padding-left : 0;
+}
+
+.board_view .info dl::before{
+    content : "";
+    display: block;
+    width: 1px;
+    height: 13px;
+    background: #999;
+    position: absolute;
+    top : 5px;
+    left : 4px;
+}
+
+.board_view .info dl:first-child::before{
+    display: none;
+}
+.board_view .info dl dt,
+.board_view .info dl dd{
+    display: inline-block;
+    font-size : 13px;
+}
+
+.board_view .info dl dd{
+    margin-left: 10px;
+    color : #777;
+}
+
+.board_view .cont{
+    padding: 15px;
+    border-bottom: 1px solid #000;
+    line-height: 160%;
+    font-size: 13px;
+}
+.board_view .cont img{
+    display: block;
+    margin:0 auto;
+    width :300px;
+    height :300px
+}
+
+.button{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+    box-sizing: border-box;
+    margin-bottom: 70px;
+}
+
+.button a{
+    min-width: 80px;
+    padding: 8px 20px;
+    font-size: 15px;
+    border : 1px solid #000;
+    border-radius: 3px;
+    margin-left: 5px;  
+}
+
+.button a:hover{
+    background-color: black;
+    color: #FFF;
+}

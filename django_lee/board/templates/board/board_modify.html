@@ -1,0 +1,25 @@
+{% extends 'healf/index.html' %}
+
+{% block contents %}
+<div>수정하기 !!</div>
+<form action="" method="POST">
+    {% csrf_token %}
+
+
+    <label for="title"></label>
+
+    <label for="contents"></label>
+    {% for form in forms %}
+    <div>
+        <label for="{{ form.id_for_label}}">{{form.label}}</label>
+        {{form}}
+    </div>
+    {% endfor %}
+
+    {% if error %}
+    {{ error }}
+    {% endif %}
+
+    <button type="submit">수정하기</button>
+</form>
+{% endblock contents %}

@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
 from pathlib import Path
 import os,json
 from django.core.exceptions import ImproperlyConfigured
@@ -165,8 +164,8 @@ SUMMERNOTE_CONFIG = {
 
      # Summernote settings
     'summernote': {
-                    'width': 720,
-                    'height': 480,
+                    'width': 1000,
+                    'height': 680,
                     'lang': 'ko-KR',
                     'toolbar': [
                         ['style', ['style']],
