@@ -55,12 +55,35 @@
                 {% endif %}
                 {% endfor %}
             </div>
+
             <div class="button_page">
-                <a href="#"><<</a>
+
+                <a href="?page=1"><<</a>
+
+                {% if active_previous_page_chunk %}
+                <a href="?page={{ previous_page_cunk }}"><</a>
+                {% else %}
                 <a href="#"><</a>
-                <a href="#" class="num">1</a>
+                {% endif %}
+
+                {% for key, value in display_page.items %}
+                {% if value %}
+                {% if value == now_page %}
+                <a href="?page={{ value }}" class="num">{{ value }}</a>
+                {% else %}
+                <a href="?page={{ value }}">{{ value }}</a>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+
+                {% if active_next_page_chunk %}
+                <a href="?page={{ next_page_cunk }}">></a>
+                {% else %}
                 <a href="#">></a>
-                <a href="#">>></a>
+                {% endif %}
+
+                <a href="?page={{ end_page }}">>></a>
+
             </div>
             <div class="button">
                 <a href="{% url 'community:board_write' %}">글작성</a>
