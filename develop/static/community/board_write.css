@@ -43,7 +43,40 @@ h1 a{
     color : white;
 }
 
-.menu{
-    font-family : ovo;
-    float : right;
+/* 글쓰기 */
+.board_wrap{
+    width : 80%;
+    margin: 100px auto;
+    padding-left: 10%;
+    box-sizing: border-box;
+}
+
+.board_wrap .info {
+    margin-bottom: 20px;
+}
+
+.board_wrap .info .name strong{
+    font-size: 30px;
+}
+
+/*버튼*/
+.button{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+    box-sizing: border-box;
+}
+
+.button button{
+    min-width: 80px;
+    padding: 8px 20px;
+    font-size: 15px;
+    border : 1px solid #000;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+.button button:hover{
+    background-color: black;
+    color: #FFF;
 }

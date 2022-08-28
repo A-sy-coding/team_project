@@ -15,9 +15,20 @@ class BoardWriteForm(forms.ModelForm) :
 
     contents = SummernoteTextField()
 
+    options = (
+        ('Python', '파이썬 게시판'),
+        ('JavaScript', '자바스크립트')
+    )
+
+    board_name = forms.ChoiceField(
+        label = '게시판 선택',
+        widget = forms.Select(),
+        choices=options
+    )
 
     field_order = [
         'title',
+        'board_name',
         'contents'
     ]
 
@@ -26,6 +37,7 @@ class BoardWriteForm(forms.ModelForm) :
         fields = [
             'title',
             'contents',
+            'board_name'
         ]
         widgets = {
             'contents' : SummernoteWidget()
@@ -36,6 +48,7 @@ class BoardWriteForm(forms.ModelForm) :
 
         title = cleand_data.get('title', '')
         contents = cleand_data.get('contents', '')
+        board_name = cleand_data.get('board_name', 'Python')
 
         if title == '' :
             self.add_error('title', '글 제목을 입력하세요.')
@@ -44,3 +57,4 @@ class BoardWriteForm(forms.ModelForm) :
         else : 
             self.title = title
             self.contents = contents
+            self.board_name = board_name

@@ -20,10 +20,10 @@
         <div class="board_wrap">
             <div class="info">
                 <div class="name">
-                    <strong>글작성</strong> 
+                    <strong>글수정</strong> 
                 </div>
             </div>
-            <form action="{% url 'community:board_write' %}" method="POST">
+            <form action="" method="POST">
                 {% csrf_token %}
             
                 {% for form in forms %}
@@ -32,14 +32,12 @@
                     {{form}}
                 </div>
                 {% endfor %}
-                
+            
                 {% if error %}
                 {{ error }}
                 {% endif %}
             
-                <div class="button">
-                    <button type="submit" id="write">작성하기</button>
-                </div>
+                <button type="submit">수정하기</button>
             </form>
         </div>
     </body>
