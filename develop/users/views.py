@@ -34,8 +34,9 @@ def login_view(request):
         return redirect(prev_path)
         
     else:
-        # Return an 'invalid login' error message.
-        return render(request, 'users/logfail.html')
+        contents = {'fail':'로그인에 실패하였습니다.'}
+            # Return an 'invalid login' error message.
+        return render(request,'users/login.html',contents)
 
 
 

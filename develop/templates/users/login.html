@@ -8,6 +8,9 @@
 
         <!-- script -->
         <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
         <script>
             Kakao.init('45dd1fae018be699da92b868bfbb5042');
             Kakao.isInitialized();
@@ -61,6 +64,7 @@
                         <input type="password" name="user_pw" placeholder="비밀번호" data-msg-required="이메일 주소를 입력해 주세요." aria-invalid="true">
                         <img src="{% static 'users/비밀번호.png' %}"/>
                     </div> 
+                    <div class="login_error"><h5 id="login_error">{{ fail }}</h5></div>
 
                     <div class="login_wrap">
                         <!-- 추가 부분(이전 경로 가져오기) -->
@@ -74,11 +78,19 @@
                         <img class="kakaoimage" src="{% static 'users/카카오톡.png' %}"/>
                     </a>
                 </div>
-                <div class="naver">            
-                    <a href="https://www.naver.com/">
-                        <img class="naverimage" src="{% static 'users/네이버.png' %}"/>
-                    </a>
-                </div>
+                <div class="naver" id="naver_id_login"></div>        
+                <script type="text/javascript">
+                    var naver_id_login = new naver_id_login("GyanfkeJYGX8BrGOtCIg", "http://127.0.0.1");
+  	                var state = naver_id_login.getUniqState();
+                    naver_id_login.setButton("green", 10,50);
+                    naver_id_login.setDomain("http://127.0.0.1:8000/users/login/");
+                    naver_id_login.setState(state);
+                    naver_id_login.setPopup();
+                    naver_id_login.init_naver_id_login();
+                </script>
+                <script>element=document.getElementsByTagName("img")[3]
+                    element.setAttribute('src',"{% static 'users/네이버.png' %}")</script>
+
 
                 <!--
                 <div class="kn">
@@ -100,5 +112,11 @@
 
             </div>
         </div>
+        <script>var fail='{{ fail }}';
+            console.log(fail)
+            if (fail !=''){
+                document.getElementById('login_error').setAttribute('style','display:block;');
+            }
+        </script>
     </body>
 </html>
