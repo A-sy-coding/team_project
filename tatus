@@ -1,0 +1,763 @@
+[33mcommit c92cf1ca3135c8e36a0a735df9f700b0909c26ef[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 88e90fd 5f05e04
+Author: unknown <jinus7949@gmail.com>
+Date:   Mon Aug 29 20:22:44 2022 +0900
+
+    Merge branch 'master' of https://github.com/jinwooseok/team_project
+
+[33mcommit 88e90fd672f1cd358e26542b89a1d9afaf84e6cb[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Mon Aug 29 19:28:20 2022 +0900
+
+    logfail제거 및 네이버로그인 구현중
+
+[33mcommit f2a24404173c7e7899735409cee118aab78dee2d[m[33m ([m[1;31mupstream/master[m[33m)[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Mon Aug 29 14:30:36 2022 +0900
+
+    delete cached
+
+[33mcommit 67de3bf8b4c133cb6f021e7b225d1693cf6d30bd[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Mon Aug 29 14:06:33 2022 +0900
+
+    ignore 파일 수정
+
+[33mcommit 5f05e04c19ff6b591f683b81b739457e19e37495[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Mon Aug 29 13:37:04 2022 +0900
+
+    logfail삭제, 네이버,카카오 프론트연동, 오류사항 수정
+
+[33mcommit cf528112194a834439138eb675a4319f8bcf58e7[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Mon Aug 29 12:47:04 2022 +0900
+
+    market 연동
+
+[33mcommit 90b5ea32a755ebe3241dc4f3cb16764bb444756f[m
+Merge: 76aaca7 0fe0aaa
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Mon Aug 29 00:44:49 2022 +0900
+
+    Merge pull request #34 from Seungmani/xx
+    
+    페이지 이동, 조회수 구현
+
+[33mcommit 0fe0aaad189e78792d57847564c84d36beb97f15[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Mon Aug 29 00:09:09 2022 +0900
+
+    페이지 이동, 조회수 구현
+
+[33mcommit 76aaca7ca09912b64bb2f183497515dab67105a0[m
+Merge: afafa4d 4314c39
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Sun Aug 28 22:18:43 2022 +0900
+
+    Merge pull request #33 from Seungmani/x
+    
+    게시글 보기, 수정, 삭제
+
+[33mcommit 4314c39ee118baf82f260f90cf08c136a9017dd9[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Sun Aug 28 21:14:45 2022 +0900
+
+    게시글 보기, 수정, 삭제
+
+[33mcommit afafa4d8df1f1316e87d0e7cb32ceac8da8d420b[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Sat Aug 27 21:44:32 2022 +0900
+
+    이전페이지 로그인 코드 정리
+
+[33mcommit 6890ab29372537b88074d269246ee460956b5b82[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Sat Aug 27 17:55:04 2022 +0900
+
+    로그인시 이전화면 이동 구현
+
+[33mcommit 6803cfd8c15ae303b1586af80f6dee35313b5c91[m
+Merge: 9026573 8e6657e
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Fri Aug 26 16:35:29 2022 +0900
+
+    Merge pull request #32 from jinwooseok/master
+    
+    secret파일로 비밀번호 이전
+
+[33mcommit 8e6657ee5960fe41b0abbc8b8f689ed8ca5f1843[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Fri Aug 26 13:50:08 2022 +0900
+
+    secret파일로 비밀번호 이전
+
+[33mcommit 90265731efe892a1b957d33f5efdba095b169153[m
+Merge: 8beea95 5c45156
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Thu Aug 25 12:36:34 2022 +0900
+
+    Merge pull request #31 from Seungmani/css
+    
+    css 수정
+
+[33mcommit 5c4515690a3fa1a74c78ae292999e92acbdf3e5b[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Thu Aug 25 12:32:59 2022 +0900
+
+    css 수정
+
+[33mcommit 8beea95f88f6e32b9799ac8f81d9928902c9b194[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Thu Aug 25 04:39:19 2022 +0900
+
+    login ai success
+
+[33mcommit 6632767fe6cddd5cf021b002ac9e8c27b269a5d7[m
+Merge: 3c44861 8e2187d
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Thu Aug 25 04:35:18 2022 +0900
+
+    Merge pull request #30 from jinwooseok/master
+    
+    회원가입 수정 및 로그인 수정, 메일보낼시 팝업빨리뜨게하기생년월일 셀렉트박스로 바꾸기
+
+[33mcommit 8e2187d8c536453f8437c56488b14ad538f88a82[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Wed Aug 24 22:22:44 2022 +0900
+
+    회원가입 수정 및 로그인 수정, 메일보낼시 팝업빨리뜨게하기생년월일 셀렉트박스로 바꾸기
+
+[33mcommit 3c4486113aa3f142e08e40537cb10af85814936e[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Wed Aug 24 18:22:11 2022 +0900
+
+    challenge 추가 & commu 수정
+
+[33mcommit 4743bb7ef7594efe72ee2a8c4550287037a0c360[m
+Merge: 0f61e65 3a38028
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Wed Aug 24 15:25:58 2022 +0900
+
+    Merge pull request #29 from jinwooseok/master
+    
+    delete의 문법오류 수정 및 이메일 유니크 해제
+
+[33mcommit 3a38028d1b90c80c4a501a219cbc74c5f02829af[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Wed Aug 24 01:26:53 2022 +0900
+
+    delete의 문법오류 수정 및 이메일 유니크 해제마이그레이션 하면 unique에서unique가 아닌걸로 수정
+
+[33mcommit 0f61e65eb3f2d89fb5cb729dbce38820a59bb829[m
+Merge: 9c5a2b0 a580416
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Wed Aug 24 00:12:17 2022 +0900
+
+    Merge pull request #28 from jinwooseok/master
+    
+    회원가입 정규식안먹는거 수정 및 커뮤니티와 연동, 회원가입오류발생시 연락주세용
+
+[33mcommit a5804166be26aff0265150cf44a281824dffd62c[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Wed Aug 24 00:00:47 2022 +0900
+
+    회원가입 정규식안먹는거 수정 및 커뮤니티와 연동, 확인요망
+
+[33mcommit 9c5a2b0b6cf7d1ae2e05f3c50a78f1d1256ff38b[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Tue Aug 23 16:38:15 2022 +0900
+
+    clear cached
+
+[33mcommit 5fa18658b4920145a9a1aba41d6dd80593458897[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Tue Aug 23 16:31:35 2022 +0900
+
+    setting change
+
+[33mcommit 72cc7a8988dc18d8d129b0b5816df33b91b5b867[m
+Merge: 025f406 65e27de
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Tue Aug 23 16:28:05 2022 +0900
+
+    Merge pull request #26 from Seungmani/commu
+    
+    commu url connect
+
+[33mcommit 65e27de89603ba4a7ed056b89d36db0c8c0f56ca[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Tue Aug 23 16:18:55 2022 +0900
+
+    commu url connect
+
+[33mcommit 025f40674ce919506600c2d867540f583dc510a9[m
+Merge: 72f2222 9abe296
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Mon Aug 22 16:55:57 2022 +0900
+
+    Merge pull request #25 from 0Haaa/test
+    
+    영하 exercise 페이지 연동
+
+[33mcommit 9abe29606a2be4b6b0041cbb4af33afe1b195ebf[m
+Author: 0Haaa <ohyuha1576@gmail.com>
+Date:   Mon Aug 22 16:52:37 2022 +0900
+
+    영하 exercise 페이지 연동
+
+[33mcommit 72f2222a40b788120601a8651933c9c19494144e[m
+Merge: 241ed9b 5f7fd57
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Mon Aug 22 15:10:44 2022 +0900
+
+    Merge pull request #24 from jinwooseok/test
+    
+    logfail수정 및 풀리퀘스트점검
+
+[33mcommit 241ed9b41645e79278babaf5426e426d99231a9a[m
+Merge: a8b06bc ca00dac
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Mon Aug 22 14:25:42 2022 +0900
+
+    Merge pull request #23 from 0Haaa/test
+    
+    Test
+
+[33mcommit ca00daceb56c44f07631f3e1cf0680e94b6f81d3[m
+Merge: 24d0269 a8b06bc
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Mon Aug 22 14:25:24 2022 +0900
+
+    Merge branch 'master' into test
+
+[33mcommit 24d0269ff2bb0a7e9260d456cb1dcc4a071bb31a[m
+Author: 0Haaa <ohyuha1576@gmail.com>
+Date:   Mon Aug 22 14:22:22 2022 +0900
+
+    connect urls
+
+[33mcommit 5f7fd57c54d4f1f2eb06c0cf35c5936971f970ef[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Fri Aug 19 23:01:14 2022 +0900
+
+    logfail수정 및 풀리퀘스트점검
+
+[33mcommit a8b06bccb27cdca83b5b792e12c6b7489ca8fe70[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 21:38:34 2022 +0900
+
+    modify setting
+
+[33mcommit 170543ee5c3380bac17fc0be7bd2a884c414f103[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 20:19:43 2022 +0900
+
+    link challenge site
+
+[33mcommit a10321cc525a5e2118ea2a5ba9799d47347dc176[m
+Merge: 867a97a e64ea45
+Author: 0Haaa <ohyuha1576@gmail.com>
+Date:   Fri Aug 19 16:21:19 2022 +0900
+
+    Merge remote-tracking branch 'upstream/master'
+
+[33mcommit e64ea4516037eabfe4b3609d499853903b0155a3[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 16:20:11 2022 +0900
+
+    Add .gitignore
+
+[33mcommit 867a97ab73bd52a2c2c385280377d3743dd4fdf1[m
+Merge: e5fccc2 1738010
+Author: 0Haaa <ohyuha1576@gmail.com>
+Date:   Fri Aug 19 16:11:32 2022 +0900
+
+    add sqlite
+
+[33mcommit e5fccc20a5f1e43eac6c8a46a58efdecdabb2c87[m
+Author: 0Haaa <ohyuha1576@gmail.com>
+Date:   Fri Aug 19 16:05:23 2022 +0900
+
+    test
+
+[33mcommit 17380102b0d651a7643083cb57deaf77d9838b8c[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 15:51:00 2022 +0900
+
+    final init setting
+
+[33mcommit 064fe8d855b475d1f8f4259f3c9f23666be61a20[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 15:35:15 2022 +0900
+
+    final init setting
+
+[33mcommit 3e7eee9af755fd572b244c73f8ba4f2e27e6bbbc[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 15:09:38 2022 +0900
+
+    init_setting
+
+[33mcommit 7344092ed9cc179403a53541cd03b21ca879fe5c[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 15:06:04 2022 +0900
+
+    init_setting
+
+[33mcommit 21d2befcdbf679cb458d872cabdda00197fa2934[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 15:05:25 2022 +0900
+
+    init_setting
+
+[33mcommit fc64619d0a05632a6bc022e8825769ec3e2a02fc[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 19 13:23:04 2022 +0900
+
+    develop folder create
+
+[33mcommit aca7cdf3128576c770af778f3dc9517513ff57b6[m
+Merge: 04d573d 18e923e
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Fri Aug 19 01:28:40 2022 +0900
+
+    Merge pull request #19 from 0Haaa/test
+    
+    a delete
+
+[33mcommit 18e923e3467cad9b798c7aaaf48f0ee6f6c21d9a[m
+Author: 0Haaa <ohyuha1576@gmail.com>
+Date:   Fri Aug 19 01:17:18 2022 +0900
+
+    a delete
+
+[33mcommit 04d573d4c56e6406fc041d30187f534c9eae6de5[m
+Merge: 98a9d0d 259347c
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Thu Aug 18 01:35:07 2022 +0900
+
+    Merge pull request #18 from jinwooseok/test
+    
+    우석테스트
+
+[33mcommit 259347c3cf4e5f2a8eb4fccd61a29340d4d7189d[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Thu Aug 18 01:26:48 2022 +0900
+
+    우석테스트
+
+[33mcommit 98a9d0d87fd97501e1f57ba2396b6ed1494580d5[m
+Merge: 8d8539a f8c5c98
+Author: AnSangYeoung <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Wed Aug 17 18:03:17 2022 +0900
+
+    Merge pull request #17 from Seungmani/master
+    
+    test
+
+[33mcommit f8c5c989cd7d56496225818816fd2738c1b061ae[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Wed Aug 17 17:55:48 2022 +0900
+
+    test
+
+[33mcommit 8d8539a4fa857b7e5bce9b9cb7c6f735f82372c2[m
+Merge: 990ef4c 161a70b
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Tue Aug 16 21:55:47 2022 +0900
+
+    Merge pull request #16 from jinwooseok/test
+    
+    test
+
+[33mcommit 161a70b1891e236442c0ae0d70de1d04060b0d14[m
+Merge: 3f8b5c1 990ef4c
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Tue Aug 16 21:55:36 2022 +0900
+
+    Merge branch 'master' into test
+
+[33mcommit 3f8b5c1610ed9aa60f1c64cb294053095762dd6c[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Tue Aug 16 21:52:40 2022 +0900
+
+    test
+
+[33mcommit 990ef4c4d2f1bb9b65564f88cad59bf8a35d72c7[m
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Tue Aug 16 19:23:55 2022 +0900
+
+    제발... (#15)
+
+[33mcommit 1ed0a1f55b7ad74fa99b18da52c5f36ba9a031e3[m
+Merge: bb602eb 326635d
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Mon Aug 15 17:58:05 2022 +0900
+
+    Merge pull request #13 from jinwooseok/test
+    
+    돼라
+
+[33mcommit 326635d0b48f544ff3f045a1023a04c046d74ae5[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Mon Aug 15 17:56:44 2022 +0900
+
+    제발돼라
+
+[33mcommit bb602ebd541938a7f79907d20cd1f7534545ccfa[m
+Merge: 6f37cf6 7761ba0
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Thu Aug 11 15:07:55 2022 +0900
+
+    Merge pull request #12 from Seungmani/i
+    
+    summernote
+
+[33mcommit 7761ba0faa329596eea36fa63c30bb955be55242[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Thu Aug 11 15:04:52 2022 +0900
+
+    summernote
+
+[33mcommit 6f37cf6d951ba5429cbd38d15b930bec738604fa[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Sun Aug 7 21:04:35 2022 +0900
+
+    start market
+
+[33mcommit bd16099804907afa4a8c51af63d3a7ff81a71a0d[m
+Merge: 5bb8cc6 e9a2d1e
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Sun Aug 7 00:32:27 2022 +0900
+
+    Merge pull request #11 from Seungmani/test
+    
+    login, register 구현
+
+[33mcommit e9a2d1ebb9d56d2c25b4e0b304df5e954bb7024d[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Sun Aug 7 00:30:55 2022 +0900
+
+    login, register 구현
+
+[33mcommit 5bb8cc6563c8e7dd168bd1bd53f2cc6828996ee6[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 5 17:44:02 2022 +0900
+
+    webcam recording success!
+
+[33mcommit 1078b7e116ccc8faea24875ac0452e8e2e322494[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Fri Aug 5 17:09:05 2022 +0900
+
+    Success video recording
+
+[33mcommit a18853cec486878382fc5d34d174bc39970c3124[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Thu Aug 4 11:07:43 2022 +0900
+
+    recording system ing..
+
+[33mcommit dc00012610d40640bfa844a0f936b88cb6e0ae9f[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Wed Aug 3 16:06:32 2022 +0900
+
+    delete txt
+
+[33mcommit 2342ad0392f0b7bce9ff08655550c1047441c238[m
+Merge: 2e9a07f 20796f2
+Author: 0Haaa <106590686+0Haaa@users.noreply.github.com>
+Date:   Wed Aug 3 15:58:38 2022 +0900
+
+    Merge pull request #10 from 0Haaa/test
+    
+    add a.txt
+
+[33mcommit 20796f224ad7c68ef790947b3683c62391514619[m
+Author: 0Haaa <ohyuha1576@gmail.com>
+Date:   Wed Aug 3 15:56:49 2022 +0900
+
+    add a.txt
+
+[33mcommit 2e9a07f1628e27acd634b96e0a62b58bb96edf92[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Tue Aug 2 18:58:29 2022 +0900
+
+    final html webcam to django
+
+[33mcommit fa3d8d7d8d535e175e538f81f41abfbda9fc694e[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Mon Aug 1 02:44:00 2022 +0900
+
+    ai model setting
+
+[33mcommit eee2d7e4ebe4a263e889b2fb3399be9c36eb91f6[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Sun Jul 31 23:16:13 2022 +0900
+
+    html webcam to dajango success!
+
+[33mcommit d1da4d70648b2068cd3fc30c0d81b4d590537cc0[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Sun Jul 31 04:01:24 2022 +0900
+
+    webcam html to server ing...
+
+[33mcommit 73ff361cbe9933d1facedf9cab0376de3c0f3200[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Sat Jul 30 20:31:38 2022 +0900
+
+    video streamiing service modify..
+
+[33mcommit 9e3923311b15f3eb49963b5d3b841f5b64689c2a[m
+Merge: 5ace9c9 d93d01e
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Sat Jul 30 00:13:13 2022 +0900
+
+    Merge pull request #9 from jinwooseok/test
+    
+    메인화면에 유저이름 띄우기
+
+[33mcommit d93d01e045bfe1fc3050555a1a3cbeab2929e7a4[m
+Merge: 79134fa 5ace9c9
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Sat Jul 30 00:13:04 2022 +0900
+
+    Merge branch 'master' into test
+
+[33mcommit 79134fa29dddefcef1e7df41c3a97cb79919ca09[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Fri Jul 29 23:58:31 2022 +0900
+
+    메인화면에 유저이름 띄우기
+
+[33mcommit 5ace9c98dd1f1fc93382405dc0ac6c296420d387[m
+Merge: 2327e1d 821e7f9
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Thu Jul 28 22:24:50 2022 +0900
+
+    Merge pull request #8 from jinwooseok/jin
+    
+    유저데이터 저장성공
+
+[33mcommit 821e7f9aaff412c6d5f96031e1de104c24c06dbb[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Thu Jul 28 22:22:32 2022 +0900
+
+    유저데이터 저장성공
+
+[33mcommit 2327e1de698bab1d164582d637be70191b7d19db[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Thu Jul 28 14:01:28 2022 +0900
+
+    modify
+
+[33mcommit 313e2a15d8799a7f6e9a657aa83558665c2a75a0[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Thu Jul 28 02:42:01 2022 +0900
+
+    setting
+
+[33mcommit f20910da3e2006b28a7d5592e8c51702b2f9abb2[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Thu Jul 28 02:41:07 2022 +0900
+
+    add openpose application
+
+[33mcommit 5fa1560291b320bff2599cafe6b09d8093bbf75c[m[33m ([m[1;33mtag: model_weights[m[33m)[m
+Merge: aa01600 86d54ea
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Wed Jul 27 22:41:29 2022 +0900
+
+    Merge pull request #7 from jinwooseok/new
+    
+    help
+
+[33mcommit 86d54eafd5d32a1e116ada3a0ee09420c62256e0[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Wed Jul 27 22:40:24 2022 +0900
+
+    help
+
+[33mcommit aa0160099c9f88044a4408b4845e106c00d973b2[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Wed Jul 27 21:47:28 2022 +0900
+
+    all connect html & CSS
+
+[33mcommit c45b2d3a3eb2ceed5c0fc95b6ae33dadf0daf349[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Wed Jul 27 00:56:18 2022 +0900
+
+    connect main.html $ main.css
+
+[33mcommit 77f47fefa5ed0d540c05cf587f59193b57894e84[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Tue Jul 26 15:19:42 2022 +0900
+
+    delete
+
+[33mcommit 95ed9812ba3d9440a2449e766ecf6602960acf9d[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Tue Jul 26 15:16:24 2022 +0900
+
+    add HTML/CSS
+
+[33mcommit f8809ec9791306e0fb0b5f19a9faade0e10f9c01[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Tue Jul 26 12:55:50 2022 +0900
+
+    add django folder
+
+[33mcommit 414ec0db4fbe819c9cb2f6381fcbfe8bb294c0f7[m
+Merge: 39617ea 4a4ca3e
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Mon Jul 25 22:08:36 2022 +0900
+
+    Merge pull request #6 from Seungmani/n
+    
+    django
+
+[33mcommit 4a4ca3ec6e8ad02880c8cb94485a7b10ef9a493d[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Mon Jul 25 22:08:02 2022 +0900
+
+    django
+
+[33mcommit 39617ea06a25e73c08f3891651a65abe55183b8b[m
+Merge: bad3475 350b8e7
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Mon Jul 25 21:41:12 2022 +0900
+
+    Merge pull request #5 from jinwooseok/new
+    
+    add
+
+[33mcommit 350b8e7353206b323a173065934615eabf557af2[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Mon Jul 25 21:40:08 2022 +0900
+
+    add
+
+[33mcommit bad3475087e5d494bcb26501ae7d007a840cc201[m
+Merge: 3c7a202 1754e6c
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Mon Jul 25 21:18:54 2022 +0900
+
+    Merge pull request #4 from Seungmani/master
+    
+    add requirements.txt
+
+[33mcommit 1754e6c897fa51007d39932ff21892545c68ca45[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Mon Jul 25 21:17:30 2022 +0900
+
+    requirements.txt modify
+
+[33mcommit 51933188909fca417d87cfc172e80caa9b20150a[m
+Merge: 4be6c12 3c7a202
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Mon Jul 25 21:16:32 2022 +0900
+
+    Merge remote-tracking branch 'upstream/master'
+
+[33mcommit 3c7a20244fb1f6d98990e38da34e06d87f4b2d66[m
+Merge: 5428060 48681b1
+Author: jinwooseok <101163507+jinwooseok@users.noreply.github.com>
+Date:   Mon Jul 25 21:05:53 2022 +0900
+
+    Merge pull request #3 from jinwooseok/new
+    
+    add new_file
+
+[33mcommit 48681b1428f39fe73ca25be413e32ae8baa3cb63[m
+Author: unknown <jinus7949@gmail.com>
+Date:   Mon Jul 25 21:04:22 2022 +0900
+
+    add new_file
+
+[33mcommit 4be6c122038811a7feb8ea31198f5a61353b838f[m
+Merge: 684d43b 5428060
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Mon Jul 25 20:32:02 2022 +0900
+
+    test1
+
+[33mcommit 684d43b506fa8df1496526093612b6b39ed94d67[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Mon Jul 25 20:26:04 2022 +0900
+
+    test
+
+[33mcommit 542806092f96d9a55e32b31b64d8ac2a63a1e5a4[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Mon Jul 25 20:13:17 2022 +0900
+
+    add setting file
+
+[33mcommit 3ba5bee12656a9c5f2cd1f34e2506515c9569f2d[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Mon Jul 25 20:11:37 2022 +0900
+
+    add backend folder
+
+[33mcommit f439b44b88b4ad6e5028bee9f72edfd696a5d9b4[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Mon Jul 25 20:05:21 2022 +0900
+
+    add new
+
+[33mcommit 0a5f1fa57a13092ceb689d54aa07515be3858c68[m
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Thu Jul 21 10:52:54 2022 +0900
+
+    Delete oasis_code directory
+
+[33mcommit 6a027ee14c80e8bbe8f0f23e68578ac33d87c7d3[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Thu Jul 21 10:08:56 2022 +0900
+
+    oasis code upload
+
+[33mcommit 20b5587b144c4347439f76be6fe4a6b03a9d40e8[m
+Merge: 105827f 57301bd
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Thu Jul 21 09:32:40 2022 +0900
+
+    Merge pull request #2 from Seungmani/middle
+    
+    middle
+
+[33mcommit 57301bd9a02e6b10ce250c68b30f53cf7609880c[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Thu Jul 21 09:31:37 2022 +0900
+
+    middle
+
+[33mcommit 105827f4484ebed8e278352e8b1c10b27f5b7456[m
+Author: A-sy-coding <tbvjzsk@naver.com>
+Date:   Tue Jul 19 17:24:53 2022 +0900
+
+    first ai model
+
+[33mcommit b3ac379a8d4dfe7f732627e88a6f0affad58c2bc[m
+Merge: 121881c 1f615ae
+Author: Seungmani <87172267+Seungmani@users.noreply.github.com>
+Date:   Tue Jul 19 17:10:50 2022 +0900
+
+    Merge pull request #1 from Seungmani/i
+    
+    first-frontend
+
+[33mcommit 1f615ae48b5c42f210d11a3dfa0ccb8782a592f2[m
+Author: seungmani <dkelcncjs@naver.com>
+Date:   Tue Jul 19 17:09:02 2022 +0900
+
+    first-frontend
+
+[33mcommit 121881c8f606497d703b1455531cd69b23f5fb25[m
+Author: A-sy-coding <80442707+A-sy-coding@users.noreply.github.com>
+Date:   Tue May 31 18:58:29 2022 +0900
+
+    Initial commit

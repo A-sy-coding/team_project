@@ -40,7 +40,7 @@ $(function(){
                     alert("사용가능한 아이디입니다!");
                     cleaner['user_id'] = 1;
                     return;
-
+                
                 }
             },
             error : function(xhr, error){
