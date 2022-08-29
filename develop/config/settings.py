@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'challenge', # 챌린지 apps
     'exercise', # 운동하기 apps 영하
     'community', # 게시판
+    'market',  # 마켓 apps
 ]
 
 MIDDLEWARE = [
