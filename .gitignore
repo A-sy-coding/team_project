@@ -1,4 +1,7 @@
 *.pyc
 *.sqlite3
+<<<<<<< HEAD
 secrets.json
+=======
+>>>>>>> c92cf1ca3135c8e36a0a735df9f700b0909c26ef
 
