@@ -19,4 +19,20 @@
 <div>
     내용 : {{board.contents|safe}}
 </div>
+<div>
+    {{comment.title}}
+
+    {{comment.contents}}
+
+    <form action="/create_comment/{{comment.id}}" method="POST">
+        {% csrf_token %}
+        {{comment_form}}
+        <input type="submit" value="댓글 입력하기">
+        {% for i in comment.comment_set.all %} <!-- 한 게시물의 id를 가진 댓글들 불러오기-->
+        <p>댓글 : {{i}}</p>
+        <p>시간 : {{i.post_dttm}}</p>
+        <hr>
+       {% endfor %} 
+    </form>
+</div>
 {% endblock contents %}

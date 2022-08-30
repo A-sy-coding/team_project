@@ -50,6 +50,7 @@ def board_detail(request, pk) :
         context['board'] = board
         response = render(request,'community/board_detail.html',context)
 
+    # 조회수
     expire_date, now = datetime.now(), datetime.now()
     expire_date += timedelta(days=1)
     expire_date =expire_date.replace(hour=0, minute=0, second=0, microsecond=0)

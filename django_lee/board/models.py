@@ -17,3 +17,11 @@ class Board(models.Model) :
         db_table = 'board'
         verbose_name = '게시판'
         verbose_name_plural = '게시판'
+
+class Comment(models.Model) :
+    post = models.ForeignKey(Board, on_delete=models.CASCADE, verbose_name='')
+    body = models.CharField(verbose_name='댓글 내용', max_length=200)
+    post_dttm = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.body

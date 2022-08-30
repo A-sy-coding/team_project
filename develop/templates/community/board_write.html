@@ -23,24 +23,31 @@
                     <strong>글작성</strong> 
                 </div>
             </div>
-            <form action="{% url 'community:board_write' %}" method="POST">
-                {% csrf_token %}
-            
-                {% for form in forms %}
-                <div>
-                    <label for="{{ form.id_for_label}}">{{form.label}}</label>
-                    {{form}}
-                </div>
-                {% endfor %}
+            <div class="board_write">
+                <form action="{% url 'community:board_write' %}" method="POST">
+                    {% csrf_token %}
                 
-                {% if error %}
-                {{ error }}
-                {% endif %}
-            
-                <div class="button">
-                    <button type="submit" id="write">작성하기</button>
+                    <div class="title">
+                        <dl>
+                            <dt>제목</dt>
+                            <dd>{{forms.title}}</dd>
+                        </dl>
+                    </div>
+
+                    {{forms.contents}}
+
+                    {% if error %}
+                    {{ error }}
+                    {% endif %}
+                
+                    <div class="button">
+                        <button type="submit" id="write">작성하기</button>
+                    </div>
+                </form>
+                
+                <div class="contents">
                 </div>
-            </form>
+            </div>
         </div>
     </body>
 </html>

@@ -2,10 +2,24 @@
     font-family: 'Baloo';
     src: url('BalooBhai.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'ovo';
+    src: url('Ovo-Regular.ttf') format('truetype');
+}
+
+ul,li {
+    list-style : none;
+}
+
+a {
+    text-decoration: none;
+    color : inherit;
+}
 
 *{
     margin : 0;
     padding : 0;
+    box-sizing: border-box;
 }
 
 header {
@@ -13,68 +27,96 @@ header {
     height : 60px;
     width: 100%;
     background-color: rgba(108, 60, 244, 0.85);
-    color: white;
-    position: relative;
+    position: fixed;
     top : 0;
     left : 0;
 }
 
-/*healf*/
-h3{
-    font-size:20px;
-    margin: 10 auto;
+.wrapper{
+    width : 70%;
+    margin : 0 auto;
 }
 
+/*healf*/
 h1{
     line-height:60px;
     font-size: 40px;
     float : left;
 }
-
+ 
 h1 a{
-    text-decoration: none;
     color : white;
 }
 
 .menu{
+    font-family : ovo;
     float : right;
 }
-.wrapper{
-    width :70%;
+
+/* 틀 */
+.wrap {
+    background-color : rgb(223, 223, 223);
+    height : 140%;
+    margin-bottom: 0;
+    padding-top: 80px;
+}
+
+/* form */
+.wrap form{
+    width : 35%;
+    height : 80%;
     margin : 0 auto;
+    border: 2px solid rgba(108, 60, 244, 0.85);
+    border-radius: 10px;
+    padding : 3%;
+    background-color: #FFF;
 }
 
-/*main*/
+form .box{
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
 
-.wrap{
-    max-width: 100%;
-    min-width: 90%;
-    margin:0 auto;
+form h3{
+    font-size: 20px;
+    font-weight: 0px;
+    margin-bottom: 3px;
 }
-.psbox{
-    max-width: 70%;
-    min-width: 50%;
-    margin:0 auto;
+
+.box input{
+    width : 70%;
+    height : 40px;
+    cursor: pointer;
 }
-.int{
-    height:5%;
-    width:75%;
-    text-align:left;
+
+.box button{
+    cursor: pointer;
+    color: white;
+    background-color: rgba(108, 60, 244, 0.85);
+    border: none;
+    border-radius: 5px;
+    width : 25%;
+    height: 40px;
+
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+
+    line-height: 40px;
 }
-#content{
-    width: 80%;
-    margin: 40 auto;}
-.birthwrap{
-    display:flex;
-    height:51px;
-    width:100%;
+
+.wrap .psbox{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }
-.birthyy{
-    display:flex;
-    width:100%;
-    margin:1%;
+
+.psbox input{
+    color: white;
+    background-color: rgba(108, 60, 244, 0.85);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width : 22%;
+    height: 30px;
 }
-#callnumber.int{
-    height:100%;
-    width:90%;
-    text-align:left;}

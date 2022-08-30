@@ -10,106 +10,72 @@
     </head>
 
     <body>
-        <div style="background-color:rgb(223, 223, 223); height:140%" id="wrap">
-            <header>
-                <div class = "wrapper">
-                    <h1>
-                    <a href="{% url 'home' %}">HealF </a>
-                    </h1>
-                </div>
-            </header>
-            <div style="background-color:white; width:35%;height:900px; margin:5% auto; padding:auto; border:solid 0.5px;border-radius: 10px;">
-                <form method="post" id="form" onsubmit="return false;">
-                    {% csrf_token %}
-                    <div id="content">
-                        <div>
-                            <h3>
-                                <label for="user_id">아이디</label>
-                            </h3>
-                            <div>
-                                <span>
-                                    <input class="int" type="text" id="user_id" placeholder="아이디를 입력하세요" name="user_id" >       
-                                </span>
-                                <span>
-                                    <a>
-                                        <button id="idbutton" type = 'button' style="background-color:rgba(108, 60, 244, 0.85);color:white;border:0px;border-radius: 2px;">아이디 확인</button>   
-                                    </a>
-                                </span>
-                            </div>
-
-                               
-                            <h3>
-                                <label for="password1">비밀번호</label>
-                            </h3>
-                            <div>
-                                <span>
-                                    <input class="int" type="password" id="pw1" placeholder="비밀번호" name="password1" onkeyup='pw_valid()' >
-                                </span>
-                            </div>
-                            <div class="int"><h5 id="pw_error"></h5></div>
-
-                            <h3>
-                                <label for="password2">비밀번호 확인</label>
-                            </h3>
-                            <div>
-                                <span>
-                                    <input  class="int" type="password" id="pw2" placeholder="비밀번호 확인" name="password2" onkeyup='pw_valid2()'>
-                                </span>
-                            </div>
-                            <div class="int"><h5 id="pw2_error"></h5></div>
-                            <h3>
-                                <label for="user_email">이메일</label>
-                            </h3>
-                            <span>
-                                <input  class="int" type='email' id="user_email" placeholder="이메일" name="user_email" >
-                            </span>
-                            <button id="emailval" type="button" style="margin-top:10;background-color:rgba(108, 60, 244, 0.85);color:white;border:0px;border-radius: 2px;">인증번호 전송</button>
-    
-                            <span>
-                                <input  style='display:none' class="int" type='text' id="auth_num" placeholder="인증번호" name="auth_num" >
-                            </span>
-                            <button id="authnum_button" type="button" style="display:none;margin-top:10;background-color:rgba(108, 60, 244, 0.85);color:white;border:0px;border-radius: 2px;">인증번호 확인</button>
-                        </div>
-
-
-                        <div>
-                            <h3>
-                                <label for="user_name">이름</label>
-                            </h3>
-                            <span>
-                                <input class="int" type="text" id="user_name" placeholder="이름" name="user_name">        
-                            </span>
-                            <h3>
-                                <label for="birth">생년월일</label>
-                            </h3>
-                            <div class="birthwrap" id="'birth">
-                                <span class="birthyy" style="width:80%">
-                                    <select name="yy" id="birthyy"></select>년
-                                    <select name="mm" id="birthmm"></select>월
-                                    <select name="dd" id="birthdd"></select>일
-                                </span>       
-                            </div>
-                            <h3>
-                                <label for="user_sex">성별</label>
-                            </h3>
-                            <div style="height:4%">
-                                <select id='user_sex' name="user_sex" style="height:100%;width:30%">
-                                    <option value="" selected>성별</option>
-                                    <option value="M">남자</option>
-                                    <option value="F">여자</option>
-                                </select>
-                            </div>
-                            
-                        </div>
-                     
-                    
-                    </div>
-                    <div class="psbox" style="text-align:center; margin-top: 10%;height:auto">
-                        <input type='button' style="background-color:rgba(108, 60, 244, 0.85); color:white; width:17%;font-size:100%;border:0px;border-radius: 2px;" value="다음" id="send">
-                    </div>
-                </form>
-                
+        <header>
+            <div class = "wrapper">
+                <h1>
+                <a href="{% url 'home' %}">HealF </a>
+                </h1>
             </div>
+        </header>
+        <div class="wrap">
+            <form method="post" id="form" onsubmit="return false;">
+                <div id="content">
+                    <div class="box">
+                        <h3><label for="user_id">아이디</label></h3>
+                        <input class="int" type="text" id="user_id" placeholder="아이디를 입력하세요" name="user_id">
+                        <a><button id="idbutton" type = 'button'>아이디 확인</button></a>
+                    </div>
+                    <div class="box">
+                        <h3><label for="password1">비밀번호</label></h3>
+                        <input class="int" type="password" id="pw1" placeholder="비밀번호" name="password1" onkeyup='pw_valid()'>
+
+                        <div class="int"><h5 id="pw_error"></h5></div>
+                    </div>
+                    <div class="box">
+                        <h3><label for="password2">비밀번호 확인</label></h3>
+                        <input  class="int" type="password" id="pw2" placeholder="비밀번호 확인" name="password2" onkeyup='pw_valid2()'>
+                        
+                        <div class="int"><h5 id="pw2_error"></h5></div>
+                    </div>
+                    <div class="box">
+                        <h3><label for="user_email">이메일</label></h3>
+                        <input  class="int" type='email' id="user_email" placeholder="이메일" name="user_email" >
+                        <button id="emailval" type="button">인증번호 전송</button>
+                    </div>
+                    <div class="box">
+                        <h3><label for="auth_num">인증번호</label></h3>
+                        <input class="int" type='text' id="auth_num" placeholder="인증번호" name="auth_num" >
+                        <button id="authnum_button" type="button">인증번호 확인</button>                        
+                    </div>
+                    <div class="box">
+                        <h3><label for="user_name">이름</label></h3>
+                        <input class="int" type="text" id="user_name" placeholder="이름" name="user_name">
+                    </div>
+                    <div class="box">
+                        <h3><label for="birth">생년월일</label></h3>
+
+                        <div class="birthwrap" id="'birth">
+                            <select name="yy" id="birthyy"></select>년
+                            <select name="mm" id="birthmm"></select>월
+                            <select name="dd" id="birthdd"></select>일   
+                        </div>
+                    </div>
+                    <div class="box">
+                        <h3><label for="user_sex">성별</label></h3>
+
+                        <select id='user_sex' name="user_sex">
+                            <option value="" selected>성별</option>
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="psbox">
+                    <input type='button'  value="제출하기" id="send">
+                </div>
+
+            </form>
         </div>
         <script src="{% static 'users/form_error.js' %}"></script>
     </body>

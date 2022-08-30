@@ -1,22 +1,20 @@
 from pickle import EMPTY_DICT
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import BoardWriteForm 
-from .models import Board
+from .forms import BoardWriteForm, CommentForm
+from .models import Board, Comment
 from user.models import User
 from user.decorators import login_required
 from datetime import date, datetime, timedelta
+from .pagination import pagination
 
 def board_list(request):
     login_session = request.session.get('login_session', '')
     context = {'login_session' : login_session}
     
     boards = Board.objects.all().order_by('-id')
-    py_boards = Board.objects.filter(board_name = 'Python')
-    js_boards = Board.objects.filter(board_name = 'JavaScript')
-    
+    page = pagination(request, Board)
     context['boards'] = boards
-    context['py_boards'] =py_boards
-    context['js_boards'] = js_boards
+    context.update(page)
 
     return render(request, 'board/board_list.html', context)
 
@@ -53,9 +51,8 @@ def board_detail(request, pk) :
     return response
 
 
-@login_required
 def board_write(request):
-    login_session = request.session.get('login_session', '')
+    login_session = request.session.get('login_session')
     context = {'login_session' : login_session}
 
     if request.method =='GET' :
@@ -126,67 +123,35 @@ def board_modify(request, pk) :
                     context['error'] = value
             return render(request, 'board/board_modify.html', context)
 
-# 페이지 이동
-from django.core.paginator import Paginator
+# 댓글
+def commnet_detail(request, pk) : 
 
-def pagination(request, Board, contents_num=10) -> dict:
-    all_boards = Board.objects.all().order_by('-id') # 객체 불러오기
-    board_page = int(request.GET.get('page', '1'))  # 페이지 가져오기 기본값 =1
-    paginator = Paginator(all_boards, contents_num)  # 페이지당 10개씩 표시
-    boards = paginator.page(board_page)
-
-    now_page = boards.number 
-    end_page = boards.paginator.num_pages
-
-    # 페이지를 7개만 표기 
-    if end_page >= 7 :
-        min_page = 7
-    else :
-        min_page =end_page
-
-    # 보여줄 페이지(min_page 수)
-    display_page = {}
-    if now_page <= 4 :
-        for k in range (min_page):
-            display_page[k] = k+1
-    elif now_page >= end_page-3 :
-        for k in range (min_page):
-            display_page[k] = (end_page-7)+(k+1)
-    else : 
-        for k in range(min_page) :
-            display_page[k] = (now_page-4) + (k+1)
-
-    # 이전페이지
-    previous_page_chunk = now_page-7
-    if previous_page_chunk <1:
-        previous_page_chunk =1
-
-    # 이전페이지 활성화
-    if 4< now_page : 
-        active_previous_page_chunk = True
-    else : 
-        active_previous_page_chunk = False
-
-    # 다음 페이지
-    next_page_chunk = now_page + 7
-    if next_page_chunk > end_page :
-        next_page_chunk = end_page
-
-    # 다음페이지 활성화
-    if now_page < (end_page-3) : 
-        active_next_page_chunk = True
-    else : 
-        active_next_page_chunk = False
+    login_session = request.session.get('login_session', '')
+    context = {'login_session' : login_session}
     
-    context = {
-        'boards' : boards,
-        'now_page' : now_page,
-        'end_page' : end_page,
-        'display_page' : display_page,
-        'previous_page_chunk' : previous_page_chunk,
-        'next_page_chunk' : next_page_chunk,
-        'active_previous_page_chunk' : active_previous_page_chunk,
-        'active_next_page_chunk' : active_next_page_chunk
-    }
+    comment = get_object_or_404(Board, pk=pk)
+    comment_form = CommentForm()
+    context['comment'] = comment
+    context['comment_form'] = comment_form
 
-    return context
+    return render(request, 'board/board_detail.html', context)
+
+def create_comment(request, pk) : 
+
+    login_session = request.session.get('login_session', '')
+    context = {'login_session' : login_session}
+
+    if request.method =='GET' :
+        filled_form = CommentForm()
+        context['temp_form'] = filled_form
+        return render(request, 'board/board_detail.html', context)
+
+    elif request.method == 'POST':
+        filled_form = CommentForm(request.POST)
+
+        if filled_form.is_valid() :
+            temp_form = filled_form.save(commit=False)
+            temp_form.post=Board.objects.get(id=pk)
+            temp_form.save()
+        
+        return redirect(f'/board/detail/{pk}/')
