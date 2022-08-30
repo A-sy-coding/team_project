@@ -1,5 +1,6 @@
+from xml.etree.ElementTree import Comment
 from django import forms
-from .models import Board
+from .models import Board, Comment
 from django_summernote.fields import SummernoteTextField
 from django_summernote.widgets import SummernoteWidget
 
@@ -58,3 +59,19 @@ class BoardWriteForm(forms.ModelForm) :
             self.title = title
             self.contents = contents
             self.board_name = board_name
+
+class CommentForm(forms.ModelForm) : 
+
+    class Meta :
+        model = Comment
+        fields = ['body']
+    
+    def clean(self):
+        cleand_data = super().clean()
+
+        body = cleand_data.get('body', '')
+
+        if body == '' :
+            self.add_error('body', '내용을 입력하세요.')
+        else : 
+            self.body = body

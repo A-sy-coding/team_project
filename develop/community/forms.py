@@ -8,7 +8,8 @@ class BoardWriteForm(forms.ModelForm) :
         label = '글제목',
         widget = forms.TextInput(
             attrs={
-                'placeholder' : '게시글 제목'
+                'placeholder' : '게시글 제목',
+                'input[type="text"]' : {'width' : '80%', 'height' : '30px'}
             }),
         required=True,
     )
