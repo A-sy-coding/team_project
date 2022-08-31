@@ -21,6 +21,8 @@ def login_view(request):
         
         prev_path = request.POST.get('prev_path') # login 페이지에서 로그인을 누르면 POST방식으로 데이터 전송
                                                   # 이전 경로를 기억하도록 하여 prev_path로 저장
+        print('이전 경로 --------------')
+        print(prev_path)
     
     try:
         myuser = Profile.objects.get(user_id__exact=login_user_id,user_pw__exact=login_user_pw)    
@@ -34,7 +36,7 @@ def login_view(request):
         return redirect(prev_path)
         
     else:
-        contents = {'fail':'로그인에 실패하였습니다.'}
+        contents = {'fail':'로그인에 실패하였습니다.' , 'prev_path':prev_path}
             # Return an 'invalid login' error message.
         return render(request,'users/login.html',contents)
 

@@ -25,7 +25,7 @@
                       </h1>
                 <ul class="navbar-nav ml-auto"> 
                     <li class="nav-item">
-                        <a href="#"><i class="material-icons ic-create">create</i></a>
+                        <a href="{% url 'market:item_register' %}"><i class="material-icons ic-create">create</i></a>
                     </li>
                 </ul>
             </div>
@@ -35,7 +35,7 @@
 
             <div class="menubar">
                 <!-- <div class="category"><a href="#" style="text-decoration:none">운동기구</a></div> -->
-                <div class="category"><a href="#" style="text-decoration:none">운동기구</a></div>
+                <div class="category"><a href="{% url 'market:item' %}" style="text-decoration:none">운동기구</a></div>
                 <div class="category"><a href="#" style="text-decoration:none">운동화</a></div>
                 <div class="category"><a href="#" style="text-decoration:none">운동복</a></div>
                 <div class="category"><a href="#" style="text-decoration:none">보조식품</a></div>
