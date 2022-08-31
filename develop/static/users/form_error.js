@@ -4,7 +4,7 @@ const email_regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a
 const phone_regExp=/^\d{3}-\d{3,4}-\d{4}$/;
 const pattern_regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 const pw_regExp = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-var cleaner = {user_id:0,pw1:0,pw2:0,user_email:0,user_sex:0,birthyy:0,user_name:0};
+var cleaner = {user_id:0,pw1:0,pw2:0,user_email:0,user_sex:0,user_birth:0,user_name:0};
 console.log(cleaner)
 
 var csrftoken = $('[name=csrfmiddlewaretoken]').val();
@@ -87,8 +87,7 @@ $(function(){
             data:{email:email},
             success:function(){
                 alert("인증번호가 전송되었습니다.");
-                document.getElementById("auth_num").setAttribute('style','display:block;');
-                document.getElementById("authnum_button").setAttribute('style','display:block;');
+
             }
         })
 
@@ -164,7 +163,7 @@ send.addEventListener("click", function () {
     var birth_dd =document.getElementById("birthdd");
     user_birth=birth_yy+'-'+birth_mm+'-'+birth_dd;
     if(user_sex!=null){cleaner['user_sex']=1;};
-    if(user_birth!=null){cleaner['birthyy']=1;};
+    if(user_birth!=null){cleaner['user_birth']=1;};
     if(user_name!=null){cleaner['user_name']=1;};
     var form = document.getElementById("form");
     for (i in cleaner){
