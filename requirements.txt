@@ -5,3 +5,4 @@ tqdm==4.64.0
 pandas==1.1.5
 Django==3.2.14
 django-summernote==0.8.20.0
+django-widget-tweaks==1.4.11

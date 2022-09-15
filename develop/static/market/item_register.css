@@ -30,6 +30,7 @@ h1{
  
 h1 a{
     color : white;
+    text-decoration-line: none;
 }
 
 .container {

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'widget_tweaks', # 폼 장식시 사용
     'users',  # 로그인 apps
     'challenge', # 챌린지 apps
     'exercise', # 운동하기 apps 영하
