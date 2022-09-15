@@ -52,10 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    #-- 소셜 로그인 추가시 필요
     'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.naver',
+    'allauth.account', # 가입한 계정 정리
+    'allauth.socialaccount', # 소셜 계정으로 가입한 계정 관리
+    'allauth.socialaccount.providers.naver', # 어떤 소셜 서비스를 사용하는지 추가
 
     'widget_tweaks', # 폼 장식시 사용
     'users',  # 로그인 apps
