@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/register/idvalid/', views.iddupl, name='iddupl'),
     path('login/register/authnumvalid/', views.auth_num_validater, name='authnumval'),
     path('logout/', views.logout, name='logout'),
+    path('login/nav_callback/',views.nav_callback, name='nav_callback')
 ]

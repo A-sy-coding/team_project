@@ -21,10 +21,11 @@ SITE_ID = 1
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-secret_file = os.path.join(BASE_DIR,'secrets.json')
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
+
 def get_secret(setting):
+    secret_file = os.path.join(BASE_DIR,'secrets.json')
+    with open(secret_file) as f:
+        secrets = json.loads(f.read())
     """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
     try:
         return secrets[setting]
@@ -50,6 +51,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.naver',
+
     'widget_tweaks', # 폼 장식시 사용
     'users',  # 로그인 apps
     'challenge', # 챌린지 apps
@@ -185,3 +192,8 @@ SUMMERNOTE_CONFIG = {
                     ],
                 }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)

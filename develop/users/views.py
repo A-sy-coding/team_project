@@ -7,6 +7,8 @@ import smtplib
 from email.mime.text import MIMEText
 from random import randint
 from config.settings import get_secret
+import os
+import json
 
 #로그인 함수
 def login_view(request):
@@ -32,6 +34,8 @@ def login_view(request):
     
     if myuser != None:
         request.session['user'] = myuser.id
+        if prev_path=='None':
+            return redirect('home')
         # Redirect to a success page.
         return redirect(prev_path)
         
@@ -47,7 +51,7 @@ def register(request):
     if request.method == 'GET':
         return render(request, 'users/register.html')
     if request.method == 'POST':
-        user_birth=request.POST['birthyy']+'-'+request.POST['birthmm']+'-'+request.POST['birthdd']
+        user_birth=request.POST['yy']+'-'+request.POST['mm']+'-'+request.POST['dd']
         Profile.objects.create(
             user_id=request.POST['user_id'], 
             user_pw=request.POST['password1'],
@@ -81,12 +85,14 @@ def iddupl(request):#아이디 유효성 검사기
     return JsonResponse(result)
 
 
+
 def email_validater(request): #이메일 인증기
     if request.GET.get('email') is not None:        
         email=request.GET.get('email')   
         sendEmail = "jinus7949@naver.com"
         recvEmail = str(email)
         password=get_secret('EMAIL_HOST_PASSWORD')
+        print(password)
         smtpName = "smtp.naver.com"
         smtpPort = 587
         auth_num = randint(100000, 1000000)
@@ -136,3 +142,6 @@ def auth_num_validater(request):#인증번호
 def logout(request):
     request.session.pop('user')
     return redirect('home')
+
+def nav_callback(request):
+    return render(request,'users/nav_callback.html')
