@@ -32,12 +32,14 @@ class ItemView(ListView):
     ItemRegisterView에서 POST한 데이터들을 가져와서 html에서 출력하도록 한다.
     '''
     model = Item  # models.py파일에서 Item 테이블 참조
-    template_name = 'test.html'
+    template_name = 'item_index.html'
     context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
     paginate_by = 2 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정
 
 class ItemDV(DetailView):
     '''
     등록된 아이템에 대한 상세 정보를 보여주도록 한다. -> Item model을 참조하도록 한다.
+    DetailView는 html에서 객체의 context 값의 default가 object로 불러올 수 있게 된다.
     '''
     model = Item
+    template_name = 'item_detail.html'

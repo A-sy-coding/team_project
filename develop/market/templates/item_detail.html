@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="keywords" content=""> <!--검색엔진 키워드-->
+    <meta name="description" content=""> <!--홈페이지 설명-->
+    <title>헬스 친구 HealF</title>
+
+    <!-- css -->
+    <link rel = "stylesheet" href ="{% static 'market/test.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class = "wrapper">
+        <h1>
+          <a href="{% url 'home'%}">HealF </a>
+        </h1>
+        
+      </div>
+    </header>
+
+
+    <br><br><br>
+
+    <div class="'content">
+        <h2>{{ object.title }}</h2>
+        <p>작성자 : {{ object.user_info }}</p>
+        <p>{{ object.modify_dt|date:"Y F j D" }}</p>
+        <p>물품 카테고리 : {{ object.item_category }}</p>
+
+        <div>
+            {{ object.description|linebreaks }}
+        </div>
+    </div>
+</html>
+
