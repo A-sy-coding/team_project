@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Item
 from django.urls import reverse_lazy
@@ -25,5 +25,19 @@ class ItemRegisterView(CreateView):
         form.instance.user_info = self.request.session.get('user') # 현재 접속 중인 user의 고유 id가 출력된다.
         return super().form_valid(form)
 
-class ItemView(TemplateView):
+class ItemView(ListView):
+    '''
+    ListView는 테이블로부터 객체 리스트를 가져와 출력한다.
+    models.py파일에서 정의한 Item 테이블을 참조하도록 한다.
+    ItemRegisterView에서 POST한 데이터들을 가져와서 html에서 출력하도록 한다.
+    '''
+    model = Item  # models.py파일에서 Item 테이블 참조
     template_name = 'test.html'
+    context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
+    paginate_by = 2 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정
+
+class ItemDV(DetailView):
+    '''
+    등록된 아이템에 대한 상세 정보를 보여주도록 한다. -> Item model을 참조하도록 한다.
+    '''
+    model = Item
