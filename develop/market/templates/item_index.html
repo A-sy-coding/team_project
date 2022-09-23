@@ -31,8 +31,7 @@
 
       <!-- 등록된 아이템 정보 가져오기 -->
       {% for item in items %}
-        <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
-        
+        <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>       
       {% endfor %}
 
       <br>
@@ -40,13 +39,13 @@
       <!-- 페이징 기능 추가 -->
       <span>
         {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
-        {% endif %}
+          <a href="?page={{ page_obj.previous_page_number }}">이전 페이지</a>
+        {% endif %} 
 
         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
 
         {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+          <a href="?page={{ page_obj.next_page_number }}">다음 페이지</a>
         {% endif %}
       </span>
     </div>

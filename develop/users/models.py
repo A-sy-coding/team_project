@@ -12,7 +12,7 @@ class Profile(models.Model):
     user_register_dttm = models.DateField(auto_now_add=True, verbose_name='계정 생성시간')
 
     def __str__(self):
-        return self.user_id
+        return self.user_name
 
     class Meta: # DB 테이블명 지정해주는 옵션
         db_table = 'profile' # 테이블명 지정

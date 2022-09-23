@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Item
+from users.models import Profile
 from django.urls import reverse_lazy
 
 class ChallengeView(TemplateView):
@@ -20,10 +21,23 @@ class ItemRegisterView(CreateView):
     def form_valid(self, form):
         '''
         form에 연결된 모델 객체의 user_info 필드에는 현재 로그인된 사용자의 user 객체 정보를 할당한다.
+        즉, user_info에는 Profile 테이블에서 가져온 user_name이 저장되게 된다.
         이후, form_valid()메소드를 호출하면 db에 저장된 뒤 success_url로 redirect되게 된다.
         '''
-        form.instance.user_info = self.request.session.get('user') # 현재 접속 중인 user의 고유 id가 출력된다.
+        current_id = self.request.session.get('user')
+        Profile_info = Profile.objects.get(id=current_id) # Profile에서 유저 정보를 가져오도록 한다.
+
+        form.instance.user_info = Profile_info # form에 user_info 추가 (Profile 모델 참조해서)
         return super().form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs): 
+        ''' 로그인이 되어 있지 않으면, 로그인 페이지로 이동하게끔 한다.'''
+        current_user_id = request.session.get('user')  # 현재 접속 중인 user의 고유 id가 출력된다.
+        
+        if current_user_id is None: 
+            return render(request, 'users/login.html', {'prev_path':request.path})
+
+        return super().dispatch(request, *args, **kwargs)
 
 class ItemView(ListView):
     '''
@@ -35,6 +49,8 @@ class ItemView(ListView):
     template_name = 'item_index.html'
     context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
     paginate_by = 2 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정
+    
+    
 
 class ItemDV(DetailView):
     '''
