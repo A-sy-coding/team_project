@@ -4,10 +4,13 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Item
 from users.models import Profile
 from django.urls import reverse_lazy
+# from config.views import OwnerOnlyMixin
+
 
 class ChallengeView(TemplateView):
     template_name = 'market.html'  # 마캣 화면
 
+#-- 아이템 등록/삭제/수정
 class ItemRegisterView(CreateView):
     ''' 
     CreateView는 model과 form을 동시에 정의할 수 있다.
@@ -39,6 +42,22 @@ class ItemRegisterView(CreateView):
 
         return super().dispatch(request, *args, **kwargs)
 
+class ItemUpdate(UpdateView):
+    ''' 등록한 유저만 업데이트가 가능하도록 구현 - item_detail.html에서 설정'''
+    model = Item
+    fields = ['title', 'description', 'item_category'] # model에서 정의한 것을 form으로 가져온다.
+    template_name = 'item_register.html' # render된 html 파일 정의
+    success_url = reverse_lazy('market:market_page')  # 성공시 market페이지로 이동하도록 한다.
+
+class ItemDelete(DeleteView):
+    ''' 등록한 유저만 삭제가 가능하도록 구현 - item_detail.html에서 설정'''
+    model = Item
+    fields = ['title', 'description', 'item_category'] # model에서 정의한 것을 form으로 가져온다.
+    template_name = 'item_delete_confirm.html' # render된 html 파일 정의
+    success_url = reverse_lazy('market:market_page')  # 성공시 market페이지로 이동하도록 한다.
+
+
+#-- 아이템 정보 및 디테일 정보 확인
 class ItemView(ListView):
     '''
     ListView는 테이블로부터 객체 리스트를 가져와 출력한다.
@@ -51,7 +70,6 @@ class ItemView(ListView):
     paginate_by = 2 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정
     
     
-
 class ItemDV(DetailView):
     '''
     등록된 아이템에 대한 상세 정보를 보여주도록 한다. -> Item model을 참조하도록 한다.
@@ -59,3 +77,4 @@ class ItemDV(DetailView):
     '''
     model = Item
     template_name = 'item_detail.html'
+

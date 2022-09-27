@@ -8,7 +8,7 @@
     <title>헬스 친구 HealF</title>
 
     <!-- css -->
-    <link rel = "stylesheet" href ="{% static 'market/test.css' %}">
+    <link rel = "stylesheet" href ="{% static 'market/item_detail.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     <br><br><br>
 
-    <div class="'content">
+    <div class="content">
         <h2>{{ object.title }}</h2>
         <p>작성자 : {{ object.user_info }}</p>
         <p>{{ object.modify_dt|date:"Y F j D" }}</p>
@@ -37,6 +37,16 @@
         <div>
             {{ object.description|linebreaks }}
         </div>
+
+        <!-- 물품 수정/삭제  -->
+        <!-- 현재 유저와 물품 등록한 유저가 같으면 update/delete 버튼이 활성화 되도록 한다. -->
+        {% if request.session.user == object.user_info_id %}
+        <div id="btn-group">
+          <button id="btn1" type="button"><a href="{% url 'market:item_update' object.id %}">Update</a></button>
+          <button id="btn2" type="button"><a href="{% url 'market:item_delete' object.id %}">Delete</a></button>
+        </div>
+        {% endif %}
+        
     </div>
 </html>
 

@@ -8,7 +8,7 @@
     <title>헬스 친구 HealF</title>
 
     <!-- css -->
-    <link rel = "stylesheet" href ="{% static 'market/test.css' %}">
+    <link rel = "stylesheet" href ="{% static 'market/item_index.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -22,6 +22,16 @@
           <a href="{% url 'home'%}">HealF </a>
         </h1>
         
+        <ul class = "menu">
+          {% if request.session.user_info_name != anonymous %}
+              <li>{{ request.session.user_info_name }}님 접속을 환영합니다.</li>
+              <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+          {% else %}
+              <li><a href="{% url 'users:login' %}?prev_path={{ request.path }}">로그인</a></li>
+              <li><a href="{% url 'users:register'%}">회원가입</a></li>
+          {% endif %}
+      </ul>
+
       </div>
     </header>
 

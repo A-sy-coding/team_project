@@ -28,12 +28,14 @@ def login_view(request):
     
     try:
         myuser = Profile.objects.get(user_id__exact=login_user_id,user_pw__exact=login_user_pw)    
-        print(myuser.id)
+        
     except:
         myuser = None    
     
     if myuser != None:
         request.session['user'] = myuser.id
+        request.session['user_info_name'] = myuser.user_name
+        
         if prev_path=='None':
             return redirect('home')
         # Redirect to a success page.
@@ -141,6 +143,7 @@ def auth_num_validater(request):#인증번호
 # Create your views here.
 def logout(request):
     request.session.pop('user')
+    request.session.pop('user_info_name')
     return redirect('home')
 
 def nav_callback(request):
