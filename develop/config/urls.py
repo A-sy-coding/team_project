@@ -11,7 +11,8 @@ urlpatterns = [
     path('challenge/', include('challenge.urls')),
     path("exercsie/",include('exercise.urls')),
     path('community/', include('community.urls')),
-    path('market/', include('market.urls')),  
+    path('market/', include('market.urls')), 
+    path('mypage/', include('mypage.urls')),
 ]
 
 # Summernote 설정
