@@ -55,13 +55,13 @@
 
                     <label for="user_id"></label>
                     <div class="id_pw">
-                        <input type="id" name="user_id" placeholder="아이디" data-msg-required="이메일 주소를 입력해 주세요." aria-invalid="true">
+                        <input type="id" name="user_id" placeholder="아이디" data-msg-required="아이디를 입력해 주세요." aria-invalid="true">
                         <img src="{% static 'users/이메일.png' %}"/>
                     </div>
                     
                     <label for="user_pw"></label>
                     <div class="id_pw"> 
-                        <input type="password" name="user_pw" placeholder="비밀번호" data-msg-required="이메일 주소를 입력해 주세요." aria-invalid="true">
+                        <input type="password" name="user_pw" placeholder="비밀번호" data-msg-required="비밀번호를 입력해 주세요." aria-invalid="true">
                         <img src="{% static 'users/비밀번호.png' %}"/>
                     </div> 
                     <div class="login_error"><h5 id="login_error">{{ fail }}</h5></div>

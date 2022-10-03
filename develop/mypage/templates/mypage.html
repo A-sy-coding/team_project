@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link rel="stylesheet" href="mypage.css">
+    <link rel="stylesheet" href="{% static 'mypage/mypage.css' %}">
     <title>mypage</title>
 </head>
 
@@ -15,7 +16,7 @@
     <header>
         <div class="wrapper">
             <h1>
-                <a href="../main/main.html">HealF </a>
+                <a href="{% url 'home' %}">HealF </a>
             </h1>
         </div>
     </header>
@@ -32,7 +33,7 @@
             <ul class="cards">
                 <li>
                     <a href="" class="card">
-                        <img src="./프로필.jfif" class="card__image" alt="" />
+                        <img src="{% static 'mypage/프로필.jfif' %}" class="card__image" alt="" />
                         <div class="card__overlay">
                             <div class="card__header">
                                 <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
@@ -41,21 +42,21 @@
                                 
                                 <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
                                 <div class="card__header-text">
-                                    <h3 class="card__title">오리꽥님</h3>
-                                    <span class="card__status">ohyunha1576</span>
+                                    <h3 class="card__title">{{Profile_info.user_name}}</h3>
+                                    <span class="card__status">{{Profile_info.user_id}}</span>
                                 </div>
 
                                 
                                 <div class = "card__thumb_manner_text">
-                                    <img class="card__thumb_manner" src="./happy.png" alt="" />
+                                    <img class="card__thumb_manner" src="{% static 'mypage/happy.png' %}" alt="" />
                                     <h3>99도</h3>
                                 </div>
 
                                 
                             
                             </div>
-                            <p class="card__description"> 나의 운동 정보 ><br>
-                                나의 활동 분석 ><br></p>
+                            <p class="card__description"> 나의 운동 정보 > {{Count_Post_info.user_count}}<br>
+                                나의 활동 분석 > {{Count_Post_info.user_confirm}}<br></p>
                         </div>
                     </a>
                 </li>
@@ -84,7 +85,7 @@
                 <ul class="cards">
                     <li>
                         <a href="" class="card">
-                            <img src="./mainPic.jpg" class="card__image" alt="" />
+                            <img src="{% static 'mypage/mainPic.jpg' %}" class="card__image" alt="" />
                             <div class="card__overlay">
                                 <div class="card__header">
                                     <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
@@ -158,11 +159,12 @@
                         <button class="구매내역" style="margin-left: 5%;"><span>구매내역</span></button>
                     </div>
                 
-                    <div class="info_card">
-                        <a href="../product/detail.html">
-                            <img src = 'https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png'>
-                        </a>
-
+                    <div class="info_card" style="display:flex">
+                        {% for item in Item_info %}
+                            <div><img src = 'https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png'>
+                            <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                            </div>
+                        {% endfor %}
                     </div>
 
                 </div>

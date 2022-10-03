@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'exercise', # 운동하기 apps 영하
     'community', # 게시판
     'market',  # 마켓 apps
+    'mypage', # 마이페이지 apps
 ]
 
 MIDDLEWARE = [
