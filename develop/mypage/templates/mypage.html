@@ -32,18 +32,26 @@
         <div class="page_wrap">
             <ul class="cards">
                 <li>
-                    <a href="" class="card">
-                        <img src="{% static 'mypage/프로필.jfif' %}" class="card__image" alt="" />
+                    <div class="card">
+                        {% if Profile_info.user_background is not exist %}
+                            <img src="{% static 'mypage/프로필.jfif' %}" class="card__image" alt="" />
+                        {% else %}
+                            <img src="{{Profile_info.user_background.url}}" class="card__image" art="" />
+                        {% endif %}
                         <div class="card__overlay">
                             <div class="card__header">
                                 <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
                                     <path />
                                 </svg>
-                                
-                                <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
+                                {% if Profile_info.user_image is not exist %}
+                                    <img class="card__thumb" src="https://w7.pngwing.com/pngs/433/34/png-transparent-account-anonymous-app-contacts-open-line-profile-user-galaxy-open-line-gradient-i-icon-thumbnail.png" alt=""/>
+                                {% else %}
+                                    <img class="card__thumb" src="{{Profile_info.user_image.url}}" alt="" />
+                                {% endif %}
                                 <div class="card__header-text">
                                     <h3 class="card__title">{{Profile_info.user_name}}</h3>
                                     <span class="card__status">{{Profile_info.user_id}}</span>
+                                    <a href="{% url 'mypage:update' %}"><h6 class="card__status">프로필 수정</h6></a>
                                 </div>
 
                                 
@@ -58,7 +66,7 @@
                             <p class="card__description"> 나의 운동 정보 > {{Count_Post_info.user_count}}<br>
                                 나의 활동 분석 > {{Count_Post_info.user_confirm}}<br></p>
                         </div>
-                    </a>
+                    </div>
                 </li>
             </ul>
     
@@ -161,8 +169,31 @@
                 
                     <div class="info_card" style="display:flex">
                         {% for item in Item_info %}
-                            <div><img src = 'https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png'>
-                            <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                            <div><a href="{{ item.get_absolute_url }}"><img src = 'https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png'>
+                            <h3>{{ item.title }}</h3></a>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="page_wrap">
+                <div class="market_wrap" style="width: 77%; margin-top: 13%; box-shadow: 0 4px 7px rgba(0,0,0,.25); background-color: white;">
+
+                    <!-- <div class="title">내 거래 물건 +</div> -->
+                    <div class="title">
+                        <h3 style="font-size:20px; color: white"; >내 거래 물건 +</h3>
+                    </div>
+
+                    <div class="info">
+                        <button class="판매내역"><span>내가 쓴 글</span></button>
+                        <button class="구매내역" style="margin-left: 5%;"><span>내가 단 댓글</span></button>
+                    </div>
+                
+                    <div class="info_card">
+                        {% for board in Board_info %}
+                            <div><a href="{{ board.get_absolute_url }}">
+                            <h3>{{ board.title }}</h3></a>
                             </div>
                         {% endfor %}
                     </div>

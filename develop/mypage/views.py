@@ -18,6 +18,18 @@ def mypageView(request):
 
     return render(request, 'mypage.html', context)
 
+def update(request):
+    current_id = request.session.get('user')
+    print(request.method)
+    if request.method == "GET":
+        Profile_info=Profile.objects.get(id=current_id)
+        context={'Profile_info':Profile_info}
+        return render(request,'update.html',context)
+    elif request.method == "POST":
+        imgs=request.FILES["imgs"]
+        Profile.objects.update_or_create(user_image=imgs)
+    return render(request, "mypage.html")
+
 # Create your views here.
 # class mypageClass():#객체지향 따라해보기-모델들의 외래키 이름이 모두 다르기 때문에 폐기
 #     def __init__(self, request):#mypageClass의 생성자. current_id를 변수로 갖는 인스턴스 생성  

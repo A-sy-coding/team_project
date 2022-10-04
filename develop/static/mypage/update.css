@@ -1,0 +1,54 @@
+header {
+    font-family : 'Baloo';
+    height : 60px;
+    width: 100%;
+    background-color: rgba(108, 60, 244, 0.85);
+    position: fixed;
+    top : 0;
+    left : 0;
+}
+
+.wrapper{
+    width : 70%;
+    margin : 0 auto;
+}
+
+/*healf*/
+h1{
+    line-height:60px;
+    font-size: 40px;
+    float : left;
+}
+ 
+h1 a{
+    color : white;
+}
+
+.menu{
+    font-family : ovo;
+    float : right;
+}
+
+/* 틀 */
+.wrap {
+    background-color : rgb(223, 223, 223);
+    height : 140%;
+    margin-bottom: 0;
+    padding-top: 80px;
+}
+
+/* form */
+.wrap form{
+    width : 35%;
+    height : 80%;
+    margin : 0 auto;
+    border: 2px solid rgba(108, 60, 244, 0.85);
+    border-radius: 10px;
+    padding : 3%;
+    background-color: #FFF;
+}
+
+form .box{
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
