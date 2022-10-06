@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>프로필 수정</title>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel = "stylesheet" href ="{% static 'mypage/update.css' %}">
+    </head>
+
+    <body>
+        <header>
+            <div class = "wrapper">
+                <h1>
+                <a href="{% url 'home' %}">HealF </a>
+                </h1>
+            </div>
+        </header>
+        <div class="wrap">
+            <form method="post" id="form" onsubmit="return false;">
+                {% csrf_token %}
+                <div id="content">
+                    <div class="box">
+                        <h3>{{Profile_info.user_image}}</h3>
+                    </div>
+                    <div class="box">
+                        <h3>{{Profile_info.user_background}}</h3>
+                    </div>
+                    <div class="box">
+                        <h3>{{Profile_info.user_id}}</h3>
+                    </div>
+                    <div class="box">
+                        <h3>{{Profile_info.user_name}}</h3>
+                    </div>
+                    <div class="box">
+                        <h3>{{Profile_info.user_email}}</h3>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </body>

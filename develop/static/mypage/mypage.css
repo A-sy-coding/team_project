@@ -12,10 +12,6 @@ ul,li {
     list-style : none;
 }
 
-a {
-    text-decoration: none;
-    color : inherit;
-}
 
 header{
     font-family : 'Baloo';
@@ -407,6 +403,11 @@ h1 a{
   }
 
   .card__status {
+    font-size: .8em;
+    color: #D7BDCA;
+  }
+
+  .card__update {
     font-size: .8em;
     color: #D7BDCA;
   }
