@@ -10,8 +10,8 @@ class Profile(models.Model):
     user_sex = models.CharField(max_length=16, verbose_name='유저 성별')
     user_birth = models.CharField(max_length=16,verbose_name='유저 생일')
     user_register_dttm = models.DateField(auto_now_add=True, verbose_name='계정 생성시간')
-    user_image = models.ImageField(unique=True,blank=True, verbose_name='프로필사진',upload_to='profile_image/')
-    user_background = models.ImageField(unique=True,blank=True, verbose_name='배경사진',upload_to='profile_image/')
+    user_image = models.ImageField(blank=True, verbose_name='프로필사진',upload_to='profile_image/', null=True)
+    user_background = models.ImageField(blank=True, verbose_name='배경사진',upload_to='profile_image/', null=True)
 
     def __str__(self):
         return self.user_name
