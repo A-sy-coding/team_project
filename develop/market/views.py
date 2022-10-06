@@ -10,6 +10,11 @@ from django.urls import reverse_lazy
 class MarketView(TemplateView):
     template_name = 'market.html'  # 마켓 화면
 
+#ex
+class MarketView2(TemplateView):
+    template_name = 'ex.html'  # 마켓 화면
+
+
 
 #-- 아이템 등록/삭제/수정
 class ItemRegisterView(CreateView):

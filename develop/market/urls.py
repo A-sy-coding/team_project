@@ -12,6 +12,9 @@ urlpatterns=[
     path('item_register/', views.ItemRegisterView.as_view(), name='item_register'),  # 아이템 등록
     path('<int:pk>/item_update/', views.ItemUpdate.as_view(), name='item_update'),  # 아이템 등록정보 수정
     path('<int:pk>/item_delete/', views.ItemDelete.as_view(), name='item_delete'),  # 아이템 등록정보 삭제
+
+    # 승민
+    path('ex/', views.MarketView2.as_view(), name='market_page_ex'),
     
     #-- item info view
     path('item/', views.ItemView.as_view(), name='item_index'), # 등록 정보들이 들어올 url

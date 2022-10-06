@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> 헬스 친구 HealF | 마켓</title>
+            <!-- css-->
+        <link rel="stylesheet" href="{% static 'market/ex.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" />
+    
+        <script src="https://kit.fontawesome.com/4c4b76e7c2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div class = "wrapper">
+              <h1>
+                <a href="{% url 'home' %}">HealF </a>
+              </h1>
+              <ul class = "menu">
+                  <li><a href="#">로그인</a></li>
+                  <li><a href="#">회원가입</a></li>
+              </ul>
+            </div>
+        </header>
+
+        <div class="main-box">
+            <div class="nav_con">
+                <ul>
+                    <a href="">
+                        <li>운동기구</li>
+                    </a>
+                    <a href="">
+                        <li>운동화</li>
+                    </a>
+                    <a href="">
+                        <li>운동복</li>
+                    </a>
+                    <a href="">
+                        <li>보조식품</li>
+                    </a>
+                    <a href="">
+                        <li>기타</li>
+                    </a>
+                </ul>
+                <div class="search_form">
+                    <form action=""> <!-- 아직 검색어 구현 x -->
+                        <input id="search-button" type="text" placeholder="검색어를 입력하세요">
+                        <a class="search-btn" type="submit" href="">
+                            <i class="fas fa-search"></i>
+                        </a>     
+                    </form>
+                </div>
+            </div>
+            
+            <div class="s-box">
+                <div class="c-box">
+                    <ul class="slide-s">
+                        <li class="item-s"></li>
+                        <li class="item-s"></li>
+                        <li class="item-s"></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="img-div">
+                <img src="/static/market/광고.png" alt="">
+            </div>
+        
+            <div class="product-box col-6">
+                <div class="title">
+                    <h1>NEW 중고제품</h1>
+                    <br>
+                    <h4>따끈따끈한 새제품</h4>
+                    <br>
+                </div>
+                <ul class="list-products row">
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href=".#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title">[판매중]<br>[M] 헬스스트랩 팔아요</h5>
+                                    <h6 class="price">10000원</h6>
+                                    <div class="text-muted">
+                                        <h6 class="category"> 광주 서구 치평동 </h6>
+                                        <time datetime='2022-07-18T08:30:00Z'>2일 전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#l">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179996643-82f4e600-b626-4b14-b2ab-e45f40d1121e.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title"> [판매중] <br>[XL] SBD 니슬리브 무릎보호대 팝니다. </h5>
+                                    <h6 class="price">70000원</h6>
+        
+                                    <div class="text-muted">
+                                        <h6 class="category">광주 서구 화정동</h6>
+                                        <time datetime='2019-08-20T08:30:00Z'>1일 전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179997132-5e70e558-8e4c-43b2-952c-4d76c778d44a.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title">[판매중] <br>[M] 헬스벨트 ㅍㅍㅍ, <br>허리부상 방지 </h5>
+                                    <h6 class="price">15000원</h6>
+        
+                                    <div class="text-muted">
+                                        <h6 class="category">광주 서구 봉선동</h6>
+                                        <time datetime='2019-08-20T08:30:00Z'>1일전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179997900-6c292b0f-536e-49ca-b53b-f074af72bb7f.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title">[판매완료] <br> [95] 파워리프팅 벨트</h5>
+                                    <h6 class="price">23000원</h6>
+        
+                                    <div class="text-muted">
+                                        <h6 class="category">광주 동구 지산동</h6>
+                                        <time datetime='2019-08-20T08:30:00Z'>7일전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>    
+            </div>
+            
+            <div class="product-box2 col-6">
+                <div class="title">
+                    <h1>HOT 중고제품</h1>
+                    <br>
+                    <h4>인기매물</h4>
+                    <br>
+                </div>
+                <ul class="list-products row">
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title">[판매중]<br>[M] 헬스스트랩 팔아요</h5>
+                                    <h6 class="price">10000원</h6>
+                                    <div class="text-muted">
+                                        <h6 class="category"> 광주 서구 치평동 </h6>
+                                        <time datetime='2022-07-18T08:30:00Z'>2일 전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179996643-82f4e600-b626-4b14-b2ab-e45f40d1121e.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title"> [판매중] <br>[XL] SBD 니슬리브 무릎보호대 팝니다. </h5>
+                                    <h6 class="price">70000원</h6>
+        
+                                    <div class="text-muted">
+                                        <h6 class="category">광주 서구 화정동</h6>
+                                        <time datetime='2019-08-20T08:30:00Z'>1일 전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179997132-5e70e558-8e4c-43b2-952c-4d76c778d44a.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title">[판매중] <br>[M] 헬스벨트 ㅍㅍㅍ, <br>허리부상 방지 </h5>
+                                    <h6 class="price">15000원</h6>
+        
+                                    <div class="text-muted">
+                                        <h6 class="category">광주 서구 봉선동</h6>
+                                        <time datetime='2019-08-20T08:30:00Z'>1일전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179997900-6c292b0f-536e-49ca-b53b-f074af72bb7f.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title">[판매완료] <br> [95] 파워리프팅 벨트</h5>
+                                    <h6 class="price">23000원</h6>
+        
+                                    <div class="text-muted">
+                                        <h6 class="category">광주 동구 지산동</h6>
+                                        <time datetime='2019-08-20T08:30:00Z'>7일전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>    
+            </div>
+        </div>
+
+
+        <script src="{% static 'market/slide.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js" integrity="sha256-59/apVFrosMLFX2dHZLGvb3nPpu7e0Yx1rsDr1dTRrk=" crossorigin="anonymous"></script>
+    
+    </body>
+</html>
