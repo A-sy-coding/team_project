@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount', # 소셜 계정으로 가입한 계정 관리
     'allauth.socialaccount.providers.naver', # 어떤 소셜 서비스를 사용하는지 추가
 
+    'imagekit',  # 썸네일 장식시 사용
     'widget_tweaks', # 폼 장식시 사용
     'users',  # 로그인 apps
     'challenge', # 챌린지 apps

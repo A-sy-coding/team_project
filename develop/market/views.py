@@ -7,8 +7,9 @@ from django.urls import reverse_lazy
 # from config.views import OwnerOnlyMixin
 
 
-class ChallengeView(TemplateView):
-    template_name = 'market.html'  # 마캣 화면
+class MarketView(TemplateView):
+    template_name = 'market.html'  # 마켓 화면
+
 
 #-- 아이템 등록/삭제/수정
 class ItemRegisterView(CreateView):
@@ -17,9 +18,10 @@ class ItemRegisterView(CreateView):
     market/item_register/ url에 연결되어 있고, name은 item_register으로 정의되어 있다.
     '''
     model = Item
-    fields = ['title', 'description', 'item_category'] # model에서 정의한 것을 form으로 가져온다.
+    fields = ['title', 'description', 'item_category','img1','img2','img3'] # model에서 정의한 것을 form으로 가져온다.
     template_name = 'item_register.html' # render된 html 파일 정의
     success_url = reverse_lazy('market:market_page')  # 성공시 market페이지로 이동하도록 한다.
+
 
     def form_valid(self, form):
         '''
@@ -29,6 +31,7 @@ class ItemRegisterView(CreateView):
         '''
         current_id = self.request.session.get('user')
         Profile_info = Profile.objects.get(id=current_id) # Profile에서 유저 정보를 가져오도록 한다.
+
 
         form.instance.user_info = Profile_info # form에 user_info 추가 (Profile 모델 참조해서)
         return super().form_valid(form)
@@ -45,14 +48,14 @@ class ItemRegisterView(CreateView):
 class ItemUpdate(UpdateView):
     ''' 등록한 유저만 업데이트가 가능하도록 구현 - item_detail.html에서 설정'''
     model = Item
-    fields = ['title', 'description', 'item_category'] # model에서 정의한 것을 form으로 가져온다.
+    fields = ['title', 'description', 'item_category', 'img1', 'img2', 'img3'] # model에서 정의한 것을 form으로 가져온다.
     template_name = 'item_register.html' # render된 html 파일 정의
     success_url = reverse_lazy('market:market_page')  # 성공시 market페이지로 이동하도록 한다.
 
 class ItemDelete(DeleteView):
     ''' 등록한 유저만 삭제가 가능하도록 구현 - item_detail.html에서 설정'''
     model = Item
-    fields = ['title', 'description', 'item_category'] # model에서 정의한 것을 form으로 가져온다.
+    fields = ['title', 'description', 'item_category', 'img1', 'img2', 'img3'] # model에서 정의한 것을 form으로 가져온다.
     template_name = 'item_delete_confirm.html' # render된 html 파일 정의
     success_url = reverse_lazy('market:market_page')  # 성공시 market페이지로 이동하도록 한다.
 
@@ -67,7 +70,7 @@ class ItemView(ListView):
     model = Item  # models.py파일에서 Item 테이블 참조
     template_name = 'item_index.html'
     context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
-    paginate_by = 2 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정
+    paginate_by = 2 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정    
     
     
 class ItemDV(DetailView):

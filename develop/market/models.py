@@ -2,6 +2,10 @@ from django.db import models
 from django.urls import reverse
 from users.models import Profile
 
+#-- 썸네일용 라이브러리
+from imagekit.models import ImageSpecField 
+from imagekit.processors import ResizeToFill 
+
 item_choices = (
     ('운동기구', '운동기구'),
     ('운동화', '운동화'),
@@ -10,12 +14,25 @@ item_choices = (
     ('기타', '기타'),
 )
 
+####### Inline을 사용하여 Item과 Upload_file이 같이 적용되도록 한다.
+# 아이템 하나당 여러개의 이미지들이 등록 가능함. -> 1 : N관계 -> ForeignKey 사용 가능해보인다.
+# Upload_img를 정의하여 이미지 리스트를 받아와 Upload_img model에 1:N 관계로 저장되게 한다.
+# class Upload_file(models.Model):
+#     image = models.FileField(upload_to='market_item/%Y/%m/%d/', null=False, default=None)
+
 class Item(models.Model):
-    title = models.CharField('TITLE', max_length=30) # 등록물품 제목
-    description = models.TextField('item description') # 물품 관련 설명
-    item_category = models.CharField(max_length=20, choices = item_choices) # 물품 카테고리 종류
+    title = models.CharField('물품 제목', max_length=30) # 등록물품 제목
+    description = models.TextField('물품 설명') # 물품 관련 설명
+    item_category = models.CharField('물품 종류',max_length=20, choices = item_choices) # 물품 카테고리 종류
     user_info = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name='로그인 유저', blank=True, null=True) # 로그인 된 유저 정보
     modify_dt = models.DateTimeField('modify date', auto_now=True)
+
+    ######### 멀티 이미지 추가 코드 (3개로 제한되게끔 구현한다.)
+    img1 = models.FileField('물품 이미지',upload_to='market_item/%Y/%m/%d/', null=False, default=None)
+    img2 = models.FileField(upload_to='market_item/%Y/%m/%d/', null=False, default=None)
+    img3 = models.FileField(upload_to='market_item/%Y/%m/%d/', null=False, default=None)
+    img_thumbnail = ImageSpecField(source = 'img1', processors = [ResizeToFill(120, 120)]) # 썸네일 지정
+    
 
     class Meta:
         ordering = ('-modify_dt',) # modify_dt를 기준으로 내림차순으로 정렬한다.
@@ -35,3 +52,5 @@ class Item(models.Model):
     
     def get_next(self):
         return self.get_next_by_modify_dy() # modify_dt를 기준으로 예전 데이터 반환
+
+

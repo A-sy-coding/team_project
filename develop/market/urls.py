@@ -6,7 +6,7 @@ app_name = 'market'
 urlpatterns=[
     
     # /market/
-    path('', views.ChallengeView.as_view(), name='market_page'),
+    path('', views.MarketView.as_view(), name='market_page'),
 
     #-- item create/update/delete
     path('item_register/', views.ItemRegisterView.as_view(), name='item_register'),  # 아이템 등록

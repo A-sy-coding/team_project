@@ -34,6 +34,48 @@
         <p>{{ object.modify_dt|date:"Y F j D" }}</p>
         <p>물품 카테고리 : {{ object.item_category }}</p>
 
+        <!-- 이미지들 슬라이드로 변경하기 -->
+        <ul class="slides">
+          <input type="radio" name="radio-btn" id="img-1" checked />
+          <li class="slide-container">
+          <div class="slide">
+            <img src="{{ object.img1.url }}" />
+              </div>
+          <div class="nav">
+            <label for="img-3" class="prev">&#x2039;</label>
+            <label for="img-2" class="next">&#x203a;</label>
+          </div>
+          </li>
+      
+          <input type="radio" name="radio-btn" id="img-2" />
+          <li class="slide-container">
+              <div class="slide">
+                <img src="{{ object.img2.url }}" />
+              </div>
+          <div class="nav">
+            <label for="img-1" class="prev">&#x2039;</label>
+            <label for="img-3" class="next">&#x203a;</label>
+          </div>
+          </li>
+      
+          <input type="radio" name="radio-btn" id="img-3" />
+          <li class="slide-container">
+              <div class="slide">
+                <img src="{{ object.img3.url }}" />
+              </div>
+          <div class="nav">
+            <label for="img-2" class="prev">&#x2039;</label>
+            <label for="img-1" class="next">&#x203a;</label>
+          </div>
+          </li>
+         
+          <li class="nav-dots">
+            <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+            <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+            <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+          </li>
+      </ul>
+      
         <div>
             {{ object.description|linebreaks }}
         </div>

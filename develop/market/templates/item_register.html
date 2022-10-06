@@ -44,7 +44,12 @@
         {% endif %}
         
         <!-- form 데이터 가져오기 -->
-        <form action="." method="post" class="card pt-3">{% csrf_token %}
+        {% if form.is_multipart %}
+            <form enctype="multipart/form-data" action="" method="post" class="card pt-3">
+        {% else %}
+            <form action="." method="post" class="card pt-3">
+        {% endif %}
+        {% csrf_token %}
             
             <div class="form-group row ">
                 {{ form.title|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
@@ -59,6 +64,19 @@
                     {{ form.item_category|add_class:"form-control" }}
                 </div>
             </div>
+            
+            <br>
+            <div class="form-group row">
+                {{ form.img1|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }} 
+                <div class="col-sm-5 row">
+                    {{ form.img1|add_class:"form-control-file" }}
+                    {{ form.img2|add_class:"form-control-file" }}
+                    {{ form.img3|add_class:"form-control-file" }}
+                    <!-- 이미지 파일 여러개 등록 -->
+                    <!-- <input type="file" name="images" multiple>   -->
+                </div>
+            </div>
+            <br>
 
             <div class="form-group row">
                 {{ form.description|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}

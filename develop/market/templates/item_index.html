@@ -41,7 +41,7 @@
 
       <!-- 등록된 아이템 정보 가져오기 -->
       {% for item in items %}
-        <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>       
+        <h3><a href="{{ item.get_absolute_url }}"><img src = "{{ item.img_thumbnail.url }}"></a></h3>                
       {% endfor %}
 
       <br>
