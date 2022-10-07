@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> 헬스 친구 HealF | 마켓</title>
+            <!-- css-->
+        <link rel="stylesheet" href="{% static 'market/market_search.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" />
+    
+        <script src="https://kit.fontawesome.com/4c4b76e7c2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div class = "wrapper">
+                <h1>
+                    <a href="{% url 'home' %}">HealF </a>
+                </h1>
+
+                <ul class="navbar-nav ml-auto float-right"> 
+                    <h1>
+                        <ul class = "menu">
+                            {% if request.session.user_info_name != anonymous %}
+                                <li>{{ request.session.user_info_name }}님 접속을 환영합니다.</li>
+                                <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+                            {% else %}
+                                <li><a href="{% url 'users:login' %}?prev_path={{ request.path }}">로그인</a></li>
+                                <li><a href="{% url 'users:register'%}">회원가입</a></li>                                
+                            {% endif %}                       
+                            
+                        </ul>
+                    </h1>
+                </ul>
+            </div>
+        </header>
+
+        <br><br><br>
+
+        <div class="product-box col-6">
+            <div class="Title">
+                <h1>NEW 중고제품</h1>
+                <br>
+                <h4>따끈따끈한 새제품</h4>
+                <br>
+            </div>
+            
+            <ul class="list-products row">
+                <!-- Search한 아이템 정보 가져오기 -->            
+                {% if object_list %}
+                    {% for post in object_list %}
+                        <li class="list-products-item col-5" style="text-align : center;">                         
+                            <a href="{{ post.get_absolute_url }}">                    
+                                <div class="card">
+                                    <div class="card-img-top" style="background: no-repeat center; background-size: cover; height: 240px">
+                                        <img src = "{{ post.img_thumbnail.url }}">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="title">[판매중]<br>{{ post.title }}</h5>
+                                        <h6 class="price">{{ post.price }}원</h6>
+                                        <div class="text-muted">
+                                            <h6 class="category"> 광주 {{ post.region }} </h6>
+                                            <time datetime='2022-07-18T08:30:00Z'>{{ post.modify_dt|timesince }}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% elif search_term %}
+                    <b><i>찾으려고 한 {{ search_term }}에 해당되는 내용이 존재하지 않습니다.</i></b>
+                {% endif %}
+
+            
+            </ul>    
+            
+            <!-- 페이징 기능 추가 -->
+            <style> .text_center{ text-align: center; } </style>
+            <div class="text_center">
+                <span>
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">이전 페이지</a>
+                    {% endif %} 
+
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">다음 페이지</a>
+                    {% endif %}
+                </span>
+            </div>
+
+        </div>
+
+        
+    
+    </body>
+</html>

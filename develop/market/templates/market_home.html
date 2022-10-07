@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> 헬스 친구 HealF | 마켓</title>
+            <!-- css-->
+        <link rel="stylesheet" href="{% static 'market/market_home.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" />
+    
+        <script src="https://kit.fontawesome.com/4c4b76e7c2.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div class = "wrapper">
+                <h1>
+                    <a href="{% url 'home' %}">HealF </a>
+                </h1>
+
+                <ul class="navbar-nav ml-auto float-right"> 
+                    <h1>
+                        <ul class = "menu">
+                            {% if request.session.user_info_name != anonymous %}
+                                <li><a href="{% url 'market:item_register' %}"><i class="material-icons ic-create">create</i></a></li>
+                                <li>{{ request.session.user_info_name }}님 접속을 환영합니다.</li>
+                                <li><a href="{% url 'users:logout'%}">로그아웃</a></li>
+                            {% else %}
+                                <li><a href="{% url 'users:login' %}?prev_path={{ request.path }}">로그인</a></li>
+                                <li><a href="{% url 'users:register'%}">회원가입</a></li>
+                                <li><a href="{% url 'market:item_register' %}"><i class="material-icons ic-create">create</i></a></li>
+                            {% endif %}                       
+                            
+                        </ul>
+                    </h1>
+                </ul>
+            </div>
+        </header>
+
+        <div class="main-box">
+            <div class="nav_con">
+                <ul>
+                    <a href="{% url 'market:equipmnet_page' %}">
+                        <li>운동기구</li>
+                    </a>
+                    <a href="{% url 'market:shoes_page' %}">
+                        <li>운동화</li>
+                    </a>
+                    <a href="{% url 'market:sportwear_page' %}">
+                        <li>운동복</li>
+                    </a>
+                    <a href="{% url 'market:supplements_page' %}">
+                        <li>보조식품</li>
+                    </a>
+                    <a href="{% url 'market:etc_page' %}">
+                        <li>기타</li>
+                    </a>
+                </ul>
+            </div>
+            
+            <div class="search-box">
+            <form action="." method="post"> {% csrf_token %}
+                {{ form.as_table }} 
+                <input type="submit" value="검색" class="btn btn-primary btn-sm">                               
+            </form>
+            </div>
+
+            <div class="s-box">
+                <div class="c-box">
+                    <ul class="slide-s">
+                        <li class="item-s"></li>
+                        <li class="item-s"></li>
+                        <li class="item-s"></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="img-div">
+                <img src="/static/market/광고.png" alt="">
+            </div>
+            
+
+            <div class="product-box col-6">
+                <div class="Title">
+                    <h1>NEW 중고제품</h1>
+                    <br>
+                    <h4>따끈따끈한 새제품</h4>
+                    <br>
+                </div>
+                
+                <ul class="list-products row">
+                    <!-- 등록된 아이템 정보 가져오기 -->
+                    {% for item in items %}
+                        <li class="list-products-item col-12 col-md-6 col-lg-6">
+                            <a href="{{ item.get_absolute_url }}">
+                                <div class="card">
+                                    <div class="card-img-top" style="background: no-repeat center; background-size: cover; height: 240px">
+                                        <img src = "{{ item.img_thumbnail.url }}">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="title">[판매중]<br>{{ item.title }}</h5>
+                                        <h6 class="price">{{ item.price }}원</h6>
+                                        <div class="text-muted">
+                                            <h6 class="category"> 광주 {{ item.region }} </h6>
+                                            <time datetime='2022-07-18T08:30:00Z'>{{ item.modify_dt|timesince }}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>    
+                
+                <!-- 페이징 기능 추가 -->
+                <style> .text_center{ text-align: center; } </style>
+                <div class="text_center">
+                    <span>
+                        {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">이전 페이지</a>
+                        {% endif %} 
+
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+                        {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">다음 페이지</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+            </div>
+            
+            <div class="product-box2 col-6">
+                <div class="Title">
+                    <h1>HOT 중고제품</h1>
+                    <br>
+                    <h4>인기매물</h4>
+                    <br>
+                </div>
+                <ul class="list-products row">
+                    <li class="list-products-item col-12 col-md-6 col-lg-6">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-img-top" style="background: url('https://user-images.githubusercontent.com/54762273/179995513-dd8cb2b2-d968-4d47-b4f9-5994a0a6b29d.png') no-repeat center; background-size: cover; height: 240px"></div>
+                                <div class="card-body">
+                                    <h5 class="title">[판매중]<br>[M] 헬스스트랩 팔아요</h5>
+                                    <h6 class="price">10000원</h6>
+                                    <div class="text-muted">
+                                        <h6 class="category"> 광주 서구 치평동 </h6>
+                                        <time datetime='2022-07-18T08:30:00Z'>2일 전</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    
+                </ul>    
+            </div>
+        </div>
+
+
+        <script src="{% static 'market/slide.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js" integrity="sha256-59/apVFrosMLFX2dHZLGvb3nPpu7e0Yx1rsDr1dTRrk=" crossorigin="anonymous"></script>
+    
+    </body>
+</html>

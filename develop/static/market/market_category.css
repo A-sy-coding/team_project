@@ -6,10 +6,23 @@
     font-family: 'ovo';
     src: url('Ovo-Regular.ttf') format('truetype');
 }
+ul,li {
+    list-style : none;
+}
+
+h1 a{
+    text-decoration: none;
+    color : white;
+}
 
 a {
     text-decoration: none;
     color : inherit;
+}
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
 }
 
 header {
@@ -20,35 +33,26 @@ header {
     position: fixed;
     top : 0;
     left : 0;
-  }
+    z-index: 3;
+}
+.wrapper{
+    width : 70%;
+    margin : 0 auto;
+}
 /*healf*/
 h1{
-    line-height:5px;
+    line-height:60px;
     font-size: 40px;
     float : left;
 }
  
 h1 a{
     color : white;
-    text-decoration-line: none;
-}
-
-.container {
-    width : 65%;
-    display : inline-flex;
-    justify-content : space-between;
-    margin-left: 18%;
-    margin-top : 2%;
-}
-
-.wrapper{
-    width :70%;
-    margin : 0 auto;
 }
 
 .menu{
     font-family : ovo;
-    float : right;
+    /* float : right; */
 }
 
 /*로그인 회원가입*/
@@ -62,4 +66,21 @@ h1 a{
 
 .menu li:last-child{
     margin-right: 0;
+}
+
+
+/*물품 박스*/
+.main-box .product-box{
+    position: absolute;
+    top : 900px;
+}
+
+
+/* 물품 제목 자르기 */
+.title{
+    display: inline-block; 
+    width: 210px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }

@@ -33,6 +33,8 @@
         <p>작성자 : {{ object.user_info }}</p>
         <p>{{ object.modify_dt|date:"Y F j D" }}</p>
         <p>물품 카테고리 : {{ object.item_category }}</p>
+        <p>가격 : {{ object.price }}</p>
+        <p>지역 : {{ object.region }}</p>
 
         <!-- 이미지들 슬라이드로 변경하기 -->
         <ul class="slides">
@@ -90,5 +92,6 @@
         {% endif %}
         
     </div>
+
 </html>
 

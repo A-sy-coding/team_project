@@ -1,6 +1,8 @@
 from django.db import models
 from django.db import connection
 
+# from market.models import Item
+
 class Profile(models.Model):
     id = models.AutoField(primary_key=True,verbose_name= 'id')
     user_id = models.CharField(max_length=32, unique=True, verbose_name='유저 아이디')
