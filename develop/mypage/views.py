@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import TemplateView
 from users.models import Profile
 from market.models import Item
@@ -10,6 +10,7 @@ def mypageView(request):
     if current_id is None: 
             return render(request, 'users/login.html', {'prev_path':request.path})
     Profile_info=Profile.objects.get(id=current_id)
+    print(Profile_info.user_image)
     Item_info=Item.objects.filter(user_info=current_id)
     Board_info=Board.objects.filter(writer= current_id)
     Count_Post_info=Count_Post.objects.filter(user_info= current_id)
@@ -17,6 +18,9 @@ def mypageView(request):
         'Count_Post_info':Count_Post_info}
 
     return render(request, 'mypage.html', context)
+class Profile_update():
+    def __init__(self,request):
+        self.current_id = request.session.get('user')
 
 def update(request):
     current_id = request.session.get('user')
@@ -26,9 +30,12 @@ def update(request):
         context={'Profile_info':Profile_info}
         return render(request,'update.html',context)
     elif request.method == "POST":
-        imgs=request.FILES["imgs"]
-        Profile.objects.update_or_create(user_image=imgs)
-    return render(request, "mypage.html")
+        imgs=request.FILES.get('input_image')
+        print(imgs)
+        Profile_info=Profile.objects.get(id=current_id)
+        Profile_info.user_image=imgs
+        Profile_info.save()
+    return redirect("mypage:mypage_view")
 
 # Create your views here.
 # class mypageClass():#객체지향 따라해보기-모델들의 외래키 이름이 모두 다르기 때문에 폐기

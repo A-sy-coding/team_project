@@ -32,34 +32,31 @@ h1 a{
     margin : 0 auto;
 }
 
-.box{
-    margin : 50%;
-    padding : 30px;
-    border : 1px solid black;
-    border-radius : 5px;
-}
-
-
-  /*중앙*/
-
-  .container {
-    width : 65%;
+.container {
+    width : 90%;
+    height: 400px;
     display : inline-flex;
     justify-content : space-between;
-    margin-left: 18%;
-    margin-top : 5%;
+    margin-left: 5%;
+    margin-top : 0%;
+    background-color:rgb(255, 255, 255);
 }
 
   .menu{
-    width : 240px;
-    height : 240px;
-    color : #FFFFFF;
-    background-color : rgba(108, 60, 244, 0.85);
+    width : 280px;
+    height : 450px;
+    color : #000000;
+    background-color : rgb(255, 255, 255);
     text-align : center;
     margin-left : auto;
     margin-right :auto;
     font-family : 'Baloo';
-    font-size: 35px;
+    font-size: 25px;
     font-weight:bold;
-    border-radius:113px;
+    border-style : solid;
   }
+
+  img {
+    width: 240px;
+    height: 160px;
+   }

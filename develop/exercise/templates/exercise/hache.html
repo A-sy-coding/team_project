@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
@@ -6,8 +7,8 @@
         <meta charset="utf-8"/>
         <title> 헬스 친구 HealF | 운동하기</title>
 
-        <link rel = "stylesheet" href ="exercise.css">
-        <script type="text/javascript" src="../js/exercise.js"></script>
+        <link rel = "stylesheet" href ="{% static 'exercise/exercise.css' %}">
+        <script type="text/javascript" src="{% static 'exercise/exercise.js' %}"></script>
     </head>
 
     <body>
@@ -15,18 +16,18 @@
     <header>
         <div class = "wrapper">
         <h1>
-            <a href="../main/main.html">HealF</a>
+            <a href="{% url 'home' %}">HealF</a>
         </h1>
     </div>
     </header>
     <br><br><br><br>
 
     <ul>
-        <li><a href="exercise.html">등</a></li>
-        <li><a href="shoulder.html">어깨</a></li>
-        <li><a href="arm.html">팔</a></li>
-        <li><a href="chest.html">가슴</a></li>
-        <li><a class="home" href="hache.html">하체</a></li>
+        <li><a href="{% url 'exercise:exercise' %}" >등</a></li>
+        <li><a href="{% url 'exercise:shoulder' %}">어깨</a></li>
+        <li><a href="{% url 'exercise:arm' %}">팔</a></li>
+        <li><a href="{% url 'exercise:chest' %}">가슴</a></li>
+        <li><a class="home" href="{% url 'exercise:hache' %}">하체</a></li>
     </ul>
         
     <div class="all">
@@ -35,24 +36,24 @@
         <div class="exercise">
             <!-- <div class="start"> start! </div> -->
             <img src="https://user-images.githubusercontent.com/54762273/180047469-37c85173-f34e-4e09-9be7-45adec2c1393.png"/>
-            <div class="start"><a href="./start.html" style="color:white">start!</a></div>
+            <div class="start"><a href="{% url 'exercise:exercisestart' %}" style="color:white">start!</a></div>
         </div>
         </div>
 
         <div class="all2">
-        <div class="action"><a href="https://www.youtube.com/watch?v=QyAH8O5X6g0" target="_blank">
-            <img src="./도대체 스쿼트는 어떻게 하는 건가요.png" width="180" height="110"/></a>
-            <p style="font-size:13px; margin-left:8px; margin-top:8px"> 도대체 스쿼트는 어떻게 하는 건가요?</p>
-        </div>
-        <div class="action"><a href="https://www.youtube.com/watch?v=9WhpAVOSyl8" target="_blank">
-            <img src="./완벽한 기술로 거대한 스쿼트를 얻는 방법.png" width="180" height="110"/></a>
-            <p style="font-size:13px; margin-left:3px; margin-top:-4px"> 하루 딱6분! 다리라인 살리는 운동</p> 
-        </div>
-        <div class="action"><a href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank">
-            <img src="./하루 딱6분! 다리라인 살리는 운동.png" width="180" height="110"/></a>
-            <p style="font-size:13px; margin-left:3px; margin-top:-4px"> 완벽한 기술로 거대한 스쿼트를 얻는 방법</p>
-        </div>
-        </div>
+            <div class="action"><a href="https://www.youtube.com/watch?v=QyAH8O5X6g0" target="_blank">
+                <img src="{% static 'exercise/도대체 스쿼트는 어떻게 하는 건가요.png' %}" width="180" height="110"/></a>
+                <p style="font-size:13px; margin-left:8px; margin-top:8px"> 도대체 스쿼트는 어떻게 하는 건가요?</p>
+            </div>
+            <div class="action"><a href="https://www.youtube.com/watch?v=9WhpAVOSyl8" target="_blank">
+                <img src="{% static 'exercise/완벽한 기술로 거대한 스쿼트를 얻는 방법.png' %}" width="180" height="110"/></a>
+                <p style="font-size:13px; margin-left:3px; margin-top:-4px"> 하루 딱6분! 다리라인 살리는 운동</p> 
+            </div>
+            <div class="action"><a href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank">
+                <img src="{% static 'exercise/하루 딱6분! 다리라인 살리는 운동.png' %}" width="180" height="110"/></a>
+                <p style="font-size:13px; margin-left:3px; margin-top:-4px"> 완벽한 기술로 거대한 스쿼트를 얻는 방법</p>
+            </div>
+            </div>
         
     </div>
 

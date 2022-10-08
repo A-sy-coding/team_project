@@ -18,26 +18,39 @@
             </div>
         </header>
         <div class="wrap">
-            <form method="post" id="form" onsubmit="return false;">
+            <form method="post" id="form" action="{% url 'mypage:update' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div id="content">
                     <div class="box">
-                        <h3>{{Profile_info.user_image}}</h3>
+                        {% if Profile_info.user_image is not exist %}
+                            <span><img style="width:50px" src="{% static 'mypage/no-image.png' %}" alt=""/>
+                        {% else %}
+                            <img src="{{Profile_info.user_image.url}}" alt="" />
+                        {% endif %}
+                        <label for="input_image" >변경</label>
+                        <input type="file" id="input_image" name="input_image" style="display:none">
+                        </span>
                     </div>
                     <div class="box">
-                        <h3>{{Profile_info.user_background}}</h3>
+                        <div>{{Profile_info.user_background}}</div>
+                        <label for="input_image" ></label>
+                        <input type="file" style="display:none" multiple>
                     </div>
                     <div class="box">
+
+                        <label for="id_update" >아이디</label>
                         <h3>{{Profile_info.user_id}}</h3>
+                        <button style="height:30px">변경</button>
                     </div>
                     <div class="box">
+                    <span>
+                        <label for="id_update" >이름</label>
                         <h3>{{Profile_info.user_name}}</h3>
-                    </div>
-                    <div class="box">
-                        <h3>{{Profile_info.user_email}}</h3>
+                        </span>
                     </div>
                     
                 </div>
+                <div><input type="submit"> </div>
             </form>
         </div>
     </body>
