@@ -50,7 +50,7 @@
             
             <ul class="list-products row">
                 <!-- 등록된 아이템 정보 가져오기 -->
-                {% for item in items %}
+                {% for item in equipments %}
                     {% if item.item_category == "운동기구" %}
                         <li class="list-products-item col-5" style="text-align : center;">                         
                             <a href="{{ item.get_absolute_url }}">                    
@@ -74,7 +74,7 @@
             </ul>    
             
             <!-- 페이징 기능 추가 -->
-            <style> .text_center{ text-align: center; } </style>
+            <!-- <style> .text_center{ text-align: center; } </style>
             <div class="text_center">
                 <span>
                     {% if page_obj.has_previous %}
@@ -87,7 +87,7 @@
                     <a href="?page={{ page_obj.next_page_number }}">다음 페이지</a>
                     {% endif %}
                 </span>
-            </div>
+            </div> -->
 
         </div>
     

@@ -115,30 +115,30 @@ class ItemDelete(DeleteView):
 class EquipmentView(ListView):
     model = Item  # models.py파일에서 Item 테이블 참조
     template_name = 'category_equipment.html'
-    context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
-    paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
+    context_object_name = 'equipments' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
+    # paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
 
 class ShoesView(ListView):
     model = Item  # models.py파일에서 Item 테이블 참조
     template_name = 'category_shoes.html'
-    context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
-    paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
+    context_object_name = 'shoes' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
+    # paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
 
 class SportswearView(ListView):
     model = Item  # models.py파일에서 Item 테이블 참조
     template_name = 'category_Sportwear.html'
-    context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
-    paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
+    context_object_name = 'sportwears' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
+    # paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
 
 class SupplementsView(ListView):
     model = Item  # models.py파일에서 Item 테이블 참조
     template_name = 'category_Supplements.html'
-    context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
-    paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
+    context_object_name = 'supplements' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
+    # paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
 
 class EtcView(ListView):
     model = Item  # models.py파일에서 Item 테이블 참조
     template_name = 'category_etc.html'
-    context_object_name = 'items' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
-    paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
+    context_object_name = 'etcs' # html로 넘어가는 객체 리스트의 변수명을 items로 설정
+    # paginate_by = 4 # 한 페이지에 보여주는 객체 리스트의 숫자를 설정  
 
