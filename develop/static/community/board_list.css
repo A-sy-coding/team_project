@@ -128,6 +128,10 @@ h1 a{
     width: 10%;
 }
 
+.board .hits_title{
+    width: 50%;
+}
+
 .board .title{
     width: 60%;
 }

@@ -14,16 +14,19 @@ def board_list(request):
 
     boards = Board.objects.all().order_by('-id')
     page = pagination(request, Board)
+    hits_boards = Board.objects.all().order_by('-hits')
 
     if login_session != None:
             user=Profile.objects.get(id=login_session)
             context={'user_name':user.user_name}
             context['boards'] = boards
+            context['hits_boards'] =hits_boards[0:3]
             context.update(page)
             return render(request,'community/board_list.html',context)
             
     if login_session == None:
             context['boards'] = boards
+            context['hits_boards'] =hits_boards[0:3]
             context.update(page)
             return render(request,'community/board_list.html',context)
 

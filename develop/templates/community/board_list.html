@@ -25,6 +25,7 @@
                     {% endif %}
                 </ul>
             </div>
+
         </header>
         <div class="board_wrap">
             <div class="info">
@@ -40,6 +41,22 @@
                     <div class="date">날짜</div>
                     <div class="count">조회수</div>
                 </div>
+                {%  for board in hits_boards %}
+                {% if board %}
+                <div style="background-color:beige">
+                    <div class="num"><image style="width:30%; height:30%; margin-top:-10%;margin-bottom:-10%" src="{% static 'community/hot2.png' %}"/></div>
+                    <div class="title">
+                        <a href="/community/detail/{{board.id}}" target="_self">
+                            {{ board.title }}
+                        </a></div>
+                    <div class="writer">{{ board.writer }}</div>
+                    <div class="date">{{ board.write_dttm |date:'Y.m.d' }}</div>
+                    <div class="count">{{ board.hits }}</div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+
                 {%  for board in boards %}
                 {% if board %}
                 <div>

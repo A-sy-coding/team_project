@@ -43,8 +43,8 @@
                                 <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
                                     <path />
                                 </svg>
-                                {% if Profile_info.user_image is not exist %}
-                                    <img class="card__thumb" src="https://w7.pngwing.com/pngs/433/34/png-transparent-account-anonymous-app-contacts-open-line-profile-user-galaxy-open-line-gradient-i-icon-thumbnail.png" alt=""/>
+                                {% if Profile_info.user_image == none %}
+                                    <img class="card__thumb" src="{% static 'mypage/no-image.png' %}" alt=""/>
                                 {% else %}
                                     <img class="card__thumb" src="{{Profile_info.user_image.url}}" alt="" />
                                 {% endif %}
@@ -109,7 +109,7 @@
                             </div>
                         </a>
                     </li>
-                </ul>
+                </ul2>
 
             <!--
             <div class="health_wrap">
